@@ -4,11 +4,42 @@ get '/' do
 end
 
 get '/login' do
-  erb :login
+  @tenant
+  erb :'login'
+end
+
+post '/login' do
+  if Tenant.where(email: email, password: password) #|| Landlord.where(email:)
+   Tenant.find_by(name: params[:name])#, password: params[:password])
+     session[:current_tenant_id] = log_tenant.id
+    @login_error = false
+    redirect to('/tenant')
+  else
+     @login_error = true
+     erb :'login'
+  end 
 end
 
 get '/signup' do
   erb :signup
+end
+
+get '/signup' do
+  @tenant = Tenant.new
+  erb :'signup'
+end
+
+post '/signup' do
+  @tenant = Tenant.new(
+    name: params[:name],
+    email: params[:email]
+   # password: params[:password]
+  )
+  if @tenant.save
+    redirect '/login'
+  else
+    erb :'signup'
+  end
 end
 
 get '/locations' do
