@@ -2,7 +2,10 @@ require './config/environment'
 require 'faker'
 
 max_num = 20
-
+20.times do
+usertype = rand(2) == 1 ? 'l' : 't'
+User.create(username:Faker::Internet.user_name,password:'123',usertype:usertype)
+end
 20.times {Landlord.create(name:Faker::Name.name ,email:Faker::Internet.email)}
 
 40.times do 
@@ -17,3 +20,6 @@ end
 
 
 20.times {Tenant.create(name:Faker::Name.name,email:Faker::Internet.email,phone:Faker::PhoneNumber.cell_phone,pets:rand(0..3),account_balance:0,credit_card:Faker::Business.credit_card_number)}
+
+
+puts Faker::Hacker.say_something_smart
