@@ -11,19 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150715210201) do
+ActiveRecord::Schema.define(version: 20150715213723) do
 
   create_table "landlords", force: :cascade do |t|
     t.string "name",  null: false
     t.string "email"
-  end
-
-  create_table "lanlords_records", force: :cascade do |t|
-    t.integer "tenant_id",   null: false
-    t.integer "landlord_id", null: false
-    t.integer "location_id", null: false
-    t.integer "amount_due",  null: false
-    t.integer "amount_paid"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -35,6 +27,14 @@ ActiveRecord::Schema.define(version: 20150715210201) do
     t.boolean "allow_pets?"
     t.integer "no_people"
     t.string  "photo"
+  end
+
+  create_table "records", force: :cascade do |t|
+    t.integer "tenant_id",   null: false
+    t.integer "landlord_id", null: false
+    t.integer "location_id", null: false
+    t.integer "amount_due",  null: false
+    t.integer "amount_paid"
   end
 
   create_table "tenants", force: :cascade do |t|

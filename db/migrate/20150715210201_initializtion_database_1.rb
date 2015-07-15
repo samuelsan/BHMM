@@ -15,7 +15,7 @@ class InitializtionDatabase1 < ActiveRecord::Migration
 			t.string :credit_card
   end
 
-		create_table :lanlords_records do |t|
+		create_table :landlord_records do |t|
 			t.integer :tenant_id, null: false
 			t.integer :landlord_id, null:false
 			t.integer :location_id, null: false
