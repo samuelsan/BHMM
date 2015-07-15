@@ -1,6 +1,13 @@
 html{
   background: url("/images/interior.jpg");
   background-size: 100%;
+  position: relative;
+}
+
+.nav {
+  float: right;
+  margin-top: 20px;
+  background: white;
 }
 
 h1 {
@@ -16,6 +23,22 @@ h1 {
   padding-bottom: 0px;
   border: 2px solid grey; 
   background: rgba(255,255,255, 0.8);
+
+  background: url("/images/i182.jpg");
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2 {
+  margin: 0px;
+}
+
+.listing {
+  margin: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 2px solid grey; 
+  background: rgba(255,255,255, 0.5);
   width: 300px;
   text-align: center;
   display: inline-block;
@@ -55,4 +78,7 @@ h1 {
   background-image: linear-gradient(to bottom, #000000, #adadad);
   color: #ffffff;
   text-decoration: none;
+
+#pay {
+  border-radius: 0;
 }
