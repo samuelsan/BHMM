@@ -38,12 +38,12 @@ ActiveRecord::Schema.define(version: 20150715213723) do
   end
 
   create_table "tenants", force: :cascade do |t|
-    t.string  "name",           null: false
+    t.string  "name",            null: false
     t.string  "email"
     t.string  "phone"
     t.string  "photo"
     t.integer "pets"
-    t.float   "acount_balance"
+    t.float   "account_balance"
     t.string  "credit_card"
   end
 
