@@ -1,1 +1,17 @@
-<h1>All locations</h1>
+<header>
+  <h1>All locations</h1>
+    <div class="nav"> 
+    <a href='/' class='button'>Home</a>
+  </div>
+</header>
+
+<body>
+<% #Locations.all.each do |location| %>
+  <div class = "listing">
+    <h2>[ADDRESS] </h2><br>
+    [RATE] <br>
+    Pets: Of course <br>
+    MOVE IN! <br>
+  </div>
+<% #end %>
+</body>
