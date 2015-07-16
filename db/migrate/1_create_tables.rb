@@ -27,7 +27,7 @@ class CreateTables < ActiveRecord::Migration
       t.integer :pets
       t.float :account_balance
       t.string :credit_card
-      t.integer :type, null: false
+      t.integer :usertype, null: false
     end
-end
+  end
 end

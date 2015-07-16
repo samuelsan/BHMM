@@ -5,7 +5,7 @@ max_num = 20
 20.times {
   pets_num = rand(0..20)
   rand_type = rand(0..2)
-  User.create(name:Faker::Name.name,email:Faker::Internet.email,password:'123',pets:pets_num, type: rand_type)
+  User.create(name:Faker::Name.name,email:Faker::Internet.email,password:'123',pets:pets_num, usertype: rand_type)
 }
 
 40.times do 

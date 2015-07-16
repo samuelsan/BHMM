@@ -1,3 +1,32 @@
-<header>
-  <h1>Signup</h1>
-</header>
+<h1>Sign Up Here</h1>
+
+<% if @user.errors.any? %>
+  <div>
+    <strong>You had one job. Try again.</strong>
+  </div>
+<% end %>
+
+
+<form method="post" action="/signup">
+  <div>
+    <label>Name:</label>
+    <input type="text" name="name"> 
+  </div>
+  <label>Email:</label>
+    <input type="text" name="email"> 
+  </div>
+  <div>
+  <div>
+    <label>Password:</label>
+    <input type="text" name="password">
+  </div>
+  <div>
+    <label>Role:</label>
+    <input type="checkbox" name="tenant">Tenant<br>
+    <input type="checkbox" name="landlord">Landlord<br>
+  </div>
+  
+  <div>
+    <input type="submit" value="Signup">
+  </div>
+</form>

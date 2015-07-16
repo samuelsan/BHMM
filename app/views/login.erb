@@ -1,6 +1,24 @@
-<header>
-  <h1>Login</h1>
-  <div class="nav"> 
-    <a href='/' class='button'>Home</a>
+<h1>Login</h1>
+<hr/>
+
+<% if @login_error %>
+  <div>
+    <strong>Wrong Name or Password.  Try again!</strong>
   </div>
-</header>
+<% end %>
+
+<form method="post" action="/login">
+  <div>
+    <label>Email:</label>
+    <input type="text" name="email"> 
+  </div>
+  <div>
+    <label>Password:</label>
+    <input type="text" name="password"> 
+  </div>
+  <div>
+    <input type="submit" value="Login">
+  </div>
+</form>
+<a href="/signup">Sign up?</a>
+
