@@ -155,6 +155,7 @@ end
 get '/tenant/pay' do
   redirect '/notloggedin' if session[:user].nil?
   @user = User.find(session[:user])
+  redirect '/locations' if !(User.find(session[:user]).location_id)
   erb :tenant_pay
 end
 
