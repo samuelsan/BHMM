@@ -9,29 +9,19 @@
   </div>
 </header>
 
-<div class="listing" id="tenantinfo">
+<div class="listingtenant" id="tenantinfo">
   <% if @user.location_id == nil %> 
     <a href="/locations" style="font-size: 40px">Find a place!</a>
   <% else %> 
     Address: <%= Location.find(@user.location_id).address %><br>
-    Rate: $<%= Location.find(@user.location_id).rate %> /month<br>
+    Rate: $<%= Location.find(@user.location_id).rate.round %> /month<br>
     Landlord: <%= User.find(Location.find(@user.location_id).landlord_id).name %>
     Landlord Email: <%= User.find(Location.find(@user.location_id).landlord_id).email %>
     <form type="submit" method="post" action="/moveout"> <button class="actionbutton">MOVE OUT!</button></form><br></div>
   <% end %>
 </div>
 
-<div class="listing">
-  User information:<br>
-  Name: <%= @user.name %><br>
-  Email: <%= @user.email %><br>
-  Password: <%= @user.password %><br>
-  Phone Number: <%= @user.phone %><br>
-  Account Balance: $<%= @user.account_balance %><br>
-  <a href='/'>Update info</a>
-</div>
-
-<div class="listing">
+<div class="listingtenant">
 
 <% if @user.account_balance < 100 %>
 <span style="color: red; font-weight: bold; font-size: 22px; text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87"> YOU BROKE </span>
@@ -41,3 +31,23 @@
 <form type="submit" method="post" action="/work"> <button class='actionbutton'>Werk</button></form><br>
 <form type="submit" method="get" action="/tenant/pay"> <button class='actionbutton'>Pay Rent</button></form>
 </div>
+
+
+<div class="listingtenant">
+  User information:<br>
+  Name: <%= @user.name %><br>
+  Email: <%= @user.email %><br>
+  Password: <%= @user.password %><br>
+  Phone Number: <%= @user.phone %><br>
+  Account Balance: <%= @user.account_balance.round %><br>
+  <a href='/'>Update info</a>
+</div>
+
+
+
+
+
+
+
+
+

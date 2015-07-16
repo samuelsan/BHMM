@@ -20,17 +20,6 @@ h1 {
   -webkit-text-fill-color: transparent;
 }
 
-.listing {
-  padding-top: 10px;
-  padding-bottom: 0px;
-  height: 110px;
-  border: 2px solid grey;
-  text-align: center; 
-  vertical-align: middle;
-  background: rgba(255,255,255, 0.8);
-  
-}
-
 #tenantinfo {
   font-size: 16px;
 }
@@ -48,11 +37,44 @@ h2 {
   margin: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
+  position: relative;
+  top: 43px;  
   border: 2px solid grey; 
   background: rgba(255,255,255, 0.8);
   width: 330px;
   height: 162px;
   vertical-align: middle;
+  text-align: center;
+  display: inline-block;
+}
+
+.listingtenant {
+  margin: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: relative;
+  top: 43px;
+  border: 2px solid grey; 
+  background: rgba(255,255,255, 0.8);
+  width: 330px;
+  height: 162px;
+  vertical-align: middle;
+  text-align: center;
+  display: inline-block;
+}
+
+.listinglandlord {
+  margin: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: relative;
+  top: 43px;
+  border: 2px solid grey; 
+  background: rgba(255,255,255, 0.8);
+  width: 310px;
+  height: 180px;
+  vertical-align: middle;
+  text-align: center;
   display: inline-block;
 }
 

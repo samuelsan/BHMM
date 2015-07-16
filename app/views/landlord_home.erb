@@ -15,12 +15,20 @@
 	Locations.each do |x| 
 	puts x if x.landlord_id == @user.id 
 	end
+
+<div class="listinglandlord" id="tenantinfo">
+  Locations:<br>
+  <!-- TODO: TOM -->
+  Locations.each do |x| 
+  puts x if x.landlord_id == @user.id 
+  end
+>>>>>>> css
     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
     Add new Location
   </button>
 </div>
 
-<div class="listing">
+<div class="listinglandlord">
   User information:<br>
   Name: <%= @user.name %><br>
   Email: <%= @user.email %><br>
@@ -92,3 +100,25 @@
 			</div>
 		</div>
 	</div>
+
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">New Location</h4>
+      </div>
+      <div class="modal-body">
+        <!-- New Location body here -->
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+          </form> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+
