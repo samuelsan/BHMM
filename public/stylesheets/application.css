@@ -1,5 +1,5 @@
 html{
-  background: url("/images/interior.jpg") no-repeat center center fixed;
+	background: url("/images/interior.jpg") no-repeat center center fixed;
   background-size: 100%;
 }
 
@@ -82,3 +82,4 @@ h2 {
 #pay {
   border-radius: 0;
 }
+

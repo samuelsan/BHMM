@@ -97,6 +97,7 @@ end
 
 get '/tenant/records' do
   @user = User.find(session[:user])
+	@record = Record.where(tenant_id:@user.id)
   erb :tenant_records
 end
 
