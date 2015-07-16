@@ -34,7 +34,7 @@
   Email: <%= @user.email %><br>
   Password: <%= @user.password %><br>
   Phone Number: <%= @user.phone %><br>
-  Account Balance: $<%= @user.account_balance %><br>
+  Account Balance: $<%= @user.account_balance.round %><br>
   Pets: <%= @user.pets%><br>
   <a href='/'>Update info</a>
 </div>
