@@ -85,6 +85,7 @@ end
 
 get '/landlord/my_locations' do
   @user = User.find(session[:user])
+	@location = Location.where(landlord_id:@user.id)
   erb :landlord_locations
 end
 
