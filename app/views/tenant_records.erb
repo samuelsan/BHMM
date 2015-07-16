@@ -1,20 +1,21 @@
 <header>
 <h1>Tenant Records</h1>
   <div class="nav"> 
+    User: <%= @user.name %>
     <a href='/tenant' class='button'>Home</a>
     <a href='/tenant/records' class='button'>View Records</a>
     <a href='/locations' class='button'>All Locations</a>
   </div>
 </header>
 
-<div>
-- Address <br>
-- Tenant <br>
-- Amount Due <br>
-- Amount Paid <br>
+<table class="table table-hover">
+  <th><td>Address</td>
+  <td>Tenant</td>
+  <td>Amount Due</td>
+  <td>Amount Paid</td></th>
+  </tr>
+</table>
+
 
 <a href='/' id='pay'>Pay</a>
 </div>
-<h2>History:</h2>
-- old location
-- superold location

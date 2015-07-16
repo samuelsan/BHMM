@@ -1,9 +1,17 @@
 <header>
 <h1>Tenant</h1>
   <div class="nav"> 
-  
+    User: <%= @user.name %>
     <a href='/tenant' class='button'>Home</a>
     <a href='/tenant/records' class='button'>View Records</a>
     <a href='/locations' class='button'>All Locations</a>
   </div>
 </header>
+
+<div class="listing">
+  <% if @user.location_id == nil %> 
+    Find a place!
+  <% else %> 
+    <%= home = Location.find(@user.location_id) %>
+  <% end %>
+</div>

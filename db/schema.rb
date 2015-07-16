@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 1) do
     t.string  "name",            null: false
     t.string  "email",           null: false
     t.string  "password",        null: false
+    t.integer "location_id"
     t.string  "phone"
     t.integer "pets"
     t.float   "account_balance"
