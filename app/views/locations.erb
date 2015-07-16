@@ -7,7 +7,7 @@
     <%elsif @user.usertype == 1%>
       <a href='/tenant' class='navbutton'>Home</a>
     <%elsif @user.usertype == 2%>
-      <a href='/' class='navbutton'>Home</a>
+      <a href='/home' class='navbutton'>Home</a>
     <%end%>
     
     <span id="username">User: <%= @user.name %></span>
