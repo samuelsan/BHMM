@@ -17,8 +17,9 @@
     Rate: $<%= Location.find(@user.location_id).rate.round %> /month<br>
     Landlord: <%= User.find(Location.find(@user.location_id).landlord_id).name %>
     Landlord Email: <%= User.find(Location.find(@user.location_id).landlord_id).email %>
-    <form type="submit" method="post" action="/moveout"> <button class="actionbutton">MOVE OUT!</button></form><br></div>
+    <form type="submit" method="post" action="/moveout"> <button class="actionbutton">MOVE OUT!</button></form><br>
   <% end %>
+  </div>
 
 <div class="listingtenant">
   <% if @user.account_balance < 100 %>
@@ -30,7 +31,6 @@
   <form type="submit" method="get" action="/tenant/pay"> <button class='actionbutton'>Pay Rent</button></form>
 </div>
 
-
 <div class="listingtenant">
   User information:<br>
   Name: <%= @user.name %><br>
@@ -40,10 +40,6 @@
   Account Balance: <%= @user.account_balance.round %><br>
   <a href='/'>Update info</a>
 </div>
-
-
-
-
 
 
 
