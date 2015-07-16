@@ -26,6 +26,7 @@ h1 {
   height: 110px;
   border: 2px solid grey;
   text-align: center; 
+  vertical-align: middle;
   background: rgba(255,255,255, 0.8);
   
 }
@@ -49,7 +50,7 @@ h2 {
   padding-bottom: 10px;
   border: 2px solid grey; 
   background: rgba(255,255,255, 0.8);
-  width: 310px;
+  width: 330px;
   height: 162px;
   vertical-align: middle;
   display: inline-block;
