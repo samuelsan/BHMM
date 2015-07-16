@@ -2,7 +2,8 @@
   <h1>All locations</h1>
   <div class="nav"> 
     User: <%= @user.name %>
-    <a href='/' class='button'>Home</a>
+    <!-- TODO: return to correct home page -->
+  <a href='/landlord' class='button'>Home</a>
   </div>
 </header>
 
@@ -11,8 +12,8 @@
   <div class = "listing">
     <h2><%= location.address %></h2>
     <div>$<%=location.rate %> <br>
-    Pets: <%= (location.allow_pets?)? "yes" : "no"%> <br>
-    <div class="button"> MOVE IN! </div><br></div>
+    Pets: <%= (location.allow_pets?)? "Allowed" : "Not Allowed"%> <br>
+    <form type="submit" method="post" action="/movein/<%=location.id%>"> <button class="movebutton">MOVE IN!</button></form><br></div>
   </div>
 <% end %>
 </body>

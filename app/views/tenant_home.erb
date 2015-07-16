@@ -8,9 +8,9 @@
   </div>
 </header>
 
-<div class="listing">
+<div class="listing" id="tenantinfo">
   <% if @user.location_id == nil %> 
-    <a href="/locations" style="font-size: 40px">Find a place!</a>
+    <a href="/locations">Find a place!</a>
   <% else %> 
     <%= home = Location.find(@user.location_id) %>
   <% end %>

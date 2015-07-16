@@ -30,6 +30,10 @@ h1 {
   
 }
 
+.tenantinfo {
+  font-size: 40px;
+}
+
 h2 {
   margin: 0px;
 }
@@ -80,6 +84,11 @@ h2 {
   background-image: linear-gradient(to bottom, #000000, #adadad);
   color: #ffffff;
   text-decoration: none;
+}
+
+.movebutton:hover {
+
+}
 
 #pay {
   border-radius: 0;

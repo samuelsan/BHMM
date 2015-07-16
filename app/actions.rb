@@ -90,6 +90,11 @@ get '/landlord/my_locations' do
 end
 
 # tenant
+post '/movein/:locationid' do
+  User.find(session[:user]).update_attributes(location_id: params[:locationid])
+  redirect '/tenant'
+end
+
 get '/tenant' do
   @user = User.find(session[:user])
   erb :tenant_home
