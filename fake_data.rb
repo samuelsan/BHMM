@@ -2,11 +2,11 @@ require './config/environment'
 require 'faker'
 
 max_num = 20
-20.times do
-usertype = rand(2) == 1 ? 'l' : 't'
-User.create(email:Faker::Internet.email,password:'123',usertype:usertype)
-end
-20.times {Landlord.create(name:Faker::Name.name ,email:Faker::Internet.email)}
+20.times {
+  pets_num = rand(0..20)
+  rand_type = rand(0..2)
+  User.create(name:Faker::Name.name,email:Faker::Internet.email,password:'123',pets:pets_num, type: rand_type)
+}
 
 40.times do 
 address = Faker::Address.street_address + " " +  Faker::Address.secondary_address
@@ -17,9 +17,6 @@ end
 40.times do
 record = Record.create(tenant_id:rand(1..max_num),landlord_id:rand(1..max_num),location_id:rand(1..max_num),amount_due:(rand(5..20)*100),amount_paid:0)
 end
-
-
-20.times {Tenant.create(name:Faker::Name.name,email:Faker::Internet.email,phone:Faker::PhoneNumber.cell_phone,pets:rand(0..3),account_balance:0,credit_card:Faker::Business.credit_card_number)}
 
 
 puts Faker::Hacker.say_something_smart

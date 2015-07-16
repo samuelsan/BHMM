@@ -8,9 +8,9 @@
 <body>
 <% Location.all.each do |location| %>
   <div class = "listing">
-    <h2>[ADDRESS] </h2>
-    <div>[RATE] <br>
-    Pets: Obviously <br>
+    <h2><%= location.address %></h2>
+    <div>$<%=location.rate %> <br>
+    Pets: <%= (location.allow_pets?)? "yes" : "no"%> <br>
     MOVE IN! <br></div>
   </div>
 <% end %>

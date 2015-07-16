@@ -16,17 +16,18 @@ h1 {
   margin: 0;
   font-size: 60px;
   display: inline-block;
+  background: url("/images/i182.jpg");
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .listing {
   padding-top: 10px;
   padding-bottom: 0px;
+  height: 110px;
   border: 2px solid grey; 
   background: rgba(255,255,255, 0.8);
-
-  background: url("/images/i182.jpg");
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  
 }
 
 h2 {

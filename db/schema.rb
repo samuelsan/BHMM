@@ -11,13 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150715231246) do
-
-  create_table "landlords", force: :cascade do |t|
-    t.string  "name",    null: false
-    t.string  "email"
-    t.integer "user_id"
-  end
+ActiveRecord::Schema.define(version: 1) do
 
   create_table "locations", force: :cascade do |t|
     t.integer "landlord_id"
@@ -38,21 +32,15 @@ ActiveRecord::Schema.define(version: 20150715231246) do
     t.integer "amount_paid"
   end
 
-  create_table "tenants", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string  "name",            null: false
-    t.string  "email"
+    t.string  "email",           null: false
+    t.string  "password",        null: false
     t.string  "phone"
-    t.string  "photo"
     t.integer "pets"
     t.float   "account_balance"
     t.string  "credit_card"
-    t.integer "user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "email",    null: false
-    t.string "password", null: false
-    t.string "usertype", null: false
+    t.integer "type",            null: false
   end
 
 end
