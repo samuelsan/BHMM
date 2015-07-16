@@ -1,5 +1,5 @@
 <header>
-<h1>Tenant</h1>
+  <h1>Tenant @user.name</h1>
   <div class="nav"> 
     User: <%= @user.name %>
     <a href='/tenant' class='button'>Home</a>
@@ -15,14 +15,16 @@
     Address: <%= Location.find(@user.location_id).address %><br>
     Rate: $<%= Location.find(@user.location_id).rate %> /month<br>
     Landlord: $<%= Location.find(@user.location_id).landlord_id %>
+    <form type="submit" method="post" action="/moveout"> <button class="movebutton">MOVE OUT!</button></form><br></div>
   <% end %>
 </div>
 
 <div class="listing">
-User information:<br>
-Name: <%= @user.name %><br>
-Email: <%= @user.email %><br>
-Password: <%= @user.password %><br>
-Phone Number: <%= @user.phone %><br>
-<a href='/'>Update info</a>
+  User information:<br>
+  Name: <%= @user.name %><br>
+  Email: <%= @user.email %><br>
+  Password: <%= @user.password %><br>
+  Phone Number: <%= @user.phone %><br>
+  Account Balance: <%= @user.account_balance %><br>
+  <a href='/'>Update info</a>
 </div>

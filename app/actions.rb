@@ -57,6 +57,7 @@ post '/signup' do
     name: params[:name],
     email: params[:email],
     password: params[:password],
+    phone: params[:phone],
     usertype: usertype
   )
   if @user.save
@@ -102,6 +103,12 @@ end
 post '/movein/:locationid' do
   redirect '/notloggedin' if session[:user].nil?
   User.find(session[:user]).update_attributes(location_id: params[:locationid])
+  redirect '/tenant'
+end
+
+post '/moveout' do
+  redirect '/notloggedin' if session[:user].nil?
+  User.find(session[:user]).update_attributes(location_id: nil)
   redirect '/tenant'
 end
 

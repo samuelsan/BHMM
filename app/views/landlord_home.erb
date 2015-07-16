@@ -1,5 +1,5 @@
 <header>
-<h1>Landlord</h1>
+<h2>Landlord</h2>
   <div class="nav"> 
     User: <%= @user.name %>
     <a href='/landlord' class='button'>Home</a>
@@ -8,3 +8,22 @@
     <a href='/locations' class='button'>All Locations</a>
   </div>
 </header>
+
+<div class="listing" id="tenantinfo">
+<!-- TODO: TOM -->
+  Locations:<br>
+  Locations.each do |x| 
+    if x.landlord_id == @user.id 
+    puts x
+  end
+</div>
+
+<div class="listing">
+  User information:<br>
+  Name: <%= @user.name %><br>
+  Email: <%= @user.email %><br>
+  Password: <%= @user.password %><br>
+  Phone Number: <%= @user.phone %><br>
+  Account Balance: <%= @user.account_balance %><br>
+  <a href='/'>Update info</a>
+</div>

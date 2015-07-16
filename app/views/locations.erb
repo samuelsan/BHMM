@@ -10,6 +10,7 @@
 <body>
 <% Location.all.each do |location| %>
   <div class = "listing">
+    <!-- TODO: only show available locations -->
     <h2><%= location.address %></h2>
     <div>$<%=location.rate %> <br>
     Pets: <%= (location.allow_pets?)? "Allowed" : "Not Allowed"%> <br>
