@@ -84,6 +84,7 @@ end
 get '/results' do
   redirect '/notloggedin' if session[:user].nil?
   @user = User.find(session[:user])
+	@search_text = params[:search_text]
   erb :results
 end
 

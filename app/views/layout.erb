@@ -31,7 +31,7 @@
 	<style>
     body { background: transparent; }
   </style>
-   
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">  <!-- FONT CSS --> 
  <link rel="stylesheet" href="/stylesheets/application.css">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -39,9 +39,23 @@
 	 <script src="/javascript/application.js"></script>
 
   <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
+	<div class='container'>
+		<div class="row">
+		<div class="col-sm-offset-8 col-sm-5 ">
+			<div class="input-group">
+				<form method="post" action="/results">
+				<span class="input-group-btn">
+					<label>	<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></label>
+				</span>
+				<input type="text" class="form-control" name="search_text" placeholder="Tenant or Address ...">
+				</form>
+			</div><!-- /input-group -->
+		</div><!-- /.col-lg-6 -->
+	</div><!-- /.row -->
+</div>
 	<div class='container'>
   <%= yield %>
 	</div> 
