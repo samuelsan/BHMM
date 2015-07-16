@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 1) do
+ActiveRecord::Schema.define(version: 20150716041935) do
 
   create_table "locations", force: :cascade do |t|
     t.integer "landlord_id"
@@ -25,11 +25,15 @@ ActiveRecord::Schema.define(version: 1) do
   end
 
   create_table "records", force: :cascade do |t|
-    t.integer "tenant_id",   null: false
-    t.integer "landlord_id", null: false
-    t.integer "location_id", null: false
-    t.integer "amount_due",  null: false
-    t.integer "amount_paid"
+    t.integer  "tenant_id",   null: false
+    t.integer  "landlord_id", null: false
+    t.integer  "location_id", null: false
+    t.integer  "amount_due",  null: false
+    t.integer  "amount_paid"
+    t.datetime "date_due"
+    t.datetime "date_paid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
