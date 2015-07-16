@@ -6,7 +6,7 @@
     <a href='/landlord/my_locations' class='navbutton'>My Locations</a>
     <a href='/locations' class='navbutton'>All Locations</a>
     User: <%= @user.name %>
-    <button class="actionbutton">logout</button>
+    <form type="submit" method="post" action="/logout"><button class="actionbutton">logout</button></form>
   </div>
 </header>
 
@@ -26,4 +26,8 @@
   Phone Number: <%= @user.phone %><br>
   Account Balance: <%= @user.account_balance %><br>
   <a href='/'>Update info</a>
+</div>
+
+<div class="listing">
+  <form type="submit" method="get" action="/landlord/new_location"> <button class='actionbutton'>Add New Location</button></form>
 </div>

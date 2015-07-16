@@ -5,8 +5,9 @@
     <a href='/tenant/records' class='navbutton'>View Records</a>
     <a href='/locations' class='navbutton'>All Locations</a>
     User: <%= @user.name %>
-    <button class="actionbutton">logout</button>
+    <form type="submit" method="post" action="/logout"><button class="actionbutton">logout</button></form>
   </div>
 </header>
 
+<h2>Account Balance: <%=@user.account_balance%></h2>
 <form type="submit" method="post" action="/tenant/pay"> <button class='actionbutton'>Confirm Payment</button></form>

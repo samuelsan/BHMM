@@ -6,6 +6,9 @@ get '/' do
 end
 
 get '/login' do
+  # TODO: do not allow multiple sign ins. Must sign out first
+  # @user = User.find(session[:user])
+  # redirect '/logout' if @user
   @user
   erb :'login'
 end
@@ -30,7 +33,7 @@ post '/login' do
   end 
 end
 
-get '/logout' do
+post '/logout' do
   session.clear
   redirect '/login'
 end
@@ -100,6 +103,12 @@ get '/landlord/my_locations' do
   erb :landlord_locations
 end
 
+get 'landlord/new_location' do
+  redirect '/notloggedin' if session[:user].nil?
+  @user = User.find(session[:user])
+  erb :landlord_new_location
+end
+
 # tenant
 post '/movein/:locationid' do
   redirect '/notloggedin' if session[:user].nil?
@@ -136,13 +145,13 @@ post '/tenant/pay' do
   redirect '/notloggedin' if session[:user].nil?
   @user = User.find(session[:user])
   @user.pay
-  redirect 'tenant/receipt'
+  # TODO: should redirect to receipt
+  redirect '/tenant'
 end
 
 get '/tenant/receipt' do
   redirect '/notloggedin' if session[:user].nil?
   @user = User.find(session[:user])
-  redirect 'tenant/receipt'
 end
 
 post '/work' do

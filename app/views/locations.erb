@@ -6,12 +6,12 @@
       <a href='/landlord' class='navbutton'>Home</a>
     <%elsif @user.usertype == 1%>
       <a href='/tenant' class='navbutton'>Home</a>
-    <%else @user.usertype == 2%>
+    <%elsif @user.usertype == 2%>
       <a href='/' class='navbutton'>Home</a>
     <%end%>
     
     User: <%= @user.name %>
-    <button class="actionbutton">logout</button>
+    <form type="submit" method="post" action="/logout"><button class="actionbutton">logout</button></form>
   </div>
 </header>
 
