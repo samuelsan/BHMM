@@ -9,4 +9,17 @@
     <form type="submit" method="post" action="/logout"><button class="actionbutton" id="logout">logout</button></form>
 	</div>
 
-	<p> <%= @search_result.inspect %> </p> 
+
+
+
+<body>
+	 <% @search_result.each do |location| %> 
+  <div class = "listing">
+    <!-- TODO: only show available locations -->
+    <h2><%= location.address %></h2>
+    <div>$<%=location.rate.round %> <br>
+    Pets: <%= (location.allow_pets?)? "Allowed" : "Not Allowed"%> <br>
+    <form type="submit" method="post" action="/movein/<%=location.id%>"> <button class="actionbutton">MOVE IN!</button></form><br></div>
+  </div>
+<% end %>
+</body>
