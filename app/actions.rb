@@ -61,6 +61,7 @@ post '/signup' do
     email: params[:email],
     password: params[:password],
     phone: params[:phone],
+    pets: params[:pets],
     usertype: usertype
   )
   if @user.save
@@ -151,9 +152,16 @@ post '/tenant/pay' do
   redirect '/tenant'
 end
 
+post '/tenant/transfer' do
+  redirect '/notloggedin' if session[:user].nil?
+  @user = User.find(session[:user])
+  redirect '/tenant/receipt'
+end
+
 get '/tenant/receipt' do
   redirect '/notloggedin' if session[:user].nil?
   @user = User.find(session[:user])
+  erb :tenant_receipt
 end
 
 post '/work' do
