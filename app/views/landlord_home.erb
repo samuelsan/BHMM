@@ -7,12 +7,6 @@
     <span id="username">User: <%= @user.name %></span>
     <form type="submit" method="post" action="/logout"><button class="actionbutton" id="logout">logout</button></form>
   </div>
-	<a href='/landlord' class='navbutton'>Home</a>
-	<a href='/landlord/records' class='navbutton'>View Records</a>
-	<a href='/landlord/my_locations' class='navbutton'>My Locations</a>
-	<a href='/locations' class='navbutton'>All Locations</a>
-	User: <%= @user.name %>
-	<form type="submit" method="post" action="/logout"><button class="actionbutton">logout</button></form>
 </div>
 
 <div class="listing" id="tenantinfo">
@@ -21,6 +15,9 @@
 	Locations.each do |x| 
 	puts x if x.landlord_id == @user.id 
 	end
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    Add new Location
+  </button>
 </div>
 
 <div class="listing">
@@ -29,23 +26,12 @@
   Email: <%= @user.email %><br>
   Password: <%= @user.password %><br>
   Phone Number: <%= @user.phone %><br>
-  Account Balance: <%= @user.account_balance %><br>
+  Account Balance: $<%= @user.account_balance %><br>
   Pets: <%= @user.pets%><br>
   <a href='/'>Update info</a>
-	User information:<br>
-	Name: <%= @user.name %><br>
-	Email: <%= @user.email %><br>
-	Password: <%= @user.password %><br>
-	Phone Number: <%= @user.phone %><br>
-	Account Balance: <%= @user.account_balance %><br>
-	<a href='/'>Update info</a>
 </div>
 
-<div class="listing">
-	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-		Add new Location
-	</button>
-</div>
+
 
 <!-- Modal file for adding new location  -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
