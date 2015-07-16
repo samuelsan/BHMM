@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
     self.account_balance = 0 if !account_balance
   end
 
+  def set_pets
+    self.pets = 0 if !pets
+  end
+
   def work
     self.account_balance += RATE
     self.save

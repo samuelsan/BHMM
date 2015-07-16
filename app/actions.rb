@@ -61,6 +61,7 @@ post '/signup' do
     email: params[:email],
     password: params[:password],
     phone: params[:phone],
+    pets: params[:pets],
     usertype: usertype
   )
   if @user.save
@@ -73,6 +74,8 @@ end
 get '/locations' do
   redirect '/notloggedin' if session[:user].nil?
   @user = User.find(session[:user])
+	occupied_locations = User.select(:location_id).distinct.pluck(:location_id)
+	@location = Location.where.not(id:occupied_locations) 
   erb :locations
 end
 
@@ -102,8 +105,8 @@ get '/landlord/my_locations' do
 	@location = Location.where(landlord_id:@user.id)
   erb :landlord_locations
 end
-
-get 'landlord/new_location' do
+# Add new location backend here ,
+post '/landlord/new_location' do
   redirect '/notloggedin' if session[:user].nil?
   @user = User.find(session[:user])
   erb :landlord_new_location
@@ -149,9 +152,16 @@ post '/tenant/pay' do
   redirect '/tenant'
 end
 
+post '/tenant/transfer' do
+  redirect '/notloggedin' if session[:user].nil?
+  @user = User.find(session[:user])
+  redirect '/tenant/receipt'
+end
+
 get '/tenant/receipt' do
   redirect '/notloggedin' if session[:user].nil?
   @user = User.find(session[:user])
+  erb :tenant_receipt
 end
 
 post '/work' do

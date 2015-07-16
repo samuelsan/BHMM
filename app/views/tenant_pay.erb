@@ -2,12 +2,28 @@
 <h1>PAY!</h1>
   <div class="nav"> 
     <a href='/tenant' class='navbutton'>Home</a>
-    <a href='/tenant/records' class='navbutton'>View Records</a>
+    <a href='/tenant/records' class='navbutton'>Records</a>
     <a href='/locations' class='navbutton'>All Locations</a>
-    User: <%= @user.name %>
-    <form type="submit" method="post" action="/logout"><button class="actionbutton">logout</button></form>
+    <span id="username">User: <%= @user.name %></span>
+    <form type="submit" method="post" action="/logout"><button class="actionbutton" id="logout">logout</button></form>
   </div>
 </header>
 
 <h2>Account Balance: <%=@user.account_balance%></h2>
+
 <form type="submit" method="post" action="/tenant/pay"> <button class='actionbutton'>Confirm Payment</button></form>
+
+<h2>Rent Rate: <%=Location.find(@user.location_id).rate%></h2>
+<br>
+
+<form class="form-inline">
+    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+    <div class="input-group">
+      <div class="input-group-addon">$</div>
+      <input type="text" class="form-control" id="exampleInputAmount" placeholder="Amount">
+      <div class="input-group-addon">.00</div>
+  </div>
+  <form type="submit" method="post" action="/tenant/transfer"> <button class="actionbutton">Transfer amount</button></form><span style="font-size:30px">- OR - </span>
+<form type="submit" method="post" action="/tenant/pay"> <button class='actionbutton'>Pay in full</button></form><br>
+</form>
+

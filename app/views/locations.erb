@@ -10,13 +10,13 @@
       <a href='/' class='navbutton'>Home</a>
     <%end%>
     
-    User: <%= @user.name %>
-    <form type="submit" method="post" action="/logout"><button class="actionbutton">logout</button></form>
+    <span id="username">User: <%= @user.name %></span>
+    <form type="submit" method="post" action="/logout"><button class="actionbutton" id="logout">logout</button></form>
   </div>
 </header>
 
 <body>
-<% Location.all.each do |location| %>
+<% @location.each do |location| %>
   <div class = "listing">
     <!-- TODO: only show available locations -->
     <h2><%= location.address %></h2>
