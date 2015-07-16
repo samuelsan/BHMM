@@ -80,6 +80,7 @@ end
 
 get '/landlord/records' do
   @user = User.find(session[:user])
+	@record = Record.where(landlord_id:@user.id)
   erb :landlord_records
 end
 
