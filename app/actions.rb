@@ -89,7 +89,7 @@ post '/results' do
   redirect '/notloggedin' if session[:user].nil?
   @user = User.find(session[:user])
 	@search_result =search(params[:search_text])
-  erb :results
+  erb :search
 end
 
 # landlord
@@ -150,6 +150,7 @@ get '/tenant/records' do
   redirect '/notloggedin' if session[:user].nil?
   @user = User.find(session[:user])
 	@record = Record.where(tenant_id:@user.id)
+	@amount_due = Record.where(tenant_id:@user.id).sum(:amount_due) - Record.where(tenant_id:@user.id).sum(:amount_paid)
   erb :tenant_records
 end
 
