@@ -89,6 +89,7 @@ end
 get '/landlord/records' do
   redirect '/notloggedin' if session[:user].nil?
   @user = User.find(session[:user])
+	@record = Record.where(landlord_id:@user.id)
   erb :landlord_records
 end
 
