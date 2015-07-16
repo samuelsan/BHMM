@@ -22,7 +22,7 @@
   </tr>
 </table>
 </form>
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+<button type="button" class="actionbutton" data-toggle="modal" data-target="#myModal">
   Create an account
 </button>
 
@@ -33,19 +33,32 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">New Location</h4>
+        <h4 class="modal-title" id="myModalLabel">Create User</h4>
       </div>
       <div class="modal-body">
         <!-- New Location body here -->
-        <form>
+        <form method="post" action="/signup">
           <div class="form-group">
-            <label for="exampleInputEmail1">Name</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-          </form> 
+            Name
+            <input type="text" name="name" class="form-control" placeholder="Rihanna" required>
+            Email
+            <input type="email" name="email" class="form-control" placeholder="badgalriri@gmail.com" required>
+            Password
+            <input type="password" name="password" class="form-control" placeholder="BBHMM123" required>
+            Phone Number
+            <input type="tel" name="phone" class="form-control" placeholder="$$$-$$$-$$$$">
+            Pets<br>
+            <input type="radio" name="pets" value="yes" checked> Yes
+            <input type="radio" name="pets" value="no"> No   
+            <br>I am a<br>
+            <input type="checkbox" name="tenant"> Landlord
+            <input type="checkbox" name="landlord"> Tenant  
         </div>
+        
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </form> 
         </div>
       </div>
     </div>
