@@ -103,7 +103,7 @@ get '/landlord/my_locations' do
   erb :landlord_locations
 end
 
-get 'landlord/new_location' do
+get '/landlord/new_location' do
   redirect '/notloggedin' if session[:user].nil?
   @user = User.find(session[:user])
   erb :landlord_new_location
