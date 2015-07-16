@@ -11,11 +11,10 @@
 </header>
 
 <div class="listing" id="tenantinfo">
-<!-- TODO: TOM -->
   Locations:<br>
+<!-- TODO: TOM -->
   Locations.each do |x| 
-    if x.landlord_id == @user.id 
-    puts x
+    puts x if x.landlord_id == @user.id 
   end
 </div>
 
