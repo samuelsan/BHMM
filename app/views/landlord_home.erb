@@ -1,11 +1,12 @@
 <header>
-<h2>Landlord</h2>
-  <div class="nav"> 
+<h1>Landlord</h1>
+<div class="nav"> 
+    <a href='/landlord' class='navbutton'>Home</a>
+    <a href='/landlord/records' class='navbutton'>View Records</a>
+    <a href='/landlord/my_locations' class='navbutton'>My Locations</a>
+    <a href='/locations' class='navbutton'>All Locations</a>
     User: <%= @user.name %>
-    <a href='/landlord' class='button'>Home</a>
-    <a href='/landlord/records' class='button'>View Records</a>
-    <a href='/landlord/my_locations' class='button'>My Locations</a>
-    <a href='/locations' class='button'>All Locations</a>
+    <button class="actionbutton">logout</button>
   </div>
 </header>
 

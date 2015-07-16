@@ -15,7 +15,14 @@ class User < ActiveRecord::Base
   end
 
   def work
-    self.account_balance+= RATE
+    self.account_balance += RATE
   end
 
+  def pay
+    # Deduct from own account
+    self.account_balance -= Location.find(self.location_id).rate
+    # Add to landlords account
+    Location.find(self.location_id).landlord_id += Location.find(self.location_id).rate
+    User.save
+  end
 end

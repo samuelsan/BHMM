@@ -1,10 +1,11 @@
 <header>
-  <h1>Tenant @user.name</h1>
+  <h1>Tenant</h1>
   <div class="nav"> 
+    <a href='/tenant' class='navbutton'>Home</a>
+    <a href='/tenant/records' class='navbutton'>View Records</a>
+    <a href='/locations' class='navbutton'>All Locations</a>
     User: <%= @user.name %>
-    <a href='/tenant' class='button'>Home</a>
-    <a href='/tenant/records' class='button'>View Records</a>
-    <a href='/locations' class='button'>All Locations</a>
+    <button class="actionbutton">logout</button>
   </div>
 </header>
 
@@ -15,7 +16,7 @@
     Address: <%= Location.find(@user.location_id).address %><br>
     Rate: $<%= Location.find(@user.location_id).rate %> /month<br>
     Landlord: $<%= Location.find(@user.location_id).landlord_id %>
-    <form type="submit" method="post" action="/moveout"> <button class="movebutton">MOVE OUT!</button></form><br></div>
+    <form type="submit" method="post" action="/moveout"> <button class="actionbutton">MOVE OUT!</button></form><br></div>
   <% end %>
 </div>
 
@@ -28,3 +29,8 @@
   Account Balance: <%= @user.account_balance %><br>
   <a href='/'>Update info</a>
 </div>
+
+<div class="listing">
+<%= "YOU BROKE" if @user.account_balance < 100 %>
+<form type="submit" method="post" action="/work"> <button class='actionbutton'>Werk</button></form>
+<form type="submit" method="get" action="/pay"> <button class='actionbutton'>Pay Rent</button></form>

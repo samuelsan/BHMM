@@ -1,9 +1,12 @@
 <header>
 <h1>PAY!</h1>
   <div class="nav"> 
+    <a href='/tenant' class='navbutton'>Home</a>
+    <a href='/tenant/records' class='navbutton'>View Records</a>
+    <a href='/locations' class='navbutton'>All Locations</a>
     User: <%= @user.name %>
-    <a href='/tenant' class='button'>Home</a>
-    <a href='/tenant/records' class='button'>View Records</a>
-    <a href='/locations' class='button'>All Locations</a>
+    <button class="actionbutton">logout</button>
   </div>
 </header>
+
+<form type="submit" method="post" action="/work"> <button class='actionbutton'>Confirm Payment</button></form>

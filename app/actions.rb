@@ -137,3 +137,10 @@ get 'tenant/confirmation' do
   @user = User.find(session[:user])
   erb :tenant_confirmation
 end
+
+post '/work' do
+  redirect '/notloggedin' if session[:user].nil?
+  @user = User.find(session[:user])
+  @user.work
+  redirect '/tenant'
+end

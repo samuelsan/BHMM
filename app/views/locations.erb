@@ -1,9 +1,10 @@
 <header>
   <h1>All locations</h1>
   <div class="nav"> 
-    User: <%= @user.name %>
     <!-- TODO: return to correct home page -->
-  <a href='/landlord' class='button'>Home</a>
+  <a href='/landlord' class='navbutton'>Home</a>
+    User: <%= @user.name %>
+    <button class="actionbutton">logout</button>
   </div>
 </header>
 
@@ -14,7 +15,7 @@
     <h2><%= location.address %></h2>
     <div>$<%=location.rate %> <br>
     Pets: <%= (location.allow_pets?)? "Allowed" : "Not Allowed"%> <br>
-    <form type="submit" method="post" action="/movein/<%=location.id%>"> <button class="movebutton">MOVE IN!</button></form><br></div>
+    <form type="submit" method="post" action="/movein/<%=location.id%>"> <button class="actionbutton">MOVE IN!</button></form><br></div>
   </div>
 <% end %>
 </body>

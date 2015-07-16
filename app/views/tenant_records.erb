@@ -1,10 +1,11 @@
 <header>
 <h1>Tenant Records</h1>
   <div class="nav"> 
+    <a href='/tenant' class='navbutton'>Home</a>
+    <a href='/tenant/records' class='navbutton'>View Records</a>
+    <a href='/locations' class='navbutton'>All Locations</a>
     User: <%= @user.name %>
-    <a href='/tenant' class='button'>Home</a>
-    <a href='/tenant/records' class='button'>View Records</a>
-    <a href='/locations' class='button'>All Locations</a>
+    <button class="actionbutton">logout</button>
   </div>
 </header>
 
@@ -32,5 +33,5 @@
 </table>
 
 
-<a href='/' id='pay'>Pay</a>
+<a href='/tenant/pay' id='pay'>Pay</a>
 </div>
