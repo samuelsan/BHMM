@@ -4,7 +4,7 @@ require 'faker'
 max_num = 20
 20.times do
 usertype = rand(2) == 1 ? 'l' : 't'
-User.create(username:Faker::Internet.email,password:'123',usertype:usertype)
+User.create(email:Faker::Internet.email,password:'123',usertype:usertype)
 end
 20.times {Landlord.create(name:Faker::Name.name ,email:Faker::Internet.email)}
 
