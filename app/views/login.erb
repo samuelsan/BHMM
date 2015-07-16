@@ -8,17 +8,19 @@
 <% end %>
 
 <form method="post" action="/login">
-  <div>
-    <label>Email:</label>
-    <input type="text" name="email"> 
-  </div>
-  <div>
-    <label>Password:</label>
-    <input type="text" name="password"> 
-  </div>
-  <div>
-    <input type="submit" value="Login">
-  </div>
+<table style="width: 275px">
+  <tr>
+    <td><label>Email:</label></td>
+    <td><input type="text" name="email"></td>
+  </tr>
+  <tr>    
+    <td><label>Password:</label></td>
+    <td><input type="text" name="password"> </td>
+  </tr>
+  <tr>
+      <td><input type="submit" value="Login"></td>
+  </tr>
+</table>
 </form>
 <a href="/signup">Sign up?</a>
 

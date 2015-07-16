@@ -12,6 +12,17 @@
   <% if @user.location_id == nil %> 
     <a href="/locations">Find a place!</a>
   <% else %> 
-    Address: <%= home = Location.find(@user.location_id).address %>
+    Address: <%= Location.find(@user.location_id).address %><br>
+    Rate: $<%= Location.find(@user.location_id).rate %> /month<br>
+    Landlord: $<%= Location.find(@user.location_id).landlord_id %>
   <% end %>
+</div>
+
+<div class="listing">
+User information:<br>
+Name: <%= @user.name %><br>
+Email: <%= @user.email %><br>
+Password: <%= @user.password %><br>
+Phone Number: <%= @user.phone %><br>
+<a href='/'>Update info</a>
 </div>
