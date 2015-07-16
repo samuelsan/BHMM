@@ -52,8 +52,10 @@ post '/signup' do
     usertype = 2
   elsif params[:landlord] == "on" 
     usertype = 0
-  else 
+  elsif params[:tenant] == "on" 
     usertype = 1
+  else 
+    usertype = nil
   end
 
   @user = User.new(
