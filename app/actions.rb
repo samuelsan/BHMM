@@ -107,11 +107,19 @@ get '/landlord/my_locations' do
 	@location = Location.where(landlord_id:@user.id)
   erb :landlord_locations
 end
-# Add new location backend here ,
 post '/landlord/new_location' do
-  redirect '/notloggedin' if session[:user].nil?
-  @user = User.find(session[:user])
-  erb :landlord_new_location
+# Add new location backend here ,
+	redirect '/notloggedin' if session[:user].nil?
+	@user = User.find(session[:user])
+	print params[:pets?]
+	pet = params[:pets?] == "on" ? true : false
+	location = Location.new(landlord_id:@user.id,nickname:params[:nickname],address:params[:address],rate:params[:rate],interest_rate:params[:interestrate],no_people:params[:nopeople],photo:params[:imgurl],allow_pets?:pet)
+	print location.inspect
+	if location.save
+		redirect '/landlord'
+	else
+	
+	end
 end
 
 # tenant
