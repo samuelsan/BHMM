@@ -88,10 +88,8 @@ end
 get '/search' do
   redirect '/notloggedin' if session[:user].nil?
   @user = User.find(session[:user])
-  # occupied_locations = User.select(:location_id).distinct.pluck(:location_id)
-  # @location = Location.where.not(id:occupied_locations) 
-  
-  erb :search
+	@search_text = params[:search_text]
+  erb :results
 end
 
 # landlord
