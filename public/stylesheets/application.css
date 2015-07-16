@@ -44,8 +44,8 @@ h2 {
   padding-bottom: 10px;
   border: 2px solid grey; 
   background: rgba(255,255,255, 0.8);
-  width: 300px;
-  height: 150px;
+  width: 310px;
+  height: 162px;
   vertical-align: middle;
   display: inline-block;
 }
@@ -74,7 +74,7 @@ h2 {
 .nav {
   float: right;
   margin-top: 20px;
-  background: white;
+  background: transparent;
 }
 
 .navbutton:hover {

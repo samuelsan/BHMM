@@ -1,11 +1,10 @@
 class User < ActiveRecord::Base
   has_many :locations
 
-  validates :name, presence: true
-	validates :email, presence: true #format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: {case_sensitive: false}
+  validates :name, presence: true#, uniqueness: true
+	validates :email, presence: true#, uniqueness: true #format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, uniqueness: {case_sensitive: false}
 	validates :password, presence: true
-	validates :usertype, presence: true
-  
+  validates :usertype, presence: true, allow_blank: false, allow_nil: false, acceptance: true
   before_validation :set_balance
 
   RATE = 1000
