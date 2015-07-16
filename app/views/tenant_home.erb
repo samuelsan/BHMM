@@ -31,6 +31,12 @@
 </div>
 
 <div class="listing">
-<%= "YOU BROKE" if @user.account_balance < 100 %>
-<form type="submit" method="post" action="/work"> <button class='actionbutton'>Werk</button></form>
-<form type="submit" method="get" action="/pay"> <button class='actionbutton'>Pay Rent</button></form>
+
+<% if @user.account_balance < 100 %>
+<span style="color: red; font-weight: bold; font-size: 22px; text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87"> YOU BROKE </span>
+<% elsif @user.account_balance > 5000%> 
+<span style="color: green; font-weight: bold; font-size: 22px; text-shadow: 0 0 0.2em #23A610"> YOU BALLIN</span>
+<%end%>
+<form type="submit" method="post" action="/work"> <button class='actionbutton'>Werk</button></form><br>
+<form type="submit" method="get" action="/tenant/pay"> <button class='actionbutton'>Pay Rent</button></form>
+</div>

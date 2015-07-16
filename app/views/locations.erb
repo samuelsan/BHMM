@@ -2,7 +2,14 @@
   <h1>All locations</h1>
   <div class="nav"> 
     <!-- TODO: return to correct home page -->
-  <a href='/landlord' class='navbutton'>Home</a>
+    <%if @user.usertype == 0%>
+      <a href='/landlord' class='navbutton'>Home</a>
+    <%elsif @user.usertype == 1%>
+      <a href='/tenant' class='navbutton'>Home</a>
+    <%else @user.usertype == 2%>
+      <a href='/' class='navbutton'>Home</a>
+    <%end%>
+    
     User: <%= @user.name %>
     <button class="actionbutton">logout</button>
   </div>

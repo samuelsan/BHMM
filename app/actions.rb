@@ -132,10 +132,17 @@ get '/tenant/pay' do
   erb :tenant_pay
 end
 
-get 'tenant/confirmation' do
+post '/tenant/pay' do
   redirect '/notloggedin' if session[:user].nil?
   @user = User.find(session[:user])
-  erb :tenant_confirmation
+  @user.pay
+  redirect 'tenant/receipt'
+end
+
+get '/tenant/receipt' do
+  redirect '/notloggedin' if session[:user].nil?
+  @user = User.find(session[:user])
+  redirect 'tenant/receipt'
 end
 
 post '/work' do
