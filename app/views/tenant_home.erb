@@ -10,7 +10,7 @@
 
 <div class="listing">
   <% if @user.location_id == nil %> 
-    Find a place!
+    <a href="/locations" style="font-size: 40px">Find a place!</a>
   <% else %> 
     <%= home = Location.find(@user.location_id) %>
   <% end %>
