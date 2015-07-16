@@ -9,20 +9,12 @@
   </div>
 </div>
 
-<div class="listing" id="tenantinfo">
-	Locations:<br>
-	<!-- TODO: TOM -->
-	Locations.each do |x| 
-	puts x if x.landlord_id == @user.id 
-	end
-
 <div class="listinglandlord" id="tenantinfo">
   Locations:<br>
   <!-- TODO: TOM -->
   Locations.each do |x| 
   puts x if x.landlord_id == @user.id 
   end
->>>>>>> css
     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
     Add new Location
   </button>
@@ -38,7 +30,6 @@
   Pets: <%= @user.pets%><br>
   <a href='/'>Update info</a>
 </div>
-
 
 
 <!-- Modal file for adding new location  -->
