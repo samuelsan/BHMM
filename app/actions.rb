@@ -85,10 +85,13 @@ get '/locations' do
   erb :locations
 end
 
-get '/results' do
+get '/search' do
   redirect '/notloggedin' if session[:user].nil?
   @user = User.find(session[:user])
-  erb :results
+  # occupied_locations = User.select(:location_id).distinct.pluck(:location_id)
+  # @location = Location.where.not(id:occupied_locations) 
+  
+  erb :search
 end
 
 # landlord
@@ -155,7 +158,10 @@ end
 get '/tenant/pay' do
   redirect '/notloggedin' if session[:user].nil?
   @user = User.find(session[:user])
-  redirect '/locations' if !(User.find(session[:user]).location_id)
+  if !(User.find(session[:user]).location_id)
+    redirect '/locations' 
+    # alert("I am an alert box!")
+  end
   erb :tenant_pay
 end
 
