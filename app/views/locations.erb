@@ -20,7 +20,7 @@
   <div class = "listing">
     <!-- TODO: only show available locations -->
     <h2><%= location.address %></h2>
-    <div>$<%=location.rate %> <br>
+    <div>$<%=location.rate.round %> <br>
     Pets: <%= (location.allow_pets?)? "Allowed" : "Not Allowed"%> <br>
     <form type="submit" method="post" action="/movein/<%=location.id%>"> <button class="actionbutton">MOVE IN!</button></form><br></div>
   </div>
