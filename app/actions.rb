@@ -105,8 +105,8 @@ get '/landlord/my_locations' do
 	@location = Location.where(landlord_id:@user.id)
   erb :landlord_locations
 end
-
-get '/landlord/new_location' do
+# Add new location backend here ,
+post '/landlord/new_location' do
   redirect '/notloggedin' if session[:user].nil?
   @user = User.find(session[:user])
   erb :landlord_new_location
