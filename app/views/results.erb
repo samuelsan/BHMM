@@ -1,4 +1,3 @@
-<header>
   <h1>My Records</h1>
   <div class="nav"> 
     User: <%= @user.name %>
@@ -8,5 +7,6 @@
     <a href='/locations' class='navbutton'>All Locations</a>
     <span id="username">User: <%= @user.name %></span>
     <form type="submit" method="post" action="/logout"><button class="actionbutton" id="logout">logout</button></form>
-  </div>
-</header>
+	</div>
+
+	<p><%= @search_text %> </p> 
