@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150716041935) do
+ActiveRecord::Schema.define(version: 20150716204558) do
 
   create_table "locations", force: :cascade do |t|
     t.integer "landlord_id"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20150716041935) do
     t.string  "password",        null: false
     t.integer "location_id"
     t.string  "phone"
-    t.integer "pets"
+    t.boolean "pets"
     t.float   "account_balance"
     t.string  "credit_card"
     t.integer "usertype",        null: false
