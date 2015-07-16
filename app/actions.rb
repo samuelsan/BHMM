@@ -2,7 +2,7 @@
 @login_error = false
 
 get '/' do
-  erb :index
+  erb :login
 end
 
 get '/login' do
@@ -11,6 +11,10 @@ get '/login' do
   # redirect '/logout' if @user
   @user
   erb :'login'
+end
+
+get '/home' do
+  erb :home
 end
 
 post '/login' do
@@ -25,7 +29,7 @@ post '/login' do
     when 1
       redirect to('/tenant')
     when 2
-      redirect to('/')
+      redirect to('/home')
     end
   else
      @login_error = true
