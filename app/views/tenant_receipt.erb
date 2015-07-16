@@ -4,7 +4,7 @@
     <a href='/tenant' class='navbutton'>Home</a>
     <a href='/tenant/records' class='navbutton'>View Records</a>
     <a href='/locations' class='navbutton'>All Locations</a>
-    User: <%= @user.name %>
-    <form type="submit" method="post" action="/logout"><button class="actionbutton">logout</button></form>
+    <span id="username">User: <%= @user.name %></span>
+    <form type="submit" method="post" action="/logout"><button class="actionbutton" id="logout">logout</button></form>
   </div>
 </header>

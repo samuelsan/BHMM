@@ -4,10 +4,11 @@
     <a href='/tenant' class='navbutton'>Home</a>
     <a href='/tenant/records' class='navbutton'>View Records</a>
     <a href='/locations' class='navbutton'>All Locations</a>
-    User: <%= @user.name %>
-    <form type="submit" method="post" action="/logout"><button class="actionbutton">logout</button></form>
+    <span id="username">User: <%= @user.name %></span>
+    <form type="submit" method="post" action="/logout"><button class="actionbutton" id="logout">logout</button></form>
   </div>
 </header>
 
 <h2>Account Balance: <%=@user.account_balance%></h2>
+<h2>Rent Rate: <%=Location.find(@user.location_id).rate%></h2>
 <form type="submit" method="post" action="/tenant/pay"> <button class='actionbutton'>Confirm Payment</button></form>

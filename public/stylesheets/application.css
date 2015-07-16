@@ -15,7 +15,7 @@ h1 {
   margin: 0;
   font-size: 60px;
   display: inline-block;
-  background: url("/images/i182.jpg");
+  background: url("/images/stripes.jpg");
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -88,9 +88,17 @@ h2 {
   text-decoration: none;
 }
 
+#username {
+  padding-left: 20px;
+  font-size: 1.875em;
+}
 .actionbutton {
   background: #ffffff;
 
+}
+
+#logout {
+  float:right;
 }
 
 #pay {
