@@ -85,10 +85,10 @@ get '/locations' do
   erb :locations
 end
 
-get '/search' do
+post '/results' do
   redirect '/notloggedin' if session[:user].nil?
   @user = User.find(session[:user])
-	@search_text = params[:search_text]
+	@search_result =search(params[:search_text])
   erb :results
 end
 
