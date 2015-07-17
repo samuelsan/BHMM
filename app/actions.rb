@@ -103,6 +103,7 @@ get '/landlord/records' do
   redirect '/notloggedin' if session[:user].nil?
   @user = User.find(session[:user])
 	@record = Record.where(landlord_id:@user.id)
+	@months = @record.all.map {|d| d.date_due.strftime('%b %y')}.uniq
   erb :landlord_records
 end
 
