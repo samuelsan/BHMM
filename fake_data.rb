@@ -2,7 +2,7 @@ require './config/environment'
 require 'faker'
 
 max_num = 20
-  User.create(name:"user",email:"lmd0209@msn.com",password:'123',pets:0, usertype:2)
+  User.create(name:"Tom Lei",email:"lmd0209@msn.com",password:'123',pets:0, usertype:2)
 
 40.times do 
 address = Faker::Address.street_address + " " +  Faker::Address.secondary_address
@@ -16,6 +16,7 @@ i=0
 	i += 1
   User.create(location_id:i,name:Faker::Name.name,email:Faker::Internet.email,password:'123',pets:pets_num, usertype: rand_type)
 }
+User.find(2).update(email:'123')
 
 Record.add
 
