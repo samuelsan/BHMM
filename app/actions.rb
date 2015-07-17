@@ -121,7 +121,7 @@ end
 get '/landlord/records' do
   current_user = User.find(session[:user])
 	@record = Record.where(landlord_id:current_user.id)
-	@months = @record.all.map {|d| d.date_due.strftime('%b %y')}.uniq
+	@months = @record.all.map {|d| d.date_due.strftime('%b %y')}.uniq unless @record=nil
   erb :landlord_records
 end
 
@@ -166,7 +166,11 @@ end
 get '/tenant/records' do
 
 	@record = Record.where(tenant_id:current_user.id)
+	if @record.nil? or @record = []
+		@amount_due = 0
+	else
 	@amount_due = Record.where(tenant_id:current_user.id).sum(:amount_due) - Record.where(tenant_id:current_user.id).sum(:amount_paid)
+	end
   erb :tenant_records
 end
 
@@ -207,4 +211,10 @@ end
 post '/work' do
   current_user.work
   redirect '/tenant'
+end
+
+get '/generate_lease/:tenant_id' do
+	@tenant = User.find(params[:tenant_id])
+	@landlord = current_user
+	erb :generate_lease
 end
