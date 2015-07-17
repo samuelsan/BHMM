@@ -144,7 +144,7 @@ end
 # tenant
 post '/movein/:locationid' do
   @location = Location.find(params[:locationid])
-  redirect '/locations' if session[:pets] && !@location.allow_pets?
+  redirect '/pets' if session[:pets] && !@location.allow_pets?
   User.find(current_user).update_attributes(location_id: params[:locationid])
   redirect '/tenant'
 end
@@ -152,6 +152,10 @@ end
 post '/moveout' do
   User.find(current_user).update_attributes(location_id: nil)
   redirect '/tenant'
+end
+
+get '/pets' do
+  erb :pets
 end
 
 get '/tenant' do
