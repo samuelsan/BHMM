@@ -1,7 +1,7 @@
 <header>
   <h1>Tenant</h1>
   <div class="nav"> 
-    <a href='/home' class='navbutton'>Home</a>
+    <a href='/tenant' class='navbutton'>Home</a>
     <a href='/tenant/records' class='navbutton'>Records</a>
     <a href='/locations' class='navbutton'>All Locations</a>
     <span id="username">User: <%= current_user.name %></span>
@@ -13,32 +13,15 @@
   <% if current_user.location_id == nil %> 
     <a href="/locations" style="font-size: 40px">Find a place!</a>
   <% else %> 
-<<<<<<< HEAD
     Address: <%= Location.find(current_user.location_id).address %><br>
     Rate: $<%= Location.find(current_user.location_id).rate.round %> /month<br>
     Landlord: <%= User.find(Location.find(current_user.location_id).landlord_id).name %>
     Landlord Email: <%= User.find(Location.find(current_user.location_id).landlord_id).email %>
     <form type="submit" method="post" action="/moveout"> <button class="actionbutton">MOVE OUT!</button></form><br>
-=======
-    Address: <%= Location.find(current_user.location_id).address %><br>
-    Rate: $<%= Location.find(current_user.location_id).rate.round %> /month<br>
-    Landlord: <%= User.find(Location.find(current_user.location_id).landlord_id).name %>
-    Landlord Email: <%= User.find(Location.find(current_user.location_id).landlord_id).email %>
-    <form type="submit" method="post" action="/moveout"> <button class="actionbutton">MOVE OUT!</button></form><br></div>
->>>>>>> branch2
   <% end %>
   </div>
 
 <div class="listingtenant">
-<<<<<<< HEAD
-  <% if current_user.account_balance < 100 %>
-    <span style="color: red; font-weight: bold; font-size: 22px; text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87"> YOU BROKE </span>
-  <% elsif current_user.account_balance > 5000 %> 
-    <span style="color: green; font-weight: bold; font-size: 22px; text-shadow: 0 0 0.2em #23A610"> YOU BALLIN</span>
-  <%end%>
-  <form type="submit" method="post" action="/work"> <button class='actionbutton'>Werk</button></form><br>
-  <form type="submit" method="get" action="/tenant/pay"> <button class='actionbutton'>Pay Rent</button></form>
-=======
 
 <% if current_user.account_balance < 100 %>
 <span style="color: red; font-weight: bold; font-size: 22px; text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87"> YOU BROKE </span>
