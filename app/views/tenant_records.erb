@@ -2,9 +2,12 @@
   <span class="title"><h1>Tenant Records</h1></span>
 </header>
 
-<h2>Upcoming Due Date: </h2>
-<h2>Amount due:</h2>
-
+<h2>Upcoming Due Date: <%= @record.last.date_due%></h2>
+<h2>Amount due: <%= @amount_due %></h2>
+<p>Current Balance : <%= current_user.account_balance%> </p> 
+<div class="row">
+	<div class="col-sm-offset-2 col-sm-8">
+<h2> Payment History </h2> 
 <table class="table table-hover">
 	<thead>
 		<tr>
@@ -14,16 +17,15 @@
    </tr>
  </thead>
  <tbody>
-   <% @record.each do |r|%>
+   <% @payment.each do |r|%>
    <tr>
-    <td> <%=r.date_paid%> </td>  
+    <td> <%=r.created_at.strftime("%F %T")%> </td>  
     <td><%= r.location.address %> </td>      
-    <td><%= r.amount_paid %> </td>    
+    <td><%= r.amount %> </td>    
   </tr> 
   <% end %>
 </tbody> 
 </table>
-
-<p>Amount payable: <%= @amount_due - current_user.account_balance%> </p> 
+</div> </div> 
 <a href='/tenant/pay' id='pay'><button>Pay Rent</button></a>
 </div>
