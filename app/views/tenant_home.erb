@@ -2,75 +2,90 @@
   <span class="title"><h1>Tenant</h1></span>
 </header>
 
-<div class="listingtenant" id="tenantinfo">
-  <% if current_user.location_id == nil %> 
-  <a href="/locations" style="font-size: 40px">Find a place!</a>
-  <% else %> 
-  Address: <%= Location.find(current_user.location_id).address %><br>
-  Rate: $<%= Location.find(current_user.location_id).rate.round %> /month<br>
-  Landlord: <%= User.find(Location.find(current_user.location_id).landlord_id).name %>
-  Landlord Email: <%= User.find(Location.find(current_user.location_id).landlord_id).email %>
-  <form type="submit" method="post" action="/moveout"> <button class="actionbutton">MOVE OUT!</button></form><br>
-  <% end %>
-</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-offset-0 col-sm-4 col-md-3"><h1>
 
-<div class="listingtenant">
+      <h3>User information: </h3> <br>
+      <p>
+        <table class="table table-hover">
+          <tr><td>Name:</td><td> <%= current_user.name %></td></tr>
+          <tr><td>Email: </td><td><%= current_user.email %></td></tr>
+          <tr><td>Password: </td><td>************</td></tr>
+          <tr><td>Phone Number: </td><td><%= current_user.phone %></td></tr>
+          <tr><td>Account Balance: </td><td>$<%= current_user.account_balance.round %></td></tr>
+          <tr><td>Pets: </td><td><%= current_user.pets%></td></tr>
+        </table> 
+      </p> 
+      
+      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
+        Update info
+      </button>
+    </div>
 
-  <% if current_user.account_balance < 100 %>
-  <span style="color: red; font-weight: bold; font-size: 22px; text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87"> YOU BROKE </span>
-  <% elsif current_user.account_balance > 5000%> 
-  <span style="color: green; font-weight: bold; font-size: 22px; text-shadow: 0 0 0.2em #23A610"> YOU BALLIN</span>
-  <%end%>
-  <form type="submit" method="post" action="/work"> <button class='actionbutton'>Werk</button></form><br>
-  <form type="submit" method="get" action="/tenant/pay"> <button class='actionbutton'>Pay Rent</button></form>
-</div>
+    <div class="col-sm-4">
 
-<div class="listingtenant">
-  User information:<br>
-  Name: <%= current_user.name %><br>
-  Email: <%= current_user.email %><br>
-  Password: <%= current_user.password %><br>
-  Phone Number: <%= current_user.phone %><br>
-  Account Balance: <%= current_user.account_balance.round %><br>
-  <button type="button" class="actionbutton" data-toggle="modal" data-target="#myModal">
-    Update info
-  </button>
-</div>
+      <h3>Home information: </h3> <br>
+      <% if current_user.location_id == nil %> 
+      <a href="/locations" style="font-size: 40px">Find a place!</a>
+      <% else %> 
 
-<!-- Modal file for adding new location  -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Create User</h4>
-      </div>
-      <div class="modal-body">
-        <!-- New Location body here -->
-        <form method="post" action="/update">
-          <div class="form-group">
-            Name
-            <input type="text" name="name" class="form-control" placeholder="Rihanna">
-            Email
-            <input type="email" name="email" class="form-control" placeholder="badgalriri@gmail.com">
-            Password
-            <input type="password" name="password" class="form-control" placeholder="BBHMM123">
-            Phone Number
-            <input type="tel" name="phone" class="form-control" placeholder="$$$-$$$-$$$$">
-            Pets<br>
-            <input type="radio" name="pets" value="yes" checked> Yes
-            <input type="radio" name="pets" value="no"> No   
-            <br>I am a<br>
-            <input type="checkbox" name="landlord"> Landlord  
-            <input type="checkbox" name="tenant"> Tenant
+      <table class="table table-hover">
+        <tr><td>Address:</td><td><%= Location.find(current_user.location_id).address %></td></tr>
+        <tr><td>Rate: </td><td>$<%= Location.find(current_user.location_id).rate.round %>/month</td></tr>
+        <tr><td>Landlord: </td><td><%= User.find(Location.find(current_user.location_id).landlord_id).name %></td></tr>
+        <tr><td>Landlord Email: </td><td><%= User.find(Location.find(current_user.location_id).landlord_id).email %></td></tr>
+      </table> 
+
+      <form type="submit" method="post" action="/moveout"> <button class="actionbutton">MOVE OUT!</button></form><br>
+      <% end %>
+    </div>
+
+    <div class="listingtenant">
+      <% if current_user.account_balance < 100 %>
+      <span style="color: red; font-weight: bold; font-size: 22px; text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87"> YOU BROKE </span>
+      <% elsif current_user.account_balance > 5000%> 
+      <span style="color: green; font-weight: bold; font-size: 22px; text-shadow: 0 0 0.2em #23A610"> YOU BALLIN</span>
+      <%end%>
+      <form type="submit" method="post" action="/work"> <button class='actionbutton'>Werk</button></form><br>
+      <form type="submit" method="get" action="/tenant/pay"> <button class='actionbutton'>Pay Rent</button></form>
+    </div>
+  </div>
+
+  <!-- Modal file for adding new location  -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Create User</h4>
+        </div>
+        <div class="modal-body">
+          <!-- New Location body here -->
+          <form method="post" action="/update">
+            <div class="form-group">
+              Name
+              <input type="text" name="name" class="form-control" placeholder="Rihanna">
+              Email
+              <input type="email" name="email" class="form-control" placeholder="badgalriri@gmail.com">
+              Password
+              <input type="password" name="password" class="form-control" placeholder="BBHMM123">
+              Phone Number
+              <input type="tel" name="phone" class="form-control" placeholder="$$$-$$$-$$$$">
+              Pets<br>
+              <input type="radio" name="pets" value="yes" checked> Yes
+              <input type="radio" name="pets" value="no"> No   
+              <br>I am a<br>
+              <input type="checkbox" name="landlord"> Landlord  
+              <input type="checkbox" name="tenant"> Tenant
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </form> 
           </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Save changes</button>
-          </form> 
         </div>
       </div>
     </div>
-  </div>
 
