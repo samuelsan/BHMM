@@ -4,13 +4,15 @@
 
 <h2>Account Balance: <%=current_user.account_balance.round%></h2>
 
-<h2>Rent Rate: <%=Location.find(current_user.location_id).rate.round%></h2>
+<h2>Rent Rate: <%=Location.find(current_user.location_id).rate.round%> $ Per Month</h2>
 
-<h2>Next due date: </h2>
+<h2>Next due date: <%= @record.last.due_date rescue "Invoice not ready" %></h2>
 
 <h2>Amount due: </h2>
 
 <br>
+<div class="row">
+	        <div class="col-sm-5">
 <form method="post" action="/tenant/pay/part">
   <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
   <div class="input-group">
@@ -19,7 +21,7 @@
     <div class="input-group-addon">.00</div>
   </div>
   <button class="actionbutton">Transfer amount</button></form>
-
+</div> </div> 
   <span style="font-size:30px">- OR - </span>
   <form type="submit" method="post" action="/tenant/pay/full"> <button class='actionbutton'>Pay in full</button></form><br>
 

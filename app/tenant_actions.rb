@@ -21,6 +21,13 @@ get '/tenant/pay' do
   if !(User.find(current_user).location_id)
     redirect '/locations' 
   end
+	@record = Record.where(tenant_id:current_user.id)
+  if @record.nil? or @record == []
+    @amount_due = 0
+		@record = []
+  else
+    @amount_due = @record.sum(:amount_due) - @record.sum(:amount_paid)
+  end
   erb :tenant_pay
 end
 
