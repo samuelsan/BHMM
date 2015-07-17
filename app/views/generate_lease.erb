@@ -1,0 +1,205 @@
+<style> background-color:white ; </style>
+<div class="container" style = "background-color:white" >
+	<div class="row">
+		<div class="col-sm-offset-0 col-sm-3"><img src="http://www.fwe.ca/assets/BC-logo1.jpg" height="150" width="200"></div>
+		<div class="col-sm-4"></div>
+		<div class="col-sm-4"><h2>Residential</h2> <h2>Tenancy Agreement </h2> </div>
+	</div>
+	<div class="row">
+		<div class="col-sm-11">
+			<h3> Important Notes:  </h3>
+			<p> The Residential Tenancy Branch (RTB) is of the opinion that this Residential Tenancy Agreement accurately reflects the Residential Tenancy Act (RTA)
+			and accompanying regulations. The RTB makes no representations or warranties regarding the use of this Agreement. A landlord and tenant may
+			wish to obtain independent advice regarding whether this agreement satisfies their own personal or business needs. For the rental of a manufactured
+			home and a manufactured home site under a single tenancy agreement, use this agreement form. For the rental of a manufactured home site use the
+			Manufactured Home Site Tenancy Agreement. </p> 
+			<p> The words tenant and landlord in this tenancy agreement have the same meaning as in the RTA, and the singular of these
+			words includes the plural. In this tenancy agreement, the words residential property have the same meaning as in the RTA. Residential property
+			means a building, a part of a building or related group of buildings, in which one or more rental units or common areas are located; the parcel or
+			parcels on which the building, related group of buildings or common areas are located; the rental unit and common areas and any other structure
+			located on the parcel or parcels.</p> 
+
+		</div>
+	</div>
+
+
+
+
+
+
+	<div class="row">
+		<div class="col-sm-11">
+			<p><h2> RESIDENTIAL TENANCY AGREEMENT between:</h2>  </p> 
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-11">
+			<p><h3> Landlord</h3>  </p> 
+		</div>
+	</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<input type="text" class="form-control" value = <%=@landlord.name.split(" ")[1]%>>
+				<label>Last Name</label></div>
+			<div class="col-sm-5">
+				<input type="text" class="form-control" value = <%=@landlord.name.split(" ")[0]%>>
+				<label>First Name</label>
+			</div>
+		</div>
+
+	<div class="row">
+		<div class="col-sm-11">
+			<p><h3> Tenant</h3>  </p> 
+		</div>
+	</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<input type="text" class="form-control" value = <%=@tenant.name.split(" ")[1]%>>
+				<label>Last Name</label></div>
+			<div class="col-sm-5">
+				<input type="text" class="form-control" value = <%=@tenant.name.split(" ")[0]%>>
+				<label>First Name</label>
+			</div>
+		</div>
+
+	<div class="row">
+		<div class="col-sm-11">
+			<p><h3> ADDRESS OF PLACE BEING RENTED TO TENANT(s) </h3>  </p> 
+				<input type="text" class="form-control" value ="<%=Location.find(@tenant.location_id).address%>">
+				<label>Address</label>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col-sm-11">
+			<h3> 1. APPLICATION OF THE RESIDENTIAL TENANCY ACT  </h3>
+			<p>1) The terms of this tenancy agreement and any changes or additions to the terms may not contradict or change any
+			right or obligation under the Residential Tenancy Act or a regulation made under that Act, or any standard terms.
+			If a term of this tenancy agreement does contradict or change such a right, obligation or standard term, the term of
+		the tenancy agreement is void.	</p> 
+		<p>2) Any change or addition to this tenancy agreement must be agreed to in writing and initialed by both the landlord
+		and the tenant. If a change is not agreed to in writing, is not initialed by both the landlord and the tenant or is
+	unconscionable, it is not enforceable	</p> 
+	<p>3) The requirement for agreement under subsection (2) does not apply to:
+	a) a rent increase given in accordance with the Residential Tenancy Act,
+	b) a withdrawal of, or a restriction on, a service or facility in accordance with the Residential Tenancy Act, or
+	c) a term in respect of which a landlord or tenant has obtained an arbitrator's order that the agreement of the
+other is not required.	</p> 
+		</div>
+	</div>
+
+
+
+
+
+
+		<div class="row">
+			<div class="col-sm-6">
+ 			<h3> 3.RENT </h3> 
+			<h5> Payment of Rent</h5>
+			<p> The tenant will pay the rent of $
+			<input type = "text" value="<%=Location.find(@tenant.location_id).rate%>">	</p>	
+			</div>
+			<div class="col-sm-5">
+			
+			</div>
+		</div>
+
+
+	<div class="row">
+		<div class="col-sm-11">
+			<p><h2> By signing this tenancy agreement, the landlord and the tenant are bound by its terms.</h2>  </p> 
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-11">
+			<p><h3> Landlord</h3>  </p> 
+		</div>
+	</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<input type="text" class="form-control" value = <%=@landlord.name.split(" ")[1]%>>
+				<label>Last Name</label></div>
+			<div class="col-sm-5">
+				<input type="text" class="form-control" value = <%=@landlord.name.split(" ")[0]%>>
+				<label>First Name</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<br>
+				<p>____________________________</p>
+				<label>Signature</label></div>
+			<div class="col-sm-5">
+				<input type="text" class="form-control" value = <%=Date.today%>>
+				<label>Date</label>
+			</div>
+		</div>
+
+	<div class="row">
+		<div class="col-sm-11">
+			<p><h3> Tenant</h3>  </p> 
+		</div>
+	</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<input type="text" class="form-control" value = <%=@tenant.name.split(" ")[1]%>>
+				<label>Last Name</label></div>
+			<div class="col-sm-5">
+				<input type="text" class="form-control" value = <%=@tenant.name.split(" ")[0]%>>
+				<label>First Name</label>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-6">
+				<br>
+				<p>____________________________</p>
+				<label>Signature</label></div>
+			<div class="col-sm-5">
+				<input type="text" class="form-control" value = <%=Date.today%>>
+				<label>Date</label>
+			</div>
+		</div>
+
+
+
+	<div class="row">
+		<div class="col-sm-11">
+	
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-11">
+	
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-11">
+	
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-11">
+	
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
