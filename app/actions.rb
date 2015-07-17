@@ -224,3 +224,7 @@ get '/generate_lease/:tenant_id' do
 	@landlord = current_user
 	erb :generate_lease
 end
+
+get '/analytics' do
+redirect '/index.html'
+end
