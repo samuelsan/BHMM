@@ -198,17 +198,14 @@ end
 post '/tenant/pay/full' do
   # if current_user.account_balance < Location.find(current_user.location_id).rate
   current_user.pay()
-  # TODO: should redirect to receipt
-  redirect '/tenant/receipt'
+  redirect '/tenant/records'
 end
 
 post '/tenant/pay/part' do
   # if current_user.account_balance < params[:amount]
   current_user.pay(params[:amount].to_f)
-  # TODO: should redirect to receipt
-  redirect '/tenant/receipt'
+  redirect '/tenant/records'
 end
-
 
 get '/tenant/receipt' do
   erb :tenant_receipt
