@@ -14,10 +14,10 @@
     <a href="/locations" style="font-size: 40px">Find a place!</a>
   <% else %> 
 <<<<<<< HEAD
-    Address: <%= Location.find(@user.location_id).address %><br>
-    Rate: $<%= Location.find(@user.location_id).rate.round %> /month<br>
-    Landlord: <%= User.find(Location.find(@user.location_id).landlord_id).name %>
-    Landlord Email: <%= User.find(Location.find(@user.location_id).landlord_id).email %>
+    Address: <%= Location.find(current_user.location_id).address %><br>
+    Rate: $<%= Location.find(current_user.location_id).rate.round %> /month<br>
+    Landlord: <%= User.find(Location.find(current_user.location_id).landlord_id).name %>
+    Landlord Email: <%= User.find(Location.find(current_user.location_id).landlord_id).email %>
     <form type="submit" method="post" action="/moveout"> <button class="actionbutton">MOVE OUT!</button></form><br>
 =======
     Address: <%= Location.find(current_user.location_id).address %><br>
@@ -31,9 +31,9 @@
 
 <div class="listingtenant">
 <<<<<<< HEAD
-  <% if @user.account_balance < 100 %>
+  <% if current_user.account_balance < 100 %>
     <span style="color: red; font-weight: bold; font-size: 22px; text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87"> YOU BROKE </span>
-  <% elsif @user.account_balance > 5000 %> 
+  <% elsif current_user.account_balance > 5000 %> 
     <span style="color: green; font-weight: bold; font-size: 22px; text-shadow: 0 0 0.2em #23A610"> YOU BALLIN</span>
   <%end%>
   <form type="submit" method="post" action="/work"> <button class='actionbutton'>Werk</button></form><br>

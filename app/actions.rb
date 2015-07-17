@@ -100,7 +100,7 @@ get '/locations' do
 end
 
 post '/search' do
-  @user = User.find(session[:user])
+  current_user = User.find(session[:user])
 	@search_result =search(params[:search_text])
   erb :search
 end
@@ -111,7 +111,7 @@ get '/landlord' do
 end
 
 get '/landlord/records' do
-  @user = User.find(session[:user])
+  current_user = User.find(session[:user])
 	@record = Record.where(landlord_id:current_user.id)
 	@months = @record.all.map {|d| d.date_due.strftime('%b %y')}.uniq
   erb :landlord_records
@@ -152,7 +152,7 @@ end
 get '/tenant/records' do
 
 	@record = Record.where(tenant_id:current_user.id)
-	@amount_due = Record.where(tenant_id:current_user.id).sum(:amount_due) - Record.where(tenant_id:@user.id).sum(:amount_paid)
+	@amount_due = Record.where(tenant_id:current_user.id).sum(:amount_due) - Record.where(tenant_id:current_user.id).sum(:amount_paid)
   erb :tenant_records
 end
 

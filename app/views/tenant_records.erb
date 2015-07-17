@@ -32,6 +32,6 @@
 	</tbody> 
 </table>
 
-<p>Amount payable: <%= @amount_due - @user.account_balance%> </p> 
+<p>Amount payable: <%= @amount_due - current_user.account_balance%> </p> 
 <a href='/tenant/pay' id='pay'><button>Pay Rent</button></a>
 </div>
