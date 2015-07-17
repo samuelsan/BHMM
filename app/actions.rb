@@ -210,9 +210,17 @@ post '/work' do
   redirect '/tenant'
 end
 
+get '/generate_lease/:tenant_id' do
+  @tenant = User.find(params[:tenant_id])
+  @landlord = current_user
+  erb :generate_lease
+end
+
 
 get '/email' do
+  erb :email
 
+end
 
 post '/email' do
   Pony.mail({
@@ -223,7 +231,7 @@ post '/email' do
     via:
     via_options: {
       address:        'smtp.gmail.com',
-      port:           '25',
+      port:           '587',
       user_name:      'Rent Collector',
       password:       '123BBHMM',
       authentication: :plain,
