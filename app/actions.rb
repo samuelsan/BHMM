@@ -217,28 +217,29 @@ get '/generate_lease/:tenant_id' do
 end
 
 
+
 get '/email' do
   erb :email
-
 end
 
 post '/email' do
   Pony.mail({
-    to: params[:email],
-    from:           "RentCollectorBBHMM@gmail.com",
-    subject:        "#{params[:name]}, BHMM in 3 days!",
-    body:           erb :mail
-    via:
+    to:               "samuelsaninbox@gmail.com",
+    from:             "RentCollectorBBHMM@gmail.com",
+    subject:          "Rent Reminder",
+    body:             erb(:emailmessage),
+    via:    :smtp,
     via_options: {
       address:        'smtp.gmail.com',
       port:           '587',
-      user_name:      'Rent Collector',
+      user_name:      'RentCollectorBBHMM@gmail.com',
+      enable_starttls_auto: true,
       password:       '123BBHMM',
       authentication: :plain,
       domain:         "localhost.localdomain" 
       }
     })
-  redirect
+  redirect '/login'
 end
 
 
