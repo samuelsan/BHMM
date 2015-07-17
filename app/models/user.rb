@@ -1,3 +1,4 @@
+require 'pry'
 class User < ActiveRecord::Base
   has_many :locations
 
@@ -22,11 +23,12 @@ class User < ActiveRecord::Base
     self.save
   end
 
-  def pay
-    # Deduct from own account
-    self.account_balance -= Location.find(self.location_id).rate
-    # Add to landlords account
-    Location.find(self.location_id).landlord_id += Location.find(self.location_id).rate
+  def pay(amount=nil)
+    landlordid = Location.find(self.location_id).landlord_id
+    landlord = User.find(landlordid)
+    amount = Location.find(self.location_id).rate if amount.nil?
+    self.account_balance -= amount
+    landlord.account_balance += amount
     self.save
   end
 end

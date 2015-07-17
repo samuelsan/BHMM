@@ -4,9 +4,24 @@
     <a href='/landlord/records' class='navbutton'>Records</a>
     <a href='/landlord/my_locations' class='navbutton'>My Locations</a>
     <a href='/locations' class='navbutton'>All Locations</a>
-    <span id="username">User: <%= @user.name %></span>
+    <span id="username">User: <%= current_user.name %></span>
     <form type="submit" method="post" action="/logout"><button class="actionbutton" id="logout">logout</button></form>
   </div>
+
+	<p>Filter </p>
+ 	<div class="dropdown">
+		<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			Monthly Statements
+			<span class="caret"></span>
+		</button>
+		<% @months.each do |months| %>
+		<ul class="dropdown-menu" aria-labelledby="dLabel">
+			<%= months %>
+		</ul>
+	<% end %>
+	</div>
+
+
 
 <table class="table table-hover">
 	<thead>

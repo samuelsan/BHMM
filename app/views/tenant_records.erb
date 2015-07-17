@@ -4,7 +4,7 @@
     <a href='/tenant' class='navbutton'>Home</a>
     <a href='/tenant/records' class='navbutton'>Records</a>
     <a href='/locations' class='navbutton'>All Locations</a>
-    <span id="username">User: <%= @user.name %></span>
+    <span id="username">User: <%= current_user.name %></span>
     <form type="submit" method="post" action="/logout"><button class="actionbutton" id="logout">logout</button></form>
   </div>
 </header>
@@ -32,6 +32,6 @@
 	</tbody> 
 </table>
 
-
-<a href='/tenant/pay' id='pay'>Pay</a>
+<p>Amount payable: <%= @amount_due - current_user.account_balance%> </p> 
+<a href='/tenant/pay' id='pay'><button>Pay Rent</button></a>
 </div>
