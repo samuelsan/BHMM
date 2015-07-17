@@ -107,20 +107,19 @@ get '/locations' do
 end
 
 post '/search' do
-  current_user = User.find(session[:user])
 	@search_result =search(params[:search_text])
   erb :search
 end
 
 # landlord
 get '/landlord' do
+	@locations = Location.where(landlord_id:current_user.id)
   erb :landlord_home
 end
 
 get '/landlord/records' do
-  current_user = User.find(session[:user])
 	@record = Record.where(landlord_id:current_user.id)
-	@months = @record.all.map {|d| d.date_due.strftime('%b %y')}.uniq
+	@months = @record.all.map {|d| d.date_due.strftime('%b %y')}.uniq unless @record=nil
   erb :landlord_records
 end
 
@@ -145,12 +144,12 @@ end
 post '/movein/:locationid' do
   @location = Location.find(params[:locationid])
   redirect '/pets' if session[:pets] && !@location.allow_pets?
-  User.find(current_user).update_attributes(location_id: params[:locationid])
+  current_user.update_attributes(location_id: params[:locationid])
   redirect '/tenant'
 end
 
 post '/moveout' do
-  User.find(current_user).update_attributes(location_id: nil)
+  current_user.update_attributes(location_id: nil)
   redirect '/tenant'
 end
 
@@ -163,9 +162,12 @@ get '/tenant' do
 end
 
 get '/tenant/records' do
-
 	@record = Record.where(tenant_id:current_user.id)
+	if @record.nil? or @record = []
+		@amount_due = 0
+	else
 	@amount_due = Record.where(tenant_id:current_user.id).sum(:amount_due) - Record.where(tenant_id:current_user.id).sum(:amount_paid)
+	end
   erb :tenant_records
 end
 
@@ -179,7 +181,7 @@ get '/records' do
 end
 
 get '/tenant/pay' do
-  if !(User.find(current_user).location_id)
+  if !(current_user.location_id)
     redirect '/locations' 
     # alert("I am an alert box!")
   end
@@ -206,4 +208,10 @@ end
 post '/work' do
   current_user.work
   redirect '/tenant'
+end
+
+get '/generate_lease/:tenant_id' do
+	@tenant = User.find(params[:tenant_id])
+	@landlord = current_user
+	erb :generate_lease
 end

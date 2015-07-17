@@ -1,41 +1,41 @@
 <h1>Sign Up Here</h1>
 
 <% if @user.errors.any? %>
-  <div>
-    <strong>You had one job. Try again.</strong>
-  </div>
+<div>
+  <strong>You had one job. Try again.</strong>
+</div>
 <% end %>
 
 
 <form method="post" action="/signup">
-<table style="width: 275px" id="form">
-  <tr>
-    <td><label>Name:</label></td>
-    <td><input type="text" name="name"></td>
-  </tr>
-  <tr>    
-    <td><label>Email:</label></td>
-    <td><input type="text" name="email"></td>
-  </tr>
-  <tr>    
-    <td><label>Password:</label></td>
-    <td><input type="text" name="password"></td>
-  </tr>
-  <tr>    
-    <td><label>Phone Number:</label></td>
-    <td><input type="text" name="phone"></td>
-  </tr>
-  <tr>    
-    <td><label>Pets:</label></td>
-    <td><input type="text" name="pets"></td>
-  </tr>
-  <tr>    
-		<td><label>You are a:</label></td>
-		<td><div>
-				  <input type="checkbox" name="tenant" autocomplete="off">Tenant 
-					<input type="checkbox" name="landlord" autocomplete="off">Landlord
-			</div>
-		</td>
+  <table style="width: 275px" id="form">
+    <tr>
+      <td><label>Name:</label></td>
+      <td><input type="text" name="name"></td>
+    </tr>
+    <tr>    
+      <td><label>Email:</label></td>
+      <td><input type="text" name="email"></td>
+    </tr>
+    <tr>    
+      <td><label>Password:</label></td>
+      <td><input type="text" name="password"></td>
+    </tr>
+    <tr>    
+      <td><label>Phone Number:</label></td>
+      <td><input type="text" name="phone"></td>
+    </tr>
+    <tr>    
+      <td><label>Pets:</label></td>
+      <td><input type="text" name="pets"></td>
+    </tr>
+    <tr>    
+      <td><label>You are a:</label></td>
+      <td><div>
+        <input type="checkbox" name="tenant" autocomplete="off">Tenant 
+        <input type="checkbox" name="landlord" autocomplete="off">Landlord
+      </div>
+    </td>
   </tr>
   <tr>
     <td><input type="submit" value="Signup">

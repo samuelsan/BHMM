@@ -1,95 +1,108 @@
-<h1>Landlord</h1>
-<div class="nav"> 
-    <a href='/home' class='navbutton'>Home</a>
-    <a href='/landlord/records' class='navbutton'>Records</a>
-    <a href='/landlord/my_locations' class='navbutton'>My Locations</a>
-    <a href='/locations' class='navbutton'>All Locations</a>
-    <span id="username">User: <%= current_user.name %></span>
-    <form type="submit" method="post" action="/logout"><button class="actionbutton" id="logout">logout</button></form>
-  </div>
-</div>
+<header>
+	<span class="title"><h1>Landlord</h1></span>
+</header>
 
-<div class="listinglandlord" id="tenantinfo">
-  Locations:<br>
-  <!-- TODO: TOM -->
-  Locations.each do |x| 
-  puts x if x.landlord_id == current_user.id 
-  end
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-    Add new Location
-  </button>
-</div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-offset-0 col-sm-4 col-md-3"><h1>
 
-<div class="listinglandlord">
-  User information:<br>
-  Name: <%= current_user.name %><br>
-  Email: <%= current_user.email %><br>
-  Password: <%= current_user.password %><br>
-  Phone Number: <%= current_user.phone %><br>
-  Account Balance: $<%= current_user.account_balance.round %><br>
-  Pets: <%= current_user.pets%><br>
-  <a href='/'>Update info</a>
-</div>
+			<h3>User information: </h3> <br>
+			<p>
+				<table class="table table-hover">
+					<tr><td>Name:</td><td> <%= current_user.name %></td></tr>
+					<tr><td>Email: </td><td><%= current_user.email %></td></tr>
+					<tr><td>Password: </td><td>**************</td></tr>
+					<tr><td>Phone Number: </td><td><%= current_user.phone %></td></tr>
+					<tr><td>Account Balance: </td><td>$<%= current_user.account_balance.round %></td></tr>
+					<tr><td>Pets: </td><td><%= current_user.pets%></td></tr>
+				</p> 
+			</table> 
+			
+			<a href='/'><button type="button" class="btn btn-info"> Update info </button> </a>
 
+		</h1> </div>
+		<div class="col-sm-8">
 
-<!-- Modal file for adding new location  -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">New Location</h4>
-			</div>
-			<div class="modal-body">
-				<!-- New Location body here -->
-					<form action="/landlord/new_location" method="post">
-					<div class="form-group">
-						<label for="nickname">Nick Name</label>
-						<input type="text" class="form-control" id="nickname" name="nickname" placeholder='nickname' required>
-						<label for="address">Address</label>
-						<input type="text" class="form-control" id="address" name="address" placeholder='address' required>
-
-
-					<form class="form-inline">
-						<div class="form-group">
-							<label for="rate">Rate</label>
-							<div class="input-group">
-								<div class="input-group-addon">$</div>
-								<input type="text" class="form-control" id="rate" name="rate" placeholder="Amount" required> 
-								<div class="input-group-addon">.00</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="interestrate">Interest Rate</label>
-							<div class="input-group">
-								<input type="text" class="form-control" id="interestrate" name="interestrate" placeholder="Amount">
-								<div class="input-group-addon">% APR</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="nopeople">Max Number of People</label>
-							<div class="input-group">
-								<input type="text" class="form-control" id="nopeople" name="nopeople" placeholder="Number of People" required>
-							</div>
-						</div>
-					</form>
-
-						<label for="imgurl">Image URL</label>
-						<input type="text" class="form-control" id="imgurl" name="imgurl" placeholder='imgurl'>
-
-				<div class="modal-footer">
-					<div class="btn-group" data-toggle="buttons">	
-						<label class="btn btn-warning">
-							<input type="checkbox" autocomplete="off" name="pets?"> Pets Allowed?
-						</label>
-					</div>
-
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-primary" id="submit" >Save changes</button>
-					</form> 
-				</div>
+			<div>
+				<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+					Add new Location
+				</button>
+			</div><br>
+			<table class='table table-hover'>
+				<thead> 
+					<tr> <th>Name </th>
+						<th>Address </th>
+						<th> Rate </th> 
+					</tr> </thead> <tbody>
+					<% @locations.each do |location| %>
+					<tr>	<td><%= location.nickname %></td>
+						<td><%=location.address %> </td>
+						<td>$<%=location.rate.round %> </td> </tr> 
+						<% end %>
+					</table> 
+				</h1> </div>
 			</div>
 		</div>
-	</div>
+
+		<!-- Modal file for adding new location  -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel">New Location</h4>
+					</div>
+					<div class="modal-body">
+						<!-- New Location body here -->
+						<form action="/landlord/new_location" method="post">
+							<div class="form-group">
+								<label for="nickname">Nick Name</label>
+								<input type="text" class="form-control" id="nickname" name="nickname" placeholder='nickname' required>
+								<label for="address">Address</label>
+								<input type="text" class="form-control" id="address" name="address" placeholder='address' required>
+
+
+								<form class="form-inline">
+									<div class="form-group">
+										<label for="rate">Rate</label>
+										<div class="input-group">
+											<div class="input-group-addon">$</div>
+											<input type="text" class="form-control" id="rate" name="rate" placeholder="Amount" required> 
+											<div class="input-group-addon">.00</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="interestrate">Interest Rate</label>
+										<div class="input-group">
+											<input type="text" class="form-control" id="interestrate" name="interestrate" placeholder="Amount">
+											<div class="input-group-addon">% APR</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="nopeople">Max Number of People</label>
+										<div class="input-group">
+											<input type="text" class="form-control" id="nopeople" name="nopeople" placeholder="Number of People" required>
+										</div>
+									</div>
+								</form>
+
+								<label for="imgurl">Image URL</label>
+								<input type="text" class="form-control" id="imgurl" name="imgurl" placeholder='imgurl'>
+
+								<div class="modal-footer">
+									<div class="btn-group" data-toggle="buttons">	
+										<label class="btn btn-warning">
+											<input type="checkbox" autocomplete="off" name="pets?"> Pets Allowed?
+										</label>
+									</div>
+
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									<button type="submit" class="btn btn-primary" id="submit" >Save changes</button>
+								</form> 
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
 
