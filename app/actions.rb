@@ -119,7 +119,7 @@ end
 
 get '/landlord/records?:date' do
 	@record = Record.where(landlord_id:current_user.id)
-	@months = []
+  	@months = []
 	unless @record.nil?
 		@months = @record.all.map {|d| d.date_due.strftime('%y-%m')}.uniq 
 	end
@@ -223,4 +223,8 @@ get '/generate_lease/:tenant_id' do
 	@tenant = User.find(params[:tenant_id])
 	@landlord = current_user
 	erb :generate_lease
+end
+
+get '/analytics' do
+redirect '/index.html'
 end

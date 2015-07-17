@@ -22,10 +22,16 @@ ActiveRecord::Schema.define(version: 20150717160207) do
     t.boolean "allow_pets?"
     t.integer "no_people"
     t.string  "photo"
-    t.date    "move_in_date"
-    t.date    "move_out_date"
     t.string  "city"
     t.string  "country"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.datetime "created_at"
+    t.float    "amount",      null: false
+    t.integer  "landlord_id", null: false
+    t.integer  "tenant_id",   null: false
+    t.integer  "location_id", null: false
   end
 
   create_table "records", force: :cascade do |t|

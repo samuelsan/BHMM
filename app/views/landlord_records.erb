@@ -15,16 +15,14 @@
 	</ul>
 </div>
 
-
-
 <table class="table table-hover">
 	<thead>
 		<tr>
 			<th>address</th>
-			<th>tanent</th>
+			<th>tenant</th>
 			<th>amount due</th>
-			<th>due date</th>
 			<th>amount paid</th>
+			<th>due date</th>			
 		</tr>
 	</thead>
 	<tbody>
@@ -33,8 +31,8 @@
 			<td><%= r.location.address %> </td>   
 			<td><%= User.find(r.tenant_id).name%> </td>   
 			<td> <%= r.amount_due %> </td>   
-			<td><%= r.date_due %> </td>   
-			<td> <%=r.amount_paid%> </td>   
+ 			<td> <%=r.amount_paid%> </td>   
+			<td><%= r.date_due %> </td>  
 		</tr> 
 		<% end %>
 	</tbody> 
