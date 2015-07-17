@@ -1,17 +1,4 @@
 # tenant
-post '/movein/:locationid' do
-  location = Location.find(params[:locationid])
-  redirect '/pets' if session[:pets] && !location.allow_pets?
-  current_user.update_attributes(location_id: params[:locationid])
-  redirect '/tenant'
-end
-
-post '/moveout' do
-  User.find(current_user).update_attributes(location_id: nil)
-  redirect '/tenant'
-end
-
-
 get '/tenant' do
   erb :tenant_home
 end
@@ -50,3 +37,16 @@ post '/work' do
   current_user.work
   redirect '/tenant'
 end
+
+post '/movein/:locationid' do
+  location = Location.find(params[:locationid])
+  redirect '/pets' if session[:pets] && !location.allow_pets?
+  current_user.update_attributes(location_id: params[:locationid])
+  redirect '/tenant'
+end
+
+post '/moveout' do
+  User.find(current_user).update_attributes(location_id: nil)
+  redirect '/tenant'
+end
+

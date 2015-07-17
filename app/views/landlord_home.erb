@@ -36,11 +36,13 @@
 					</tr> 
 				</thead> 
 				<tbody>
+					<% if @locations %>
 					<% @locations.each do |location| %>
 					<tr>	<td><%= location.nickname %></td>
 						<td><%=location.address %> </td>
 						<td>$<%=location.rate.round %> </td> 
 					</tr> 
+					<% end %>
 					<% end %>
 				</tbody>
 			</table> 
