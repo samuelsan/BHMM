@@ -108,7 +108,6 @@ post '/signup' do
     pets: pets,
     usertype: usertype
   )
-  binding.pry
   if current_user.save
     redirect '/home'
   end
