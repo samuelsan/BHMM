@@ -4,28 +4,28 @@
     <a href='/tenant' class='navbutton'>Home</a>
     <a href='/tenant/records' class='navbutton'>Records</a>
     <a href='/locations' class='navbutton'>All Locations</a>
-    <span id="username">User: <%= @user.name %></span>
+    <span id="username">User: <%= current_user.name %></span>
     <form type="submit" method="post" action="/logout"><button class="actionbutton" id="logout">logout</button></form>
   </div>
 </header>
 
 <div class="listingtenant" id="tenantinfo">
-  <% if @user.location_id == nil %> 
+  <% if current_user.location_id == nil %> 
     <a href="/locations" style="font-size: 40px">Find a place!</a>
   <% else %> 
-    Address: <%= Location.find(@user.location_id).address %><br>
-    Rate: $<%= Location.find(@user.location_id).rate.round %> /month<br>
-    Landlord: <%= User.find(Location.find(@user.location_id).landlord_id).name %>
-    Landlord Email: <%= User.find(Location.find(@user.location_id).landlord_id).email %>
+    Address: <%= Location.find(current_user.location_id).address %><br>
+    Rate: $<%= Location.find(current_user.location_id).rate.round %> /month<br>
+    Landlord: <%= User.find(Location.find(current_user.location_id).landlord_id).name %>
+    Landlord Email: <%= User.find(Location.find(current_user.location_id).landlord_id).email %>
     <form type="submit" method="post" action="/moveout"> <button class="actionbutton">MOVE OUT!</button></form><br></div>
   <% end %>
 </div>
 
 <div class="listingtenant">
 
-<% if @user.account_balance < 100 %>
+<% if current_user.account_balance < 100 %>
 <span style="color: red; font-weight: bold; font-size: 22px; text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87"> YOU BROKE </span>
-<% elsif @user.account_balance > 5000%> 
+<% elsif current_user.account_balance > 5000%> 
 <span style="color: green; font-weight: bold; font-size: 22px; text-shadow: 0 0 0.2em #23A610"> YOU BALLIN</span>
 <%end%>
 <form type="submit" method="post" action="/work"> <button class='actionbutton'>Werk</button></form><br>
@@ -35,11 +35,11 @@
 
 <div class="listingtenant">
   User information:<br>
-  Name: <%= @user.name %><br>
-  Email: <%= @user.email %><br>
-  Password: <%= @user.password %><br>
-  Phone Number: <%= @user.phone %><br>
-  Account Balance: <%= @user.account_balance.round %><br>
+  Name: <%= current_user.name %><br>
+  Email: <%= current_user.email %><br>
+  Password: <%= current_user.password %><br>
+  Phone Number: <%= current_user.phone %><br>
+  Account Balance: <%= current_user.account_balance.round %><br>
   <a href='/'>Update info</a>
 </div>
 
