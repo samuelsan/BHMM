@@ -159,10 +159,6 @@ post '/movein/:locationid' do
   location = Location.find(params[:locationid])
   redirect '/pets' if session[:pets] && !location.allow_pets?
   current_user.update_attributes(location_id: params[:locationid])
-  # create blank records for duration
-  # for i in startmonth..endmonth
-  # Record.add(address, current_user.id, location.landlord_id, nil, location.rate, i)
-  # end
 =======
   @location = Location.find(params[:locationid])
   redirect '/pets' if session[:pets] && !@location.allow_pets?

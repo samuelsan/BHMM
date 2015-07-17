@@ -29,7 +29,6 @@ class User < ActiveRecord::Base
     # record = Record.where()
     # record.update_attributes(amount_paid+=amout)
     # record.save
-
   end
   
   def set_balance
