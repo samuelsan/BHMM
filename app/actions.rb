@@ -114,6 +114,7 @@ end
 
 # landlord
 get '/landlord' do
+	@locations = Location.where(landlord_id:current_user.id)
   erb :landlord_home
 end
 
