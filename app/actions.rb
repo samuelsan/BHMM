@@ -11,7 +11,7 @@ helpers do
 end
 
 before do
-  redirect '/notloggedin' if !current_user && request.path != '/notloggedin' && request.path != '/login' && request.path != '/signup'
+  redirect '/notloggedin' if !current_user && request.path != '/notloggedin' && request.path != '/login' && request.path != '/signup'  && request.path != '/locations'
 end
 
 @login_error = false
@@ -24,7 +24,7 @@ end
 get '/login' do
   # TODO: do not allow multiple sign ins. Must sign out first
   # redirect '/logout' if current_user
-  current_user
+  session.clear if current_user 
   erb :'login'
 end
 
@@ -106,30 +106,31 @@ post '/signup' do
     phone: params[:phone],
     pets: params[:pets],
     usertype: usertype
-    )
+  )
   if current_user.save
     redirect '/home'
   end
+    redirect '/login'
 end
 
 post '/update' do
-  # if (params[:landlord] == "on" && params[:tenant] == "on") 
-  #   usertype = 2
-  # elsif params[:landlord] == "on" 
-  #   usertype = 0
-  # elsif params[:tenant] == "on" 
-  #   usertype = 1
-  # else 
-  #   usertype = nil
-  # end
-  # user.update_attributes(name: params[:name]) if params[:name]
-  # user.update_attributes(email: params[:email]) if params[:email]
-  # user.update_attributes(password: params[:password]) if params[:password]
-  # user.update_attributes(password: params[:phone]) if params[:phone]
-  # user.update_attributes(password: params[:pets]) if params[:pets]
-  # if current_user.save
-  #   redirect '/home'
-  # end
+  if (params[:landlord] == "on" && params[:tenant] == "on") 
+    usertype = 2
+  elsif params[:landlord] == "on" 
+    usertype = 0
+  elsif params[:tenant] == "on" 
+    usertype = 1
+  else 
+    usertype = nil
+  end
+  current_user.update_attributes(name: params[:name]) if params[:name]
+  current_user.update_attributes(email: params[:email]) if params[:email]
+  current_user.update_attributes(password: params[:password]) if params[:password]
+  current_user.update_attributes(password: params[:phone]) if params[:phone]
+  current_user.update_attributes(password: params[:pets]) if params[:pets]
+  if current_user.save
+    redirect '/home'
+  end
 end
 
 get '/locations' do
