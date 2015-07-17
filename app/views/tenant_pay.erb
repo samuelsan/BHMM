@@ -1,12 +1,5 @@
 <header>
   <span class="title"><h1>PAY!</h1></span>
-  <div class="nav"> 
-    <a href='/home' class='navbutton'>Home</a>
-    <a href='/tenant/records' class='navbutton'>Records</a>
-    <a href='/locations' class='navbutton'>All Locations</a>
-    <span id="username">User: <%= current_user.name %></span>
-    <form type="submit" method="post" action="/logout"><button class="actionbutton" id="logout">logout</button></form>
-  </div>
 </header>
 
 <h2>Account Balance: <%=current_user.account_balance.round%></h2>

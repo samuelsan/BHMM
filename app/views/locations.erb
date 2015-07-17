@@ -1,18 +1,5 @@
 <header>
   <span class="title"><h1>All locations</h1></span>
-  <div class="nav"> 
-    <!-- TODO: return to correct home page -->
-    <%if current_user.usertype == 0%>
-    <a href='/home' class='navbutton'>Home</a>
-    <%elsif current_user.usertype == 1%>
-    <a href='/tenant' class='navbutton'>Home</a>
-    <%elsif current_user.usertype == 2%>
-    <a href='/home' class='navbutton'>Home</a>
-    <%end%>
-    
-    <span id="username">User: <%= current_user.name %></span>
-    <form type="submit" method="post" action="/logout"><button class="actionbutton" id="logout">logout</button></form>
-  </div>
 </header>
 
 <body>
