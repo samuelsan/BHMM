@@ -9,7 +9,16 @@
     <h2><%= location.address %></h2>
     <div>$<%=location.rate.round %> <br>
       Pets: <%= (location.allow_pets?)? "Allowed" : "Not Allowed"%> <br>
+
+      <%if current_user%>
       <form type="submit" method="post" action="/movein/<%=location.id%>"> <button class="actionbutton">MOVE IN!</button></form><br></div>
+      <%else%>
+      <a data-toggle="modal" data-target="#NewUserModal"> <button class="actionbutton">MOVE IN TODAY!</button></a>
+      <%end%>
+
+    </div>
+
+
     </div>
     <% end %>
   </body>
