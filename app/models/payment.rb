@@ -1,4 +1,4 @@
-def Payment < ActiveRecord::Base
+class Payment < ActiveRecord::Base
 validates :amount, presence: true
 validates :landlord_id, presence: true
 validates :tenant_id, presence: true
