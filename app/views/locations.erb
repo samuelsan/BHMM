@@ -3,7 +3,7 @@
   <div class="nav"> 
     <!-- TODO: return to correct home page -->
     <%if current_user.usertype == 0%>
-      <a href='/landlord' class='navbutton'>Home</a>
+      <a href='/home' class='navbutton'>Home</a>
     <%elsif current_user.usertype == 1%>
       <a href='/tenant' class='navbutton'>Home</a>
     <%elsif current_user.usertype == 2%>

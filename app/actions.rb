@@ -25,7 +25,14 @@ get '/login' do
 end
 
 get '/home' do
-  erb :home
+  case current_user.usertype
+    when 0
+      erb :landlord_home
+    when 1
+      erb :tenant_home
+    when 2
+      erb :home
+    end
 end
 
 post '/login' do
