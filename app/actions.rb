@@ -99,14 +99,16 @@ post '/signup' do
     usertype = nil
   end
 
+  pets = (params[:pets] == 'yes')
   current_user = User.new(
     name: params[:name],
     email: params[:email],
     password: params[:password],
     phone: params[:phone],
-    pets: params[:pets],
+    pets: pets,
     usertype: usertype
   )
+  binding.pry
   if current_user.save
     redirect '/home'
   end
