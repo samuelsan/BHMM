@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150716204558) do
+ActiveRecord::Schema.define(version: 20150717160207) do
 
   create_table "locations", force: :cascade do |t|
     t.integer "landlord_id"
@@ -22,6 +22,10 @@ ActiveRecord::Schema.define(version: 20150716204558) do
     t.boolean "allow_pets?"
     t.integer "no_people"
     t.string  "photo"
+    t.date    "move_in_date"
+    t.date    "move_out_date"
+    t.string  "city"
+    t.string  "country"
   end
 
   create_table "records", force: :cascade do |t|

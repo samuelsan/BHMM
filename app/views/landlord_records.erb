@@ -8,11 +8,11 @@
 		Monthly Statements
 		<span class="caret"></span>
 	</button>
-	<% @months.each do |months| %>
 	<ul class="dropdown-menu" aria-labelledby="dLabel">
-		<%= months %>
-	</ul>
+	<% @months.each do |months| %>
+		<a href="/landlord/records?date=<%= months %>" >	<li>	<%= months %> </li> </a> 
 	<% end %>
+	</ul>
 </div>
 
 
@@ -48,6 +48,7 @@
 			<th>address</th>
 			<th>phone</th>
 			<th>email</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -57,7 +58,8 @@
 			<td><%= a.name %> </td>   
 			<td><%= Location.find(r[:location_id]).address %> </td>   
 			<td> <%= a.phone %> </td>   
-			<td><%= a.email %> </td>   
+			<td><%= a.email %> </td> 
+			<td><a href="/generate_lease/<%= a.id %>"> <button class="btn btn-primary">Generate Lease </button> </a> </td> 	
 		</tr> 
 		<% end %>
 	</tbody> 
