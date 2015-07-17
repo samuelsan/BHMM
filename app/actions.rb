@@ -1,4 +1,6 @@
 require 'pry'
+require 'pony'
+
 # Homepage (Root path)
 helpers do
   def current_user
@@ -107,16 +109,17 @@ get '/locations' do
 end
 
 post '/search' do
+  current_user = User.find(session[:user])
 	@search_result =search(params[:search_text])
   erb :search
 end
 
 # landlord
 get '/landlord' do
-	@locations = Location.where(landlord_id:current_user.id)
   erb :landlord_home
 end
 
+<<<<<<< HEAD
 get '/landlord/records?:date' do
 	@record = Record.where(landlord_id:current_user.id)
   	@months = []
@@ -124,6 +127,12 @@ get '/landlord/records?:date' do
 		@months = @record.all.map {|d| d.date_due.strftime('%y-%m')}.uniq 
 	end
 
+=======
+get '/landlord/records' do
+  current_user = User.find(session[:user])
+	@record = Record.where(landlord_id:current_user.id)
+	@months = @record.all.map {|d| d.date_due.strftime('%b %y')}.uniq
+>>>>>>> branch
   erb :landlord_records
 end
 
@@ -146,6 +155,7 @@ end
 
 # tenant
 post '/movein/:locationid' do
+<<<<<<< HEAD
   location = Location.find(params[:locationid])
   redirect '/pets' if session[:pets] && !location.allow_pets?
   current_user.update_attributes(location_id: params[:locationid])
@@ -153,11 +163,16 @@ post '/movein/:locationid' do
   # for i in startmonth..endmonth
   # Record.add(address, current_user.id, location.landlord_id, nil, location.rate, i)
   # end
+=======
+  @location = Location.find(params[:locationid])
+  redirect '/pets' if session[:pets] && !@location.allow_pets?
+  User.find(current_user).update_attributes(location_id: params[:locationid])
+>>>>>>> branch
   redirect '/tenant'
 end
 
 post '/moveout' do
-  current_user.update_attributes(location_id: nil)
+  User.find(current_user).update_attributes(location_id: nil)
   redirect '/tenant'
 end
 
@@ -170,12 +185,15 @@ get '/tenant' do
 end
 
 get '/tenant/records' do
+
 	@record = Record.where(tenant_id:current_user.id)
+<<<<<<< HEAD
 	if @record.nil? or @record == []
 		@amount_due = 0
 	else
+=======
+>>>>>>> branch
 	@amount_due = Record.where(tenant_id:current_user.id).sum(:amount_due) - Record.where(tenant_id:current_user.id).sum(:amount_paid)
-	end
   erb :tenant_records
 end
 
@@ -189,7 +207,7 @@ get '/records' do
 end
 
 get '/tenant/pay' do
-  if !(current_user.location_id)
+  if !(User.find(current_user).location_id)
     redirect '/locations' 
   end
   erb :tenant_pay
@@ -220,11 +238,38 @@ post '/work' do
 end
 
 get '/generate_lease/:tenant_id' do
-	@tenant = User.find(params[:tenant_id])
-	@landlord = current_user
-	erb :generate_lease
+  @tenant = User.find(params[:tenant_id])
+  @landlord = current_user
+  erb :generate_lease
+end
+
+
+
+get '/email' do
+  erb :email
+end
+
+post '/email' do
+  Pony.mail({
+    to:               "samuelsaninbox@gmail.com",
+    from:             "RentCollectorBBHMM@gmail.com",
+    subject:          "Rent Reminder",
+    body:             erb(:emailmessage),
+    via:    :smtp,
+    via_options: {
+      address:        'smtp.gmail.com',
+      port:           '587',
+      user_name:      'RentCollectorBBHMM@gmail.com',
+      enable_starttls_auto: true,
+      password:       '123BBHMM',
+      authentication: :plain,
+      domain:         "localhost.localdomain" 
+      }
+    })
+  redirect '/login'
 end
 
 get '/analytics' do
 redirect '/index.html'
 end
+
