@@ -123,6 +123,7 @@ get '/landlord/records?:date' do
 	unless @record.nil?
 		@months = @record.all.map {|d| d.date_due.strftime('%y-%m')}.uniq 
 	end
+
   erb :landlord_records
 end
 
@@ -145,9 +146,13 @@ end
 
 # tenant
 post '/movein/:locationid' do
-  @location = Location.find(params[:locationid])
-  redirect '/pets' if session[:pets] && !@location.allow_pets?
+  location = Location.find(params[:locationid])
+  redirect '/pets' if session[:pets] && !location.allow_pets?
   current_user.update_attributes(location_id: params[:locationid])
+  # create blank records for duration
+  # for i in startmonth..endmonth
+  # Record.add(address, current_user.id, location.landlord_id, nil, location.rate, i)
+  # end
   redirect '/tenant'
 end
 
@@ -166,7 +171,7 @@ end
 
 get '/tenant/records' do
 	@record = Record.where(tenant_id:current_user.id)
-	if @record.nil? or @record = []
+	if @record.nil? or @record == []
 		@amount_due = 0
 	else
 	@amount_due = Record.where(tenant_id:current_user.id).sum(:amount_due) - Record.where(tenant_id:current_user.id).sum(:amount_paid)
@@ -186,18 +191,19 @@ end
 get '/tenant/pay' do
   if !(current_user.location_id)
     redirect '/locations' 
-    # alert("I am an alert box!")
   end
   erb :tenant_pay
 end
 
 post '/tenant/pay/full' do
+  # if current_user.account_balance < Location.find(current_user.location_id).rate
   current_user.pay()
   # TODO: should redirect to receipt
   redirect '/tenant/receipt'
 end
 
 post '/tenant/pay/part' do
+  # if current_user.account_balance < params[:amount]
   current_user.pay(params[:amount].to_f)
   # TODO: should redirect to receipt
   redirect '/tenant/receipt'
