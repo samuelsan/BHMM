@@ -1,5 +1,5 @@
 <header>
-<h1>Tenant Records</h1>
+  <span class="title"><h1>Tenant Records</h1></span>
   <div class="nav"> 
     <a href='/home' class='navbutton'>Home</a>
     <a href='/tenant/records' class='navbutton'>Records</a>
@@ -17,19 +17,19 @@
 			<th>due date</th>
 			<th>amount paid</th>
 			<th>date paid</th>
-	</tr>
-</thead>
-<tbody>
-	<% @record.each do |r|%>
-	<tr>
-		<td><%= r.location.address %> </td>   
-		<td><%= r.amount_due%> </td>   
-		<td> <%= r.date_due %> </td>   
-		<td><%= r.amount_paid %> </td>   
-		<td> <%=r.date_paid%> </td>   
-	</tr> 
-<% end %>
-	</tbody> 
+   </tr>
+ </thead>
+ <tbody>
+   <% @record.each do |r|%>
+   <tr>
+    <td><%= r.location.address %> </td>   
+    <td><%= r.amount_due%> </td>   
+    <td> <%= r.date_due %> </td>   
+    <td><%= r.amount_paid %> </td>   
+    <td> <%=r.date_paid%> </td>   
+  </tr> 
+  <% end %>
+</tbody> 
 </table>
 
 <p>Amount payable: <%= @amount_due - current_user.account_balance%> </p> 

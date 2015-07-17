@@ -107,7 +107,6 @@ get '/locations' do
 end
 
 post '/search' do
-  current_user = User.find(session[:user])
 	@search_result =search(params[:search_text])
   erb :search
 end
@@ -119,7 +118,6 @@ get '/landlord' do
 end
 
 get '/landlord/records' do
-  current_user = User.find(session[:user])
 	@record = Record.where(landlord_id:current_user.id)
 	@months = @record.all.map {|d| d.date_due.strftime('%b %y')}.uniq
   erb :landlord_records
@@ -146,12 +144,12 @@ end
 post '/movein/:locationid' do
   @location = Location.find(params[:locationid])
   redirect '/pets' if session[:pets] && !@location.allow_pets?
-  User.find(current_user).update_attributes(location_id: params[:locationid])
+  current_user.update_attributes(location_id: params[:locationid])
   redirect '/tenant'
 end
 
 post '/moveout' do
-  User.find(current_user).update_attributes(location_id: nil)
+  current_user.update_attributes(location_id: nil)
   redirect '/tenant'
 end
 
@@ -164,7 +162,6 @@ get '/tenant' do
 end
 
 get '/tenant/records' do
-
 	@record = Record.where(tenant_id:current_user.id)
 	@amount_due = Record.where(tenant_id:current_user.id).sum(:amount_due) - Record.where(tenant_id:current_user.id).sum(:amount_paid)
   erb :tenant_records
@@ -180,7 +177,7 @@ get '/records' do
 end
 
 get '/tenant/pay' do
-  if !(User.find(current_user).location_id)
+  if !(current_user.location_id)
     redirect '/locations' 
     # alert("I am an alert box!")
   end

@@ -1,5 +1,5 @@
 <header>
-<h1>PAY!</h1>
+  <span class="title"><h1>PAY!</h1></span>
   <div class="nav"> 
     <a href='/home' class='navbutton'>Home</a>
     <a href='/tenant/records' class='navbutton'>Records</a>
@@ -14,14 +14,14 @@
 <h2>Rent Rate: <%=Location.find(current_user.location_id).rate.round%></h2>
 <br>
 <form method="post" action="/tenant/pay/part">
-    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-    <div class="input-group">
-      <div class="input-group-addon">$</div>
-      <input type="text" name="amount" class="form-control" id="exampleInputAmount" placeholder="Amount">
-      <div class="input-group-addon">.00</div>
+  <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+  <div class="input-group">
+    <div class="input-group-addon">$</div>
+    <input type="text" name="amount" class="form-control" id="exampleInputAmount" placeholder="Amount">
+    <div class="input-group-addon">.00</div>
   </div>
- <button class="actionbutton">Transfer amount</button></form>
+  <button class="actionbutton">Transfer amount</button></form>
 
   <span style="font-size:30px">- OR - </span>
-<form type="submit" method="post" action="/tenant/pay/full"> <button class='actionbutton'>Pay in full</button></form><br>
+  <form type="submit" method="post" action="/tenant/pay/full"> <button class='actionbutton'>Pay in full</button></form><br>
 

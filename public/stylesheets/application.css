@@ -3,6 +3,9 @@ html{
   background-size: 100%;
 }
 
+.title{
+  background: white;
+}
 .nav {
   float: right;
   margin-top: 20px;

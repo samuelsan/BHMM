@@ -1,13 +1,13 @@
 <header>
-  <h1>All locations</h1>
+  <span class="title"><h1>All locations</h1></span>
   <div class="nav"> 
     <!-- TODO: return to correct home page -->
     <%if current_user.usertype == 0%>
-      <a href='/home' class='navbutton'>Home</a>
+    <a href='/home' class='navbutton'>Home</a>
     <%elsif current_user.usertype == 1%>
-      <a href='/tenant' class='navbutton'>Home</a>
+    <a href='/tenant' class='navbutton'>Home</a>
     <%elsif current_user.usertype == 2%>
-      <a href='/home' class='navbutton'>Home</a>
+    <a href='/home' class='navbutton'>Home</a>
     <%end%>
     
     <span id="username">User: <%= current_user.name %></span>
@@ -16,13 +16,13 @@
 </header>
 
 <body>
-<% @location.each do |location| %>
+  <% @location.each do |location| %>
   <div class = "listing">
     <!-- TODO: only show available locations -->
     <h2><%= location.address %></h2>
     <div>$<%=location.rate.round %> <br>
-    Pets: <%= (location.allow_pets?)? "Allowed" : "Not Allowed"%> <br>
-    <form type="submit" method="post" action="/movein/<%=location.id%>"> <button class="actionbutton">MOVE IN!</button></form><br></div>
-  </div>
-<% end %>
-</body>
+      Pets: <%= (location.allow_pets?)? "Allowed" : "Not Allowed"%> <br>
+      <form type="submit" method="post" action="/movein/<%=location.id%>"> <button class="actionbutton">MOVE IN!</button></form><br></div>
+    </div>
+    <% end %>
+  </body>
