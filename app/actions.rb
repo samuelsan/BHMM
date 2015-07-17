@@ -141,20 +141,12 @@ get '/landlord' do
   erb :landlord_home
 end
 
-<<<<<<< HEAD
 get '/landlord/records?:date' do
 	@record = Record.where(landlord_id:current_user.id)
   	@months = []
 	unless @record.nil?
 		@months = @record.all.map {|d| d.date_due.strftime('%y-%m')}.uniq 
 	end
-
-=======
-get '/landlord/records' do
-  current_user = User.find(session[:user])
-	@record = Record.where(landlord_id:current_user.id)
-	@months = @record.all.map {|d| d.date_due.strftime('%b %y')}.uniq
->>>>>>> branch
   erb :landlord_records
 end
 
@@ -177,19 +169,9 @@ end
 
 # tenant
 post '/movein/:locationid' do
-<<<<<<< HEAD
   location = Location.find(params[:locationid])
   redirect '/pets' if session[:pets] && !location.allow_pets?
   current_user.update_attributes(location_id: params[:locationid])
-  # create blank records for duration
-  # for i in startmonth..endmonth
-  # Record.add(address, current_user.id, location.landlord_id, nil, location.rate, i)
-  # end
-=======
-  @location = Location.find(params[:locationid])
-  redirect '/pets' if session[:pets] && !@location.allow_pets?
-  User.find(current_user).update_attributes(location_id: params[:locationid])
->>>>>>> branch
   redirect '/tenant'
 end
 
@@ -209,13 +191,11 @@ end
 get '/tenant/records' do
 
 	@record = Record.where(tenant_id:current_user.id)
-<<<<<<< HEAD
 	if @record.nil? or @record == []
 		@amount_due = 0
 	else
-=======
->>>>>>> branch
 	@amount_due = Record.where(tenant_id:current_user.id).sum(:amount_due) - Record.where(tenant_id:current_user.id).sum(:amount_paid)
+	end
   erb :tenant_records
 end
 
