@@ -1,16 +1,6 @@
+<header>
   <h1>My Records</h1>
-  <div class="nav"> 
-    User: <%= current_user.name %>
-    <a href='/home' class='navbutton'>Home</a>
-    <a href='/landlord/records' class='navbutton'>Records</a>
-    <a href='/landlord/my_locations' class='navbutton'>My Locations</a>
-    <a href='/locations' class='navbutton'>All Locations</a>
-    <span id="username">User: <%= current_user.name %></span>
-    <form type="submit" method="post" action="/logout"><button class="actionbutton" id="logout">logout</button></form>
-	</div>
-
-
-
+</header>
 
 <body>
 	<table class="table table-hover">
@@ -21,17 +11,17 @@
 			<th>Interest Rate </th> 
 			<th>Pets </th> 
 			<th>Capacity </th> 
-	</tr></thead> 
-	<tbody>
-	 <% @search_result.each do |location| %> 
-		<tr>
-			<td><%=location.nickname%> </td> 
-			<td><%=location.address%> </td> 
-			<td><%=location.rate%> </td> 
-			<td><%=location.interest_rate%> </td> 
-			<td><%=location.allow_pets?%> </td> 
-			<td><%=location.no_people%> </td> 
-		</tr> 
-	</tbody> 	
-<% end %>
+   </tr></thead> 
+   <tbody>
+    <% @search_result.each do |location| %> 
+    <tr>
+     <td><%=location.nickname%> </td> 
+     <td><%=location.address%> </td> 
+     <td><%=location.rate%> </td> 
+     <td><%=location.interest_rate%> </td> 
+     <td><%=location.allow_pets?%> </td> 
+     <td><%=location.no_people%> </td> 
+   </tr> 
+ </tbody> 	
+ <% end %>
 </body>

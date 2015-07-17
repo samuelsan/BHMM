@@ -1,25 +1,19 @@
-<h1>My Records</h1>
-  <div class="nav"> 
-    <a href='/home' class='navbutton'>Home</a>
-    <a href='/landlord/records' class='navbutton'>Records</a>
-    <a href='/landlord/my_locations' class='navbutton'>My Locations</a>
-    <a href='/locations' class='navbutton'>All Locations</a>
-    <span id="username">User: <%= current_user.name %></span>
-    <form type="submit" method="post" action="/logout"><button class="actionbutton" id="logout">logout</button></form>
-  </div>
+<header>
+	<span class="title"><h1>My Records</h1></span>
+</header>
 
-	<p>Filter </p>
- 	<div class="dropdown">
-		<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			Monthly Statements
-			<span class="caret"></span>
-		</button>
-		<% @months.each do |months| %>
-		<ul class="dropdown-menu" aria-labelledby="dLabel">
-			<%= months %>
-		</ul>
+<p>Filter </p>
+<div class="dropdown">
+	<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		Monthly Statements
+		<span class="caret"></span>
+	</button>
+	<% @months.each do |months| %>
+	<ul class="dropdown-menu" aria-labelledby="dLabel">
+		<%= months %>
+	</ul>
 	<% end %>
-	</div>
+</div>
 
 
 
@@ -31,18 +25,18 @@
 			<th>amount due</th>
 			<th>due date</th>
 			<th>amount paid</th>
-	</tr>
-</thead>
-<tbody>
-	<% @record.each do |r|%>
-	<tr>
-		<td><%= r.location.address %> </td>   
-		<td><%= User.find(r.tenant_id).name%> </td>   
-		<td> <%= r.amount_due %> </td>   
-		<td><%= r.date_due %> </td>   
-		<td> <%=r.amount_paid%> </td>   
-	</tr> 
-<% end %>
+		</tr>
+	</thead>
+	<tbody>
+		<% @record.each do |r|%>
+		<tr>
+			<td><%= r.location.address %> </td>   
+			<td><%= User.find(r.tenant_id).name%> </td>   
+			<td> <%= r.amount_due %> </td>   
+			<td><%= r.date_due %> </td>   
+			<td> <%=r.amount_paid%> </td>   
+		</tr> 
+		<% end %>
 	</tbody> 
 </table>
 
@@ -54,18 +48,18 @@
 			<th>address</th>
 			<th>phone</th>
 			<th>email</th>
-	</tr>
-</thead>
-<tbody>
-	<% @record.select(:tenant_id,:location_id).distinct.each do |r|%>
+		</tr>
+	</thead>
+	<tbody>
+		<% @record.select(:tenant_id,:location_id).distinct.each do |r|%>
 		<% a = User.find(r[:tenant_id]) %>
-	<tr>
-		<td><%= a.name %> </td>   
-		<td><%= Location.find(r[:location_id]).address %> </td>   
-		<td> <%= a.phone %> </td>   
-		<td><%= a.email %> </td>   
-	</tr> 
-<% end %>
+		<tr>
+			<td><%= a.name %> </td>   
+			<td><%= Location.find(r[:location_id]).address %> </td>   
+			<td> <%= a.phone %> </td>   
+			<td><%= a.email %> </td>   
+		</tr> 
+		<% end %>
 	</tbody> 
 </table>
 
