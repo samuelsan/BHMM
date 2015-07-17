@@ -2,7 +2,7 @@
   <span class="title"><h1>Tenant Records</h1></span>
 </header>
 
-<h2>Upcoming Due Date: <%= @record.last.date_due%></h2>
+<h2>Upcoming Due Date: <%= @record.last.date_due rescue "" %></h2>
 <h2>Amount due: <%= @amount_due %></h2>
 <p>Current Balance : <%= current_user.account_balance%> </p> 
 <div class="row">
@@ -43,13 +43,15 @@
    </tr>
  </thead>
  <tbody>
-   <% @record.each do |r|%>
+	 <% if not ( @record.nil? or @record = []) %>
+	 <% @record.each do |r|%>
    <tr>
     <td><%= r.location.address %> </td>      
     <td><%= r.amount_due %>$ </td>    
-    <td><%= r.date_due.strftime("%F") %> </td>    
+		<td><%= r.date_due.strftime("%F") rescue ""%> </td>    
     <td><%= r.amount_paid %>$ </td>    
   </tr> 
+  <% end %>
   <% end %>
 </tbody> 
 </table>
