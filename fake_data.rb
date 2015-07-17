@@ -3,6 +3,8 @@ require 'faker'
 
 max_num = 20
   User.create(name:"Tom Lei",email:"lmd0209@msn.com",password:'123',pets:0, usertype:2)
+  User.create(name:"Sam San",email:"tenant",password:'123',pets:0, usertype:0)
+  User.create(name:"Steph Lam",email:"landlord",password:'123',pets:0, usertype:1)
 
 40.times do 
 address = Faker::Address.street_address + " " +  Faker::Address.secondary_address
