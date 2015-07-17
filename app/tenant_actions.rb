@@ -11,6 +11,8 @@ get '/tenant/records' do
   else
     @amount_due = Record.where(tenant_id:current_user.id).sum(:amount_due) - Record.where(tenant_id:current_user.id).sum(:amount_paid)
   end
+
+	@payment = Payment.where(tenant_id:current_user.id)
   erb :tenant_records
 end
 
