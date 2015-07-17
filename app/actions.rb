@@ -17,12 +17,12 @@ end
 @login_error = false
 
 get '/' do
+  # TODO: erb :home if session:[user]
   erb :login
 end
 
 get '/login' do
   # TODO: do not allow multiple sign ins. Must sign out first
- 
   # redirect '/logout' if current_user
   current_user
   erb :'login'
@@ -99,10 +99,30 @@ post '/signup' do
     usertype: usertype
   )
   if current_user.save
-    #TODO: redirect to homepage after create
-    redirect '/login'
+    redirect '/home'
   end
 end
+
+post '/update' do
+  # if (params[:landlord] == "on" && params[:tenant] == "on") 
+  #   usertype = 2
+  # elsif params[:landlord] == "on" 
+  #   usertype = 0
+  # elsif params[:tenant] == "on" 
+  #   usertype = 1
+  # else 
+  #   usertype = nil
+  # end
+  # user.update_attributes(name: params[:name]) if params[:name]
+  # user.update_attributes(email: params[:email]) if params[:email]
+  # user.update_attributes(password: params[:password]) if params[:password]
+  # user.update_attributes(password: params[:phone]) if params[:phone]
+  # user.update_attributes(password: params[:pets]) if params[:pets]
+  # if current_user.save
+  #   redirect '/home'
+  # end
+end
+
 
 get '/locations' do
 	occupied_locations = User.select(:location_id).distinct.pluck(:location_id)
