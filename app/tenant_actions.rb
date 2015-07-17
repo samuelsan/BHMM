@@ -8,8 +8,9 @@ get '/tenant/records' do
   @record = Record.where(tenant_id:current_user.id)
   if @record.nil? or @record == []
     @amount_due = 0
+		@record = []
   else
-    @amount_due = Record.where(tenant_id:current_user.id).sum(:amount_due) - Record.where(tenant_id:current_user.id).sum(:amount_paid)
+    @amount_due = @record.sum(:amount_due) - @record.sum(:amount_paid)
   end
 
 	@payment = Payment.where(tenant_id:current_user.id)
