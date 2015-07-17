@@ -16,11 +16,11 @@
 		Monthly Statements
 		<span class="caret"></span>
 	</button>
-	<% @months.each do |months| %>
 	<ul class="dropdown-menu" aria-labelledby="dLabel">
-		<%= months %>
-	</ul>
+	<% @months.each do |months| %>
+		<a href="/landlord/records?date=<%= months %>" >	<li>	<%= months %> </li> </a> 
 	<% end %>
+	</ul>
 </div>
 
 
