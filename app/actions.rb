@@ -1,4 +1,15 @@
+require 'pry'
 # Homepage (Root path)
+helpers do
+  def current_user
+    @current_user ||= User.find(session[:user]) if session[:user]
+  end
+end
+
+before do
+  redirect '/notloggedin' if !current_user && request.path != '/notloggedin' && request.path != '/login' && request.path != '/signup'
+end
+
 @login_error = false
 
 get '/' do
@@ -7,9 +18,9 @@ end
 
 get '/login' do
   # TODO: do not allow multiple sign ins. Must sign out first
-  # @user = User.find(session[:user])
-  # redirect '/logout' if @user
-  @user
+ 
+  # redirect '/logout' if current_user
+  current_user
   erb :'login'
 end
 
@@ -46,9 +57,15 @@ get '/notloggedin' do
   erb :notloggedin
 end
 
-get '/signup' do
-  @user = User.new
-  erb :'signup'
+post '/home' do
+  case log_user.usertype
+    when 0
+      redirect to('/landlord')
+    when 1
+      redirect to('/tenant')
+    when 2
+      redirect to('/home')
+    end
 end
 
 post '/signup' do
@@ -62,7 +79,7 @@ post '/signup' do
     usertype = nil
   end
 
-  @user = User.new(
+  current_user = User.new(
     name: params[:name],
     email: params[:email],
     password: params[:password],
@@ -70,23 +87,19 @@ post '/signup' do
     pets: params[:pets],
     usertype: usertype
   )
-  if @user.save
+  if current_user.save
+    #TODO: redirect to homepage after create
     redirect '/login'
-  else
-    erb :'signup'
   end
 end
 
 get '/locations' do
-  redirect '/notloggedin' if session[:user].nil?
-  @user = User.find(session[:user])
 	occupied_locations = User.select(:location_id).distinct.pluck(:location_id)
 	@location = Location.where.not(id:occupied_locations) 
   erb :locations
 end
 
-post '/results' do
-  redirect '/notloggedin' if session[:user].nil?
+post '/search' do
   @user = User.find(session[:user])
 	@search_result =search(params[:search_text])
   erb :search
@@ -94,32 +107,25 @@ end
 
 # landlord
 get '/landlord' do
-  redirect '/notloggedin' if session[:user].nil?
-  @user = User.find(session[:user])
   erb :landlord_home
 end
 
 get '/landlord/records' do
-  redirect '/notloggedin' if session[:user].nil?
   @user = User.find(session[:user])
-	@record = Record.where(landlord_id:@user.id)
+	@record = Record.where(landlord_id:current_user.id)
 	@months = @record.all.map {|d| d.date_due.strftime('%b %y')}.uniq
   erb :landlord_records
 end
 
 get '/landlord/my_locations' do
-  redirect '/notloggedin' if session[:user].nil?
-  @user = User.find(session[:user])
-	@location = Location.where(landlord_id:@user.id)
+	@location = Location.where(landlord_id:current_user.id)
   erb :landlord_locations
 end
 post '/landlord/new_location' do
 # Add new location backend here ,
-	redirect '/notloggedin' if session[:user].nil?
-	@user = User.find(session[:user])
 	print params[:pets?]
 	pet = params[:pets?] == "on" ? true : false
-	location = Location.new(landlord_id:@user.id,nickname:params[:nickname],address:params[:address],rate:params[:rate],interest_rate:params[:interestrate],no_people:params[:nopeople],photo:params[:imgurl],allow_pets?:pet)
+	location = Location.new(landlord_id:current_user.id,nickname:params[:nickname],address:params[:address],rate:params[:rate],interest_rate:params[:interestrate],no_people:params[:nopeople],photo:params[:imgurl],allow_pets?:pet)
 	print location.inspect
 	if location.save
 		redirect '/landlord'
@@ -130,64 +136,61 @@ end
 
 # tenant
 post '/movein/:locationid' do
-  redirect '/notloggedin' if session[:user].nil?
-  User.find(session[:user]).update_attributes(location_id: params[:locationid])
+  User.find(current_user).update_attributes(location_id: params[:locationid])
   redirect '/tenant'
 end
 
 post '/moveout' do
-  redirect '/notloggedin' if session[:user].nil?
-  User.find(session[:user]).update_attributes(location_id: nil)
+  User.find(current_user).update_attributes(location_id: nil)
   redirect '/tenant'
 end
 
 get '/tenant' do
-  redirect '/notloggedin' if session[:user].nil?
-  @user = User.find(session[:user])
   erb :tenant_home
 end
 
 get '/tenant/records' do
-  redirect '/notloggedin' if session[:user].nil?
-  @user = User.find(session[:user])
-	@record = Record.where(tenant_id:@user.id)
-	@amount_due = Record.where(tenant_id:@user.id).sum(:amount_due) - Record.where(tenant_id:@user.id).sum(:amount_paid)
+
+	@record = Record.where(tenant_id:current_user.id)
+	@amount_due = Record.where(tenant_id:current_user.id).sum(:amount_due) - Record.where(tenant_id:@user.id).sum(:amount_paid)
   erb :tenant_records
 end
 
+get '/records' do
+    @record = Record.where(tenant_id:current_user.id)
+  if current_user.usertype == 0
+    erb :landlord_records
+  else current_user.usertype == 1
+    erb :tenant_records
+  end
+end
+
 get '/tenant/pay' do
-  redirect '/notloggedin' if session[:user].nil?
-  @user = User.find(session[:user])
-  if !(User.find(session[:user]).location_id)
+  if !(User.find(current_user).location_id)
     redirect '/locations' 
     # alert("I am an alert box!")
   end
   erb :tenant_pay
 end
 
-post '/tenant/pay' do
-  redirect '/notloggedin' if session[:user].nil?
-  @user = User.find(session[:user])
-  @user.pay
+post '/tenant/pay/full' do
+  current_user.pay()
   # TODO: should redirect to receipt
-  redirect '/tenant'
-end
-
-post '/tenant/transfer' do
-  redirect '/notloggedin' if session[:user].nil?
-  @user = User.find(session[:user])
   redirect '/tenant/receipt'
 end
 
+post '/tenant/pay/part' do
+  current_user.pay(params[:amount].to_f)
+  # TODO: should redirect to receipt
+  redirect '/tenant/receipt'
+end
+
+
 get '/tenant/receipt' do
-  redirect '/notloggedin' if session[:user].nil?
-  @user = User.find(session[:user])
   erb :tenant_receipt
 end
 
 post '/work' do
-  redirect '/notloggedin' if session[:user].nil?
-  @user = User.find(session[:user])
-  @user.work
+  current_user.work
   redirect '/tenant'
 end
