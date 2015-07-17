@@ -1,4 +1,6 @@
 require 'pry'
+require 'pony'
+
 # Homepage (Root path)
 helpers do
   def current_user
@@ -207,3 +209,30 @@ post '/work' do
   current_user.work
   redirect '/tenant'
 end
+
+get '/email' do
+
+
+post '/email' do
+  Pony.mail({
+    to: params[:email],
+    from:           "RentCollectorBBHMM@gmail.com",
+    subject:        "#{params[:name]}, BHMM in 3 days!",
+    body:           erb :mail
+    via:
+    via_options: {
+      address:        'smtp.gmail.com',
+      port:           '25',
+      user_name:      'Rent Collector',
+      password:       '123BBHMM',
+      authentication: :plain,
+      domain:         "localhost.localdomain" 
+      }
+    })
+  redirect
+end
+
+
+
+
+
