@@ -85,9 +85,10 @@ get '/locations' do
   erb :locations
 end
 
-get '/results' do
+post '/results' do
   redirect '/notloggedin' if session[:user].nil?
   @user = User.find(session[:user])
+	@search_result =search(params[:search_text])
   erb :results
 end
 
@@ -155,6 +156,10 @@ end
 get '/tenant/pay' do
   redirect '/notloggedin' if session[:user].nil?
   @user = User.find(session[:user])
+  if !(User.find(session[:user]).location_id)
+    redirect '/locations' 
+    # alert("I am an alert box!")
+  end
   erb :tenant_pay
 end
 
