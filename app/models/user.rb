@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
 		outstanding_balance = records.sum(:amount_due) - records.sum(:amount_paid)
 		amount = location.rate if amount.nil?
 		amount = outstanding_balance if amount > outstanding_balance
+		amount = self.account_balance if amount > self.account_balance
 		return 0 if amount == 0 or outstanding_balance == 0
 		self.account_balance -= amount
 		landlord.account_balance += amount
