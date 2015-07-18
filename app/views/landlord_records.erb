@@ -1,8 +1,8 @@
 <header>
 	<span class="title"><h1>My Records</h1></span>
 </header>
-
-<p>Filter </p>
+<div class="row">
+	<h3>Filter</h3>  
 <div class="dropdown">
 	<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		Monthly Statements
@@ -10,11 +10,13 @@
 	</button>
 	<ul class="dropdown-menu" aria-labelledby="dLabel">
 	<% @months.each do |months| %>
-		<a href="/landlord/records?date=<%= months %>" >	<li>	<%= months %> </li> </a> 
+		<a href="/landlord/records?date=<%= months unless months.downcase == "all" %>" >	<li align="center">	<%= months %> </li> </a> 
 	<% end %>
 	</ul>
 </div>
 
+<h3>Revenue TYD : <%= @annual_revenue%> </h3> 
+</div> 
 <table class="table table-hover">
 	<thead>
 		<tr>
@@ -34,7 +36,13 @@
  			<td> <%=r.amount_paid%> </td>   
 			<td><%= r.date_due %> </td>  
 		</tr> 
-		<% end %>
+	<% end %>
+	<tr>
+		<td> </td>
+		<td> </td>
+		<td>Sub Total: </td>
+		<td><%= @record.sum(:amount_paid) %> </td>
+ 	</tr> 
 	</tbody> 
 </table>
 

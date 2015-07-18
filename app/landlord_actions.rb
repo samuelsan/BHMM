@@ -7,11 +7,12 @@ end
 get '/landlord/records?*' do
   @record = Record.where(landlord_id:current_user.id)
  	@months = []
+	@annual_revenue = Payment.where(landlord_id:current_user.id).where(created_at:(Date.new(2015,1,1))..(Date.new(2016,1,1))).sum(:amount)
   unless @record.nil?
     @months = @record.all.map {|d| d.date_due.strftime('%y-%m')}.uniq
-		@months << ''
+		@months.unshift("All")
   end
-	unless params[:date].nil?
+	unless params[:date].nil? or params[:date] == ""
 		puts params[:date]
 		date = params[:date].split("-")
 		start_date = Date.new(2000+date[0].to_i,date[1].to_i,1)
