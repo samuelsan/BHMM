@@ -21,7 +21,7 @@
      <td><%=location.interest_rate%> </td> 
      <td><%=location.allow_pets?%> </td> 
 		 <td><%=location.no_people%> </td>
-		 <td> <form method="post" action="/landlord/my_locations/delete"><input type="hidden" name="location_id"value="<%=location.id%>"> </input><button class="btn btn-danger"> Delete</button></form> </td>  
+		 <td> <form method="post" action="/my_locations/delete"><input type="hidden" name="location_id"value="<%=location.id%>"> </input><button class="btn btn-danger"> Delete</button></form> </td>  
    </tr> 
  </tbody> 	
  <% end %>

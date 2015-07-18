@@ -37,7 +37,7 @@
         <tr><td>Landlord Email: </td><td><%= User.find(Location.find(current_user.location_id).landlord_id).email %></td></tr>
       </table> 
 
-      <form type="submit" method="post" action="/moveout"> <button class="actionbutton">MOVE OUT!</button></form><br>
+      <form type="submit" method="post" action="/moveout"> <button class="actionbtn">MOVE OUT!</button></form><br>
       <% end %>
     </div>
 
@@ -47,10 +47,10 @@
       <% elsif current_user.account_balance > 5000%> 
       <span style="color: green; font-weight: bold; font-size: 22px; text-shadow: 0 0 0.2em #23A610"> YOU BALLIN</span>
       <%end%>
-      <form type="submit" method="post" action="/work"> <button class='actionbutton'>Werk</button></form><br>
-      <form type="submit" method="get" action="/tenant/pay"> <button class='actionbutton'>Pay Rent</button></form>
+      <form type="submit" method="post" action="/work"> <button class='actionbtn'>Werk</button></form><br>
     </div>
   </div>
+      <%= erb :'partials/blurmenu1' %>
 
   <!-- Modal file for updating info  -->
 <div class="modal fade" id="updateInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

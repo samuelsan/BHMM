@@ -137,7 +137,7 @@ post '/search' do
   erb :search
 end
 
-get '/pets' do
+get '/nopets' do
   erb :'errors/nopets'
 end
 

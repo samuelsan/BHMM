@@ -23,9 +23,9 @@
      <td><%=location.allow_pets? ? 'Yes' : 'No' %> </td> 
      <td><%=location.no_people%> </td> 
       <td><%if current_user%>
-      <form type="submit" method="post" action="/movein/<%=location.id%>"> <button class="actionbutton">MOVE IN!</button></form><br></div>
+      <form type="submit" method="post" action="/movein/<%=location.id%>"> <button class="actionbtn">MOVE IN!</button></form><br></div>
       <%else%>
-      <a data-toggle="modal" data-target="#NewUserModal"> <button class="actionbutton">MOVE IN TODAY!</button></a>
+      <a data-toggle="modal" data-target="#NewUserModal"> <button class="actionbtn">MOVE IN TODAY!</button></a>
       <%end%>
       </td>
    </tr> 

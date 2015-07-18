@@ -22,7 +22,7 @@ get '/landlord/records?*' do
   erb :landlord_records
 end
 
-get '/landlord/my_locations' do
+get '/my_locations' do
   @location = Location.where(landlord_id:current_user.id)
   erb :landlord_locations
 end
@@ -37,9 +37,9 @@ post '/landlord/new_location' do
     redirect '/landlord'
   end
 end
-post '/landlord/my_locations/delete' do
+post '/my_locations/delete' do
 Location.find(params[:location_id].to_i).destroy
-redirect "/landlord/my_locations"
+redirect "/my_locations"
 end
 
 
