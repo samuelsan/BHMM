@@ -1,5 +1,5 @@
 <header>
-  <h1>My Records</h1>
+  <h1>Search Results</h1>
 </header>
 
 <body>
@@ -11,6 +11,7 @@
 			<th>Interest Rate </th> 
 			<th>Pets </th> 
 			<th>Capacity </th> 
+      <th>Move In</th>
    </tr></thead> 
    <tbody>
     <% @search_result.each do |location| %> 
@@ -21,6 +22,12 @@
      <td><%=location.interest_rate%> </td> 
      <td><%=location.allow_pets? ? 'Yes' : 'No' %> </td> 
      <td><%=location.no_people%> </td> 
+      <td><%if current_user%>
+      <form type="submit" method="post" action="/movein/<%=location.id%>"> <button class="actionbutton">MOVE IN!</button></form><br></div>
+      <%else%>
+      <a data-toggle="modal" data-target="#NewUserModal"> <button class="actionbutton">MOVE IN TODAY!</button></a>
+      <%end%>
+      </td>
    </tr> 
  </tbody> 	
  <% end %>

@@ -141,6 +141,10 @@ get '/pets' do
   erb :'errors/nopets'
 end
 
+get '/lowfunds' do
+  erb :'errors/lowfunds'
+end
+
 #don't delete this.  This has also been moved to record.rb
 =begin
 post '/email' do
