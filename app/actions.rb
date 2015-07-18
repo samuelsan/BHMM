@@ -151,6 +151,7 @@ get '/pets' do
 end
 
 #don't delete this.  This has also been moved to record.rb
+=begin
 post '/email' do
   Pony.mail({
     from:             "RentCollectorBBHMM@gmail.com",
@@ -169,6 +170,7 @@ post '/email' do
     }
     })
 end
+=end
 
 get '/analytics' do
   redirect '/index.html'
