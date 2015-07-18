@@ -26,18 +26,12 @@ class User < ActiveRecord::Base
 		amount = outstanding_balance if amount > outstanding_balance
 		amount = self.account_balance if amount > self.account_balance
 		return 0 if amount == 0 or outstanding_balance == 0
-		self.account_balance -= amount
-		landlord.account_balance += amount
-		self.save
-		landlord.save
-		# record = Record.where()
-		# record.update_attributes(amount_paid+=amount)
-		# record.save
-  Payment.add(current_user, amount) unless amount == 0
+		# Create a payment Record
+		Payment.add(self, amount) unless amount == 0
 		return amount
 	end
-  
-  def set_balance
+
+	def set_balance
     self.account_balance = 0 if !account_balance
   end
 
