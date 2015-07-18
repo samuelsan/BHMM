@@ -11,7 +11,7 @@ helpers do
 end
 
 before do
-  redirect '/notloggedin' if !current_user && request.path != '/notloggedin' && request.path != '/login' && request.path != '/signup'  && request.path != '/locations'&& request.path != '/'
+  redirect '/notloggedin' if !current_user && request.path != '/notloggedin' && request.path != '/login' && request.path != '/signup'  && request.path != '/locations' && request.path != '/' && request.path != '/search'
 end
 
 @login_error = false
@@ -133,7 +133,6 @@ get '/locations' do
 end
 
 post '/search' do
-  current_user = User.find(session[:user])
   @search_result =search(params[:search_text])
   erb :search
 end
@@ -142,15 +141,13 @@ get '/pets' do
   erb :'errors/nopets'
 end
 
-get '/email' do
-  erb :email
-end
-
+#don't delete this.  This has also been moved to record.rb
+=begin
 post '/email' do
   Pony.mail({
-    to:               "samuelsaninbox@gmail.com",
     from:             "RentCollectorBBHMM@gmail.com",
-    subject:          "Rent Reminder",
+    to:               current_user.email,
+    subject:          current_user.name,
     body:             erb(:emailmessage),
     via:    :smtp,
     via_options: {
@@ -163,8 +160,8 @@ post '/email' do
       domain:         "localhost.localdomain" 
     }
     })
-  redirect '/login'
 end
+=end
 
 get '/analytics' do
   redirect '/index.html'

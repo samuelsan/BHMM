@@ -1,11 +1,14 @@
-Dear Valued Customer,
+Dear <%= current_user.name %>,
 
-This is a friendly reminder that your rent is due in 3 days.  
+This is a friendly reminder that your rent is due in 3 days.
 
-If you have any issues, please contact your landlord.
+You currenty have <%= current_user.account_balance %> dollars.
+
+If you have any issues, please contact <%= User.find(Location.find(current_user.location_id).landlord_id).name %>, your landlord, at <%= User.find(Location.find(current_user.location_id).landlord_id).email %>
 
 Have a wonderful day,
 
-BHMM
+Team BetterHaveMyMoney
 
 Note: We are not responsible for any evictions.
+
