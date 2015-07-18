@@ -150,15 +150,12 @@ get '/pets' do
   erb :pets
 end
 
-get '/email' do
-  erb :email
-end
-
+#don't delete this.  This has also been moved to record.rb
 post '/email' do
   Pony.mail({
-    to:               "samuelsaninbox@gmail.com",
     from:             "RentCollectorBBHMM@gmail.com",
-    subject:          "Rent Reminder",
+    to:               current_user.email,
+    subject:          current_user.name,
     body:             erb(:emailmessage),
     via:    :smtp,
     via_options: {
@@ -171,7 +168,6 @@ post '/email' do
       domain:         "localhost.localdomain" 
     }
     })
-  redirect '/login'
 end
 
 get '/analytics' do
