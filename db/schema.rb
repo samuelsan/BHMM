@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 20150717160207) do
     t.integer  "amount_due",  null: false
     t.integer  "amount_paid"
     t.datetime "date_due"
-    t.datetime "date_paid"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

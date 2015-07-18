@@ -15,19 +15,16 @@
 					<tr><td>Phone Number: </td><td><%= current_user.phone %></td></tr>
 					<tr><td>Account Balance: </td><td>$<%= current_user.account_balance.round %></td></tr>
 					<tr><td>Pets: </td><td><%= current_user.pets%></td></tr>
-			</table> 
+				</table> 
 			</p> 
 			
-			<a href='/'><button type="button" class="btn btn-info"> Update info </button> </a>
+			<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#updateInfo">
+				Update info
+			</button>
 
 		</h1> </div>
 		<div class="col-sm-8">
 
-			<div>
-				<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-					Add new Location
-				</button>
-			</div><br>
 			<table class='table table-hover'>
 				<thead> 
 					<tr> <th>Name </th>
@@ -38,20 +35,23 @@
 				<tbody>
 					<% if @locations %>
 					<% @locations.each do |location| %>
-						<tr>	<td><%= location.nickname %></td>
-							<td><%=location.address %> </td>
-							<td>$<%=location.rate.round %> </td> 
-						</tr> 
-						<% end %>
+					<tr>	<td><%= location.nickname %></td>
+						<td><%=location.address %> </td>
+						<td>$<%=location.rate.round %> </td> 
+					</tr> 
+					<% end %>
 					<% end %>
 				</tbody>
 			</table> 
-		</h1> </div>
+			<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newLocation">
+				Add new Location
+			</button>
+		</div>
 	</div>
 </div>
 
 <!-- Modal file for adding new location  -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="newLocation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -64,5 +64,19 @@
 			</div>
 		</div>
 	</div>
+</div>
 
-
+<!-- Modal file for updating info  -->
+<div class="modal fade" id="updateInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">New Location</h4>
+			</div>
+			<div class="modal-body">
+				<!-- Update info body here -->
+				<%= erb :'partials/update_info' %>
+			</div>
+		</div>
+	</div>

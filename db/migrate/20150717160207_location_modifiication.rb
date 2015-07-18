@@ -10,7 +10,5 @@ class LocationModifiication < ActiveRecord::Migration
 		t.integer :tenant_id,		null: false
 		t.integer :location_id,	null: false
 		end
-
-
   end
 end
