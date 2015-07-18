@@ -175,7 +175,8 @@ post '/emailpay/:redirect' do
 end
 
 
-get '/analytics' do
-  redirect '/index.html'
+get '/new_month' do
+	Record.add_all
+  redirect '/'
 end
 
