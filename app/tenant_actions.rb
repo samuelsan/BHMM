@@ -52,7 +52,7 @@ end
 
 post '/movein/:locationid' do
   location = Location.find(params[:locationid])
-  redirect '/pets' if current_user.pets && !location.allow_pets?
+  redirect '/nopets' if current_user.pets && !location.allow_pets?
   current_user.update_attributes(location_id: params[:locationid])
   redirect '/tenant'
 end

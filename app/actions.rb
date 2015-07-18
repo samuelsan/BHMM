@@ -54,7 +54,7 @@ post '/logout' do
 end
 
 get '/notloggedin' do
-  erb :notloggedin
+  erb :'errors/notloggedin'
 end
 
 get '/home' do
@@ -100,7 +100,7 @@ post '/signup' do
   end
 
   pets = (params[:pets] == 'yes')
-  current_user = User.new(
+  new_user = User.new(
     name: params[:name],
     email: params[:email],
     password: params[:password],
@@ -108,30 +108,22 @@ post '/signup' do
     pets: pets,
     usertype: usertype
   )
-  if current_user.save
-    redirect '/home'
-  end
-    redirect '/login'
+  new_user.save
+  session[:user] = new_user.id
+  redirect '/home'
+  # redirect '/login'
 end
 
 post '/update' do
-  if (params[:landlord] == "on" && params[:tenant] == "on") 
-    usertype = 2
-  elsif params[:landlord] == "on" 
-    usertype = 0
-  elsif params[:tenant] == "on" 
-    usertype = 1
-  else 
-    usertype = nil
-  end
-  current_user.update_attributes(name: params[:name]) if params[:name]
-  current_user.update_attributes(email: params[:email]) if params[:email]
-  current_user.update_attributes(password: params[:password]) if params[:password]
-  current_user.update_attributes(password: params[:phone]) if params[:phone]
-  current_user.update_attributes(password: params[:pets]) if params[:pets]
-  if current_user.save
-    redirect '/home'
-  end
+  # ONLY THE FIRST ONE UPDATES WHY
+  pets = (params[:pets] == 'yes')
+  current_user.update_attributes(pets: pets)
+  current_user.update_attributes(name: params[:name])
+  current_user.update_attributes(email: params[:email])
+  current_user.update_attributes(password: params[:password])
+  current_user.update_attributes(phone: params[:phone])
+  current_user.save
+  redirect '/home'
 end
 
 get '/locations' do
@@ -146,7 +138,7 @@ post '/search' do
 end
 
 get '/pets' do
-  erb :pets
+  erb :'errors/nopets'
 end
 
 #don't delete this.  This has also been moved to record.rb
