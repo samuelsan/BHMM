@@ -5,8 +5,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-offset-0 col-sm-4 col-md-3"><h1>
-
-      <h3>User information: </h3> <br>
+      <h3 style="color: white; background: rgba(0,0,0, 0.8)">User information: </h3> <br>
       <p>
         <table class="table table-hover">
           <tr><td>Name:</td><td> <%= current_user.name %></td></tr>
@@ -26,7 +25,7 @@
 
     <div class="col-sm-4">
 
-      <h3>Home information: </h3> <br>
+      <h3 style="color: white; background: rgba(0,0,0, 0.8)">Home information: </h3> <br>
       <% if current_user.location_id == nil %> 
       <a href="/locations" style="font-size: 40px">Find a place!</a>
       <% else %> 

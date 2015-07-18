@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   end
 
   def pay(amount=nil)
+    return if amount == 0
     landlordid = Location.find(self.location_id).landlord_id
     landlord = User.find(landlordid)
     location = Location.find(self.location_id)
