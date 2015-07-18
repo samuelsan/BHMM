@@ -11,7 +11,7 @@ helpers do
 end
 
 before do
-  redirect '/notloggedin' if !current_user && request.path != '/notloggedin' && request.path != '/login' && request.path != '/signup'  && request.path != '/locations'&& request.path != '/'
+  redirect '/notloggedin' if !current_user && request.path != '/notloggedin' && request.path != '/login' && request.path != '/signup'  && request.path != '/locations' && request.path != '/' && request.path != '/search'
 end
 
 @login_error = false
@@ -141,7 +141,6 @@ get '/locations' do
 end
 
 post '/search' do
-  current_user = User.find(session[:user])
   @search_result =search(params[:search_text])
   erb :search
 end
