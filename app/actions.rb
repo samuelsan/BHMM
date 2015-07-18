@@ -154,7 +154,7 @@ post '/emailpay/:redirect' do
     to:               current_user.email,
     subject:          current_user.name,
     body:             erb(:paymessage, layout: false),
-    via:    :smtp,
+    via:              :smtp,
     via_options: {
       address:        'smtp.gmail.com',
       port:           '587',
@@ -174,6 +174,27 @@ post '/emailpay/:redirect' do
   end
 end
 
+post '/emailrefill/:redirect' do
+  Pony.mail({
+    from:             "RentCollectorBBHMM@gmail.com",
+    to:               current_user.email,
+    subject:          current_user.name,
+    body:             erb(:refillmessage, layout: false),
+    via:              :smtp,
+    via_options: {
+      address:        'smtp.gmail.com',
+      port:           '587',
+      user_name:      'RentCollectorBBHMM@gmail.com',
+      enable_starttls_auto: true,
+      password:       '123BBHMM',
+      authentication: :plain,
+      domain:         "localhost.localdomain" 
+    }
+    })
+  if params[:redirect] 
+    redirect '/home'
+  end
+end
 
 get '/new_month' do
 	Record.add_all
