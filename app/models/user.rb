@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
 		# record = Record.where()
 		# record.update_attributes(amount_paid+=amount)
 		# record.save
+  Payment.add(current_user, amount) unless amount == 0
 		return amount
 	end
   
