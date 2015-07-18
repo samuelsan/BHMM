@@ -1,7 +1,7 @@
 class Record < ActiveRecord::Base
 
   belongs_to :location
-
+	before_create :charge_interest
   validates :tenant_id, presence: true
   validates :landlord_id, presence: true
   validates :location_id, presence: true
@@ -15,7 +15,15 @@ class Record < ActiveRecord::Base
       landlord = User.find(location.landlord_id)
       Record.create(tenant_id:user.id,landlord_id:landlord.id,location_id:location.id,amount_due:location.rate,amount_paid:0,date_due:duedate)
     end
-end
+	end
+
+	def charge_interest
+		#self refers to the record being created, so there is tenant_id and all the stuff
+		records = Record.where(tenant_id:self.tenant_id).where(location_id:self.location_id)
+		outstanding_balance = records.sum(:amount_due) - records.sum(:amount_paid)
+		return if outstanding_balance <= 0
+		self.amount_due += outstanding_balance * self.location.interest_rate / 100
+	end
 
   def self.send_mail
     Pony.mail({
