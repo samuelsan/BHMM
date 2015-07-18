@@ -4,7 +4,7 @@
 
 <body>
   <% @location.each do |location| %>
-  <div class = "listing">
+  <div class = "listing fade">
     <!-- TODO: only show available locations -->
     <h2><%= location.address %></h2>
     <div>$<%=location.rate.round %> <br>
