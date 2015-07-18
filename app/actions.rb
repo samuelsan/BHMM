@@ -2,6 +2,7 @@ require 'pry'
 require 'pony'
 require_relative 'landlord_actions'
 require_relative 'tenant_actions'
+require_relative 'stripe_actions'
 
 # Homepage (Root path)
 helpers do

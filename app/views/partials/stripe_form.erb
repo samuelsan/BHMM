@@ -1,0 +1,16 @@
+<form action="/charge" method="POST" class="form-inline">
+	<label class="sr-only" for="amount_charge"> Amount to refill </label> 
+ <div class="input-group">	
+	<div class="input-group-addon">$</div>
+	<input type="number" min="1" data-bind="value:replyNumber" name="amount_charge" class="form-control" id="amount_charge" placeholder="$$$$$">
+	<div class="input-group-addon">.00</div>
+</div>
+	<script
+		src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+		data-image="images/logo.png"
+		data-key="pk_test_aO5afPe5b7kBZLZUg5jElxTD"
+		data-name="BHMM Refill Account"
+		data-description="Refill your account"
+		data-currency="cad">
+	</script>
+</form>
