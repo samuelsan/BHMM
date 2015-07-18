@@ -33,15 +33,17 @@ end
 
 post '/tenant/pay/full' do
   # if current_user.account_balance < Location.find(current_user.location_id).rate
-  current_user.pay()
-  Payment.add(current_user, Location.find(current_user.location_id).rate)
+  amount = current_user.pay()
+  
+		Payment.add(current_user, amount) unless amount == 0
+
   redirect '/tenant/records'
 end
 
 post '/tenant/pay/part' do
   # if current_user.account_balance < params[:amount]
-  current_user.pay(params[:amount].to_f)
-  Payment.add(current_user, params[:amount])
+  amount = current_user.pay(params[:amount].to_f)
+  Payment.add(current_user, amount) unless amount == 0
   redirect '/tenant/records'
 end
 
