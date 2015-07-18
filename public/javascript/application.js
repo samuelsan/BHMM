@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+
 	// See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
 	jQuery(function($) {
 		$('#payment-form').submit(function(event) {
@@ -34,3 +35,4 @@ $(document).ready(function() {
 
 
 });
+>>>>>>> bb0ca2af8230f0de7538e8156d47d3063c8be406
