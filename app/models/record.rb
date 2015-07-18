@@ -15,6 +15,25 @@ class Record < ActiveRecord::Base
       landlord = User.find(location.landlord_id)
       Record.create(tenant_id:user.id,landlord_id:landlord.id,location_id:location.id,amount_due:location.rate,amount_paid:0,date_due:duedate,date_paid:nil)
     end
+end
+
+  def self.send_mail
+    Pony.mail({
+    from:             "RentCollectorBBHMM@gmail.com",
+    to:               current_user.email,
+    subject:          current_user.name,
+    body:             erb(:emailmessage),
+    via:    :smtp,
+    via_options: {
+      address:        'smtp.gmail.com',
+      port:           '587',
+      user_name:      'RentCollectorBBHMM@gmail.com',
+      enable_starttls_auto: true,
+      password:       '123BBHMM',
+      authentication: :plain,
+      domain:         "localhost.localdomain" 
+    }
+    })
   end
 
 #def add(address, tenant_id, landlord_id, amount_paid, amount_due, date_due)
