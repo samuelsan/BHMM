@@ -20,11 +20,11 @@
           <th>amount paid</th>
         </tr>
       </thead>
-      <tbody>
+			<tbody>
         <% @payment.each do |r|%>
         <tr>
           <td> <%=r.created_at.strftime("%F %T")%> </td>  
-          <td><%= r.location.address %> </td>      
+					<td><%= r.location.address rescue '' %> </td>      
           <td><%= r.amount %> </td>    
         </tr> 
         <% end %>
