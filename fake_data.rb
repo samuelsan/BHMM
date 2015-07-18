@@ -11,7 +11,7 @@ address = Faker::Address.street_address + " " +  Faker::Address.secondary_addres
 pets = rand(2) == 1 ? true : false
 cities = ['Vancouver','Calgary','Edmonton','Winnpeg','Toronto','Montreal','Halifax']
 
-location = Location.create(landlord_id:rand(1..max_num),nickname:Faker::Lorem.word,address:address,rate:(rand(5..20)*100),interest_rate:0.045,allow_pets?:pets,no_people:rand(1..4),photo:"http://www.fakenamegenerator.com/images/sil-male.png",city:cities.sample, country:'Canada')
+location = Location.create(landlord_id:rand(1..max_num),nickname:Faker::Lorem.word,address:address,rate:(rand(5..20)*100),interest_rate:rand(3..15),allow_pets?:pets,no_people:rand(1..4),photo:"http://www.fakenamegenerator.com/images/sil-male.png",city:cities.sample, country:'Canada')
 end
 i=User.count
 20.times {

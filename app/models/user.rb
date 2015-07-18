@@ -15,19 +15,25 @@ class User < ActiveRecord::Base
     self.save
   end
 
-  def pay(amount=nil)
-    landlordid = Location.find(self.location_id).landlord_id
-    landlord = User.find(landlordid)
-    location = Location.find(self.location_id)
-    amount = location.rate if amount.nil?
-    self.account_balance -= amount
-    landlord.account_balance += amount
-    self.save
-    landlord.save
-    # record = Record.where()
-    # record.update_attributes(amount_paid+=amount)
-    # record.save
-  end
+	def pay(amount=nil)
+
+		landlordid = Location.find(self.location_id).landlord_id
+		landlord = User.find(landlordid)
+		location = Location.find(self.location_id)
+		records = Record.where(tenant_id:id).where(location_id:location.id)
+		outstanding_balance = records.sum(:amount_due) - records.sum(:amount_paid)
+		amount = location.rate if amount.nil?
+		amount = outstanding_balance if amount > outstanding_balance
+		return 0 if amount == 0 or outstanding_balance == 0
+		self.account_balance -= amount
+		landlord.account_balance += amount
+		self.save
+		landlord.save
+		# record = Record.where()
+		# record.update_attributes(amount_paid+=amount)
+		# record.save
+		return amount
+	end
   
   def set_balance
     self.account_balance = 0 if !account_balance
