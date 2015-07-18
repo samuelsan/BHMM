@@ -22,6 +22,6 @@ i=0
 }
 User.find(2).update(email:'123')
 
-Record.add
+Record.add_all
 
 puts Faker::Hacker.say_something_smart

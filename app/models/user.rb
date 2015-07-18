@@ -24,10 +24,8 @@ class User < ActiveRecord::Base
     landlord.account_balance += amount
     self.save
     landlord.save
-    # payment = Payment.add(amount)
-    # payment.save
     # record = Record.where()
-    # record.update_attributes(amount_paid+=amout)
+    # record.update_attributes(amount_paid+=amount)
     # record.save
   end
   
