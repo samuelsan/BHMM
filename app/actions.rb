@@ -11,14 +11,14 @@ helpers do
 end
 
 before do
-  redirect '/notloggedin' if !current_user && request.path != '/notloggedin' && request.path != '/login' && request.path != '/signup'  && request.path != '/locations'
+  redirect '/notloggedin' if !current_user && request.path != '/notloggedin' && request.path != '/login' && request.path != '/signup'  && request.path != '/locations'&& request.path != '/'
 end
 
 @login_error = false
 
 get '/' do
   # TODO: erb :home if session:[user]
-  erb :login
+  redirect '/locations'
 end
 
 get '/login' do
@@ -50,7 +50,7 @@ end
 
 post '/logout' do
   session.clear
-  redirect '/login'
+  redirect '/locations'
 end
 
 get '/notloggedin' do

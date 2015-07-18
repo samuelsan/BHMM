@@ -173,7 +173,7 @@
       <ul class="nav navbar-nav">
         <li><a href="/locations">View Locations</a></li> 
         <li><a data-toggle="modal" data-target="#NewUserModal" ><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a data-toggle="modal" data-target="#LoginModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 
       </ul>
 
@@ -233,9 +233,22 @@
       </div>
     </div>
   </div>
+</div> 
 
-
-
+<!-- Modal file for log-in  -->
+<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h1 class="modal-title" id="myModalLabel" align="center"><img src="/images/logo.png" height="50" width="50"> Login </h1>
+      </div> 
+      <div class="modal-body">
+        <%= erb :'partials/login'%>
+      </div>
+    </div>
+  </div>
+</div> 
 
 
 
