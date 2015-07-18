@@ -21,5 +21,5 @@ post '/charge' do
 	)
 	current_user.account_balance += params[:amount_charge].to_f
 	current_user.save
-	redirect '/home'
+	redirect '/emailrefill/true', 307
 end

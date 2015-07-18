@@ -1,8 +1,8 @@
 Dear <%= current_user.name %>,
 
-This email is to confirm your full payment of <%= Location.find(current_user.location_id).rate.round %> dollars in rent.  
+This email is to confirm your payment of <%= Payment.where(tenant_id:current_user.id).last.amount %> dollars in rent.  
 
-You currenty have <%= current_user.account_balance %> dollars.
+You currently have <%= current_user.account_balance %> dollars in your BHMM account.
 
 If you have any issues, please contact <%= User.find(Location.find(current_user.location_id).landlord_id).name %>, your landlord, at <%= User.find(Location.find(current_user.location_id).landlord_id).email %>
 
