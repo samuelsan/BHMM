@@ -34,7 +34,11 @@ end
 post '/tenant/pay/full' do
   amount = current_user.pay()
 	Payment.add(current_user, amount) unless amount == 0
-  redirect '/emailpay/true', 307
+  if current_user.account_balance > Location.find(current_user.location_id).rate
+    redirect '/emailpay/true', 307 
+  else
+    redirect '/lowfunds'
+  end
 end
 
 post '/tenant/pay/part' do
