@@ -37,6 +37,12 @@ post '/landlord/new_location' do
     redirect '/landlord'
   end
 end
+post '/landlord/my_locations/delete' do
+Location.find(params[:location_id].to_i).delete
+redirect "/landlord/my_locations"
+end
+
+
 
 get '/generate_lease/:tenant_id' do
   @tenant = User.find(params[:tenant_id])
