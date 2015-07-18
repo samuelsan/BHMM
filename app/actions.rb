@@ -142,13 +142,13 @@ get '/pets' do
 end
 
 #don't delete this.  This has also been moved to record.rb
-=begin
-post '/email' do
+
+post '/emailpay/:redirect' do
   Pony.mail({
     from:             "RentCollectorBBHMM@gmail.com",
     to:               current_user.email,
     subject:          current_user.name,
-    body:             erb(:emailmessage),
+    body:             erb(:paymessage, layout: false),
     via:    :smtp,
     via_options: {
       address:        'smtp.gmail.com',
@@ -160,8 +160,11 @@ post '/email' do
       domain:         "localhost.localdomain" 
     }
     })
+  if params[:redirect] 
+    redirect '/tenant/records'
+  end
 end
-=end
+
 
 get '/analytics' do
   redirect '/index.html'
