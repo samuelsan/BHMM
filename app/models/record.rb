@@ -30,8 +30,8 @@ class Record < ActiveRecord::Base
     from:             "RentCollectorBBHMM@gmail.com",
     to:               current_user.email,
     subject:          current_user.name,
-    body:             erb(:emailmessage),
-    via:    :smtp,
+    body:             erb(:remindermessage, layout: false),
+    via:              :smtp,
     via_options: {
       address:        'smtp.gmail.com',
       port:           '587',

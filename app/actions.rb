@@ -146,13 +146,13 @@ get '/lowfunds' do
 end
 
 #don't delete this.  This has also been moved to record.rb
-=begin
-post '/email' do
+
+post '/emailpay/:redirect' do
   Pony.mail({
     from:             "RentCollectorBBHMM@gmail.com",
     to:               current_user.email,
     subject:          current_user.name,
-    body:             erb(:emailmessage),
+    body:             erb(:paymessage, layout: false),
     via:    :smtp,
     via_options: {
       address:        'smtp.gmail.com',
@@ -164,8 +164,15 @@ post '/email' do
       domain:         "localhost.localdomain" 
     }
     })
+  if params[:redirect] 
+    if current_user.account_balance < Location.find(current_user.location_id).rate
+      redirect '/lowfunds'
+    else 
+      redirect '/tenant/records'
+    end
+  end
 end
-=end
+
 
 get '/analytics' do
   redirect '/index.html'

@@ -44,7 +44,7 @@
       </tr>
     </thead>
     <tbody>
-      <% if not ( @record.nil? or @record = []) %>
+			<% if not @record.nil? %>
       <% @record.each do |r|%>
       <tr>
         <td><%= r.location.address %> </td>      
