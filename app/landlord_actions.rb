@@ -4,12 +4,20 @@ get '/landlord' do
   erb :landlord_home
 end
 
-get '/landlord/records?:date' do
+get '/landlord/records?*' do
   @record = Record.where(landlord_id:current_user.id)
-  @months = []
+ 	@months = []
   unless @record.nil?
-    @months = @record.all.map {|d| d.date_due.strftime('%y-%m')}.uniq 
+    @months = @record.all.map {|d| d.date_due.strftime('%y-%m')}.uniq
+		@months << ''
   end
+	unless params[:date].nil?
+		puts params[:date]
+		date = params[:date].split("-")
+		start_date = Date.new(2000+date[0].to_i,date[1].to_i,1)
+		end_date = Date.new(2000+date[0].to_i,date[1].to_i + 1,1)
+		@record = @record.where(date_due:start_date..end_date)
+	end	
   erb :landlord_records
 end
 
