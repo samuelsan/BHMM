@@ -46,7 +46,7 @@
     <tbody>
 			<% if not @record.nil? %>
       <% @record.each do |r|%>
-      <tr>
+				<%= r.owning? ? '<tr style="background-color:red;">' : '<tr>' %>
         <td><%= r.location.address %> </td>      
         <td><%= r.amount_due %>$ </td>    
         <td><%= r.date_due.strftime("%F") rescue ""%> </td>    

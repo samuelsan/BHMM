@@ -25,6 +25,11 @@ class Record < ActiveRecord::Base
 		self.amount_due += outstanding_balance * self.location.interest_rate / 100
 	end
 
+	def owning?
+		return false if self.amount_due == self.amount_paid
+		return true
+	end
+
   def self.send_mail
     Pony.mail({
     from:             "RentCollectorBBHMM@gmail.com",
