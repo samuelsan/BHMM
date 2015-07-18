@@ -1,10 +1,17 @@
 class Location < ActiveRecord::Base
   has_many :users
   validates :address, uniqueness: true
-
+	after_destroy :check_user
   def charge
     # interest + rate*duration
   end
+
+	def check_user
+		User.where(location_id:self.id).each do |user|
+			user.update(location_id:nil)
+		end
+
+	end
 
   # ceiling month
   def duration

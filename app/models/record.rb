@@ -11,9 +11,12 @@ class Record < ActiveRecord::Base
     today = Date.today
     duedate = Date.new(today.year, today.month,27)
     User.where.not(location_id:nil).each do |user|
-      location = Location.find(user.location_id)
+    begin
+			location = Location.find(user.location_id)
       landlord = User.find(location.landlord_id)
       Record.create(tenant_id:user.id,landlord_id:landlord.id,location_id:location.id,amount_due:location.rate,amount_paid:0,date_due:duedate)
+		rescue ActiveRecord::RecordNotFound
+		end
     end
 	end
 

@@ -38,7 +38,7 @@ post '/landlord/new_location' do
   end
 end
 post '/landlord/my_locations/delete' do
-Location.find(params[:location_id].to_i).delete
+Location.find(params[:location_id].to_i).destroy
 redirect "/landlord/my_locations"
 end
 
