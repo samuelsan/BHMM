@@ -11,6 +11,9 @@ class Location < ActiveRecord::Base
 			user.update(location_id:nil)
 		end
 
+		Payment.where(location_id:self.id).each do |payment|
+			payment.update(location_id:Location.first.id)
+		end
 	end
 
   # ceiling month
