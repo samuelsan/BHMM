@@ -36,6 +36,10 @@
 <!-- NAV BAR -->
 <!-- LANDLORD -->
 <% if current_user && current_user.usertype == 0 %>
+<div id="slide" style="left: -440px; top: 0px; width: 440px;">
+<%= erb :'partials/blurmenu0' %>
+</div>  
+
 <nav class="navbar navbar-inverse default">
   <div class="container-fluid">
     <div class="navbar-header" >
@@ -52,7 +56,8 @@
         <li><a href="/records">Records</a></li> 
         <li><a href="/my_locations">My Locations</a></li>
         <li><a href="/locations">All Locations</a></li> 
-        <li><a><form type="submit" class="actionbtn" method="post" action="/logout"><button>Logout</button></a></li>
+        <li><a><form type="submit" method="post" action="/logout"><button>Logout</button></form></a></li>
+      </ul>
         <%end%>
       </ul>
   </div>
@@ -60,6 +65,9 @@
 
 <!-- TENANT -->
 <% else if current_user && current_user.usertype == 1 %>
+<div id="slide" style="left: -440px; top: 0px; width: 440px;">
+<%= erb :'partials/blurmenu1' %>
+</div>  
 <nav class="navbar navbar-inverse default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -76,7 +84,7 @@
         <li><a href="/records">Records</a></li> 
         <li><a href="/locations">View Locations</a></li> 
 
-        <li><a><form type="submit" method="post" action="/logout"><button>Logout</button></a></li>
+        <li><a><form type="submit" method="post" action="/logout"><button>Logout</button></form></a></li>
       </ul>
     </div>
   </div>
@@ -84,6 +92,9 @@
 
 <!-- landlord/tenant -->
 <% elsif current_user && current_user.usertype == 2 %>
+<div id="slide" style="left: -440px; top: 0px; width: 440px;">
+<%= erb :'partials/blurmenu2' %>
+</div>  
 <nav class="navbar navbar-inverse default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -117,8 +128,7 @@
         <li><a href="/my_locations">My Locations</a></li>
         <li><a href="/locations">View Locations</a></li> 
 
-
-        <li><a><form type="submit" method="post" action="/logout"><button>Logout</button></a></li>        
+        <li><a><form type="submit" method="post" action="/logout"><button>Logout</button></form></a></li>        
       </ul>
     </div>
   </div>
