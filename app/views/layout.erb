@@ -67,7 +67,7 @@
 
 <!-- TENANT -->
 <% else if current_user && current_user.usertype == 1 %>
-<nav class="navbar navbar-inverse default navbar-static-top">
+<nav class="navbar navbar-inverse default">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -103,7 +103,7 @@
 
 <!-- landlord/tenant -->
 <% elsif current_user && current_user.usertype == 2 %>
-<nav class="navbar navbar-inverse default navbar-fixed-top">
+<nav class="navbar navbar-inverse default">
   <div class="container-fluid">
     <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -156,7 +156,7 @@
 
 <!-- NOT LOGGED IN -->
 <% elsif !current_user %>
-<nav class="navbar navbar-inverse default navbar-fixed-top">
+<nav class="navbar navbar-inverse default ">
   <div class="container-fluid">
     <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
