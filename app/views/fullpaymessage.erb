@@ -1,0 +1,13 @@
+Dear <%= current_user.name %>,
+
+This email is to confirm your payment of <%=  %> dollars in rent.  
+
+You currently have <%= current_user.account_balance %> dollars in your BHMM account.
+
+If you have any issues, please contact <%= User.find(Location.find(current_user.location_id).landlord_id).name %>, your landlord, at <%= User.find(Location.find(current_user.location_id).landlord_id).email %>
+
+Have a wonderful day,
+
+Team BetterHaveMyMoney
+
+Note: We are not responsible for any evictions.
