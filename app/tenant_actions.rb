@@ -1,5 +1,7 @@
 # tenant
 get '/tenant' do
+
+	@amount_due = Record.where(tenant_id:current_user.id).sum(:amount_due) - Record.where(tenant_id:current_user.id).sum(:amount_paid)
   erb :tenant_home
 end
 

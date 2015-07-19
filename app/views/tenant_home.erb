@@ -35,7 +35,7 @@
 			<% end %>
 		</div>
 		<div class='col-sm-3'>
-			<form type="submit" method="get" action="/tenant/pay"> <button class='btn btn-primary actionbtn'>Pay Rent</button></form> <br>
+			<form type="submit" method="get" action="/tenant/pay" > <button <%= 'disabled' if @amount_due == 0 %> class='btn btn-primary actionbtn'>Pay Rent</button></form> <br>
 			<button type="button" class="btn btn-primary actionbtn" data-toggle="modal" data-target="#chargeCreditCard">
 				Refill Account
 			</button>
