@@ -66,18 +66,18 @@ end
 get '/home' do
   case current_user.usertype
   when 0
-    erb :landlord_home
+    redirect '/landlord'
   when 1
-    erb :tenant_home
+    redirect to('/tenant')
   when 2
-    erb :home
+    redirect to('/home')
   end
 end
 
 post '/home' do
-  case log_user.usertype
+  case current_user.usertype
   when 0
-    redirect to('/landlord')
+    redirect '/landlord'
   when 1
     redirect to('/tenant')
   when 2
@@ -88,9 +88,9 @@ end
 get '/records' do
   @record = Record.where(tenant_id:current_user.id)
   if current_user.usertype == 0
-    erb :landlord_records
+    redirect '/landlord/records'
   else current_user.usertype == 1
-    erb :tenant_records
+    redirect '/tenant/records'
   end
 end
 

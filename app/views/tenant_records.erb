@@ -38,7 +38,7 @@
 		<div class="row">
 
 			<div class="col-sm-offset-3 col-sm-2">
-				<a href='/tenant/pay' id='pay'><button <%= 'disabled' if @amount_due == 0 %> class="btn btn-info-sm actionbtn">Pay Rent</button></a>
+				<a href='/tenant/pay' id='pay'><button <%= 'disabled' if @amount_due <= 0 %> class="btn btn-info-sm actionbtn">Pay Rent</button></a>
 				</div> 
 			<div class=" col-sm-6">
 				<h3 style="color: white; background: rgba(0,0,0, 0.8)"> Payment History </h3> 
