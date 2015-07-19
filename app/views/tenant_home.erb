@@ -1,8 +1,7 @@
 <div class="container">
 	<div class="row">
-		<div class="col-sm-offset-0 col-sm-4 col-md-3"><h1>
+		<div class="col-sm-offset-2 col-sm-3 col-md-3">
 			<h3 style="color: white; background: rgba(0,0,0, 0.8)">User information: </h3> <br>
-			<p>
 				<table class="table table-hover">
 					<tr><td>Name:</td><td> <%= current_user.name %></td></tr>
 					<tr><td>Email: </td><td><%= current_user.email %></td></tr>
@@ -11,9 +10,8 @@
 					<tr><td>Account Balance: </td><td>$<%= current_user.account_balance.round %></td></tr>
 					<tr><td>Pets: </td><td><%= current_user.pets%></td></tr>
 				</table> 
-			</p> 
 
-			<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#updateInfo">
+			<button type="button" class="btn btn-primary " data-toggle="modal" data-target="#updateInfo">
 				Update info
 			</button>
 
@@ -33,10 +31,11 @@
 				<tr><td>Landlord Email: </td><td><%= User.find(Location.find(current_user.location_id).landlord_id).email %></td></tr>
 			</table> 
 
-			<form type="submit" method="post" action="/moveout"> <button class="actionbtn">MOVE OUT!</button></form><br>
+			<form type="submit" method="post" action="/moveout"> <button class="btn btn-danger">MOVE OUT!</button></form>
 			<% end %>
 		</div>
-		<div class='col-sm-4'>
+		<div class='col-sm-3'>
+				<br>
 			<div class="listingtenant">
 				<% if current_user.account_balance < 100 %>
 				<span style="color: red; font-weight: bold; font-size: 22px; text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87"> YOU BROKE </span>
@@ -53,7 +52,7 @@
 			</div> 
 		</div>
     </div>
-  </div>
+	</div>
 		<!-- Modal file for updating info  -->
 		<div class="modal fade" id="updateInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			<div class="modal-dialog" role="document">
