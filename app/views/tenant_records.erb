@@ -21,12 +21,14 @@
         </tr>
       </thead>
 			<tbody>
+				<% unless @payment.nil? %>
         <% @payment.each do |r|%>
         <tr>
           <td> <%=r.created_at.strftime("%F %T")%> </td>  
-					<td><%= r.location.address rescue '' %> </td>      
+					<td><%= r.location.address rescue "" %> </td>      
           <td><%= r.amount %> </td>    
         </tr> 
+        <% end %>
         <% end %>
       </tbody> 
     </table>
