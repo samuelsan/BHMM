@@ -1,7 +1,3 @@
-<header>
-  <span class="title"><h1>PAY!</h1></span>
-</header>
-
 <h2>Account Balance: <%=current_user.account_balance.round%></h2>
 
 <h2>Rent Rate: <%=Location.find(current_user.location_id).rate.round%> $ Per Month</h2>
