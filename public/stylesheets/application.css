@@ -1,3 +1,13 @@
+#slide {
+	border:1.5px solid black;
+	position:absolute;
+	top:0;
+	left:0;
+	width:150px;
+	height:100%;
+	background-color:#F2F2F2;
+	layer-background-color:#F2F2F2;
+}
 html{
   background: url("/images/interior.jpg") no-repeat center fixed;
   background-size: 100%;
