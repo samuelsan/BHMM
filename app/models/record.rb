@@ -29,7 +29,7 @@ class Record < ActiveRecord::Base
 	end
 
 	def owning?
-		return false if self.amount_due == self.amount_paid
+		return false if self.amount_due == self.amount_paid or self.date_due.month == Date.today.month
 		return true
 	end
 
