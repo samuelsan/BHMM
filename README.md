@@ -1,14 +1,10 @@
-Sinatra
+Better Have My Money - Rent Collector App
 =============
 
-Brought to you by Lighthouse Labs
+Brought to you by Lighthouse Labs June 22 Cohort
 
-## Getting Started
+Cool project as out mid-term peoject during the 8-week inensive web development course at Lighthouse Labs.
+This project helps landlords with multiple locations manange bills and collect rent every month.
 
-1. `bundle install`
-2. `shotgun -p 3000 -o 0.0.0.0`
-3. Visit `http://localhost:3000/` in your browser
-
-
-
-# Midterm Project - Rent Collector
+chekout live demo at .
+http://bhmm_lighthouse.mooo.com/
