@@ -1,72 +1,54 @@
-<div class="row">
-	<div class="col-sm-4 col-md-3">
-		<h3 style="color: white; background: rgba(0,0,0, 0.8)">User information: </h3>
-		<p>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-offset-2 col-sm-4 col-md-3">
+			<h3 style="color: white; background: rgba(0,0,0, 0.8)">User information: </h3>
+			<p>
+				<table class="table table-hover">
+					<tr><td>Name:</td><td> <%= current_user.name %></td></tr>
+					<tr><td>Email: </td><td><%= current_user.email %></td></tr>
+					<tr><td>Password: </td><td>************</td></tr>
+					<tr><td>Phone Number: </td><td><%= current_user.phone %></td></tr>
+					<tr><td>Account Balance: </td><td>$<%= current_user.account_balance.round %></td></tr>
+					<tr><td>Pets: </td><td><%= current_user.pets%></td></tr>
+				</table> 
+			</p> 
+
+			<button type="button" class="btn btn-primary actionbtn" data-toggle="modal" data-target="#updateInfo">
+				Update info
+			</button>
+		</div>
+
+		<div class="col-sm-4">
+			<h3 style="color: white; background: rgba(0,0,0, 0.8)">Home information: </h3>
+			<% if current_user.location_id == nil %> 
+			<a href="/locations" style="font-size: 40px">Find a place!</a>
+			<% else %> 
+
 			<table class="table table-hover">
-				<tr><td>Name:</td><td> <%= current_user.name %></td></tr>
-				<tr><td>Email: </td><td><%= current_user.email %></td></tr>
-				<tr><td>Password: </td><td>************</td></tr>
-				<tr><td>Phone Number: </td><td><%= current_user.phone %></td></tr>
-				<tr><td>Account Balance: </td><td>$<%= current_user.account_balance.round %></td></tr>
-				<tr><td>Pets: </td><td><%= current_user.pets%></td></tr>
+				<tr><td>Address:</td><td><%= Location.find(current_user.location_id).address %></td></tr>
+				<tr><td>Rate: </td><td>$<%= Location.find(current_user.location_id).rate.round %>/month</td></tr>
+				<tr><td>Landlord: </td><td><%= User.find(Location.find(current_user.location_id).landlord_id).name %></td></tr>
+				<tr><td>Landlord Email: </td><td><%= User.find(Location.find(current_user.location_id).landlord_id).email %></td></tr>
 			</table> 
-		</p> 
 
-		<button type="button" class="btn btn-primary actionbtn" data-toggle="modal" data-target="#updateInfo">
-			Update info
-		</button>
-	</div>
-
-	<div class="col-sm-4">
-
-		<h3 style="color: white; background: rgba(0,0,0, 0.8)">Home information: </h3> <br>
-		<% if current_user.location_id == nil %> 
-		<a href="/locations" style="font-size: 40px">Find a place!</a>
-		<% else %> 
-
-		<table class="table table-hover">
-			<tr><td>Address:</td><td><%= Location.find(current_user.location_id).address %></td></tr>
-			<tr><td>Rate: </td><td>$<%= Location.find(current_user.location_id).rate.round %>/month</td></tr>
-			<tr><td>Landlord: </td><td><%= User.find(Location.find(current_user.location_id).landlord_id).name %></td></tr>
-			<tr><td>Landlord Email: </td><td><%= User.find(Location.find(current_user.location_id).landlord_id).email %></td></tr>
-		</table> 
-
-		<form type="submit" method="post" action="/moveout"> <button class="actionbtn">MOVE OUT!</button></form><br>
-		<% end %>
-	</div>
-	<div class='col-sm-4'>
-		<div class="listingtenant">
+			<form type="submit" method="post" action="/moveout"> <button class="btn btn-danger" style="font-family:'Satisfy'">MOVE OUT!</button></form>
+			<% end %>
+		</div>
+		<div class='col-sm-3'>
+			<form type="submit" method="get" action="/tenant/pay"> <button class='btn btn-primary actionbtn'>Pay Rent</button></form> <br>
+			<button type="button" class="btn btn-primary actionbtn" data-toggle="modal" data-target="#chargeCreditCard">
+				Refill Account
+			</button>
 			<% if current_user.account_balance < 100 %>
 			<span style="color: red; font-weight: bold; font-size: 22px; text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87"> YOU BROKE </span>
 			<% elsif current_user.account_balance > 5000%> 
 			<span style="color: green; font-weight: bold; font-size: 22px; text-shadow: 0 0 0.2em #23A610"> YOU BALLIN</span>
 			<%end%>
-
-<<<<<<< HEAD
-			<form type="submit" method="post" action="/work"> <button class='btn btn-primary actionbtn'>Werk</button></form><br>
-=======
-			<form type="submit" method="post" action="/moveout"> <button class="btn btn-danger">MOVE OUT!</button></form>
-			<% end %>
-		</div>
-		<div class='col-sm-3'>
-				<br>
-			<div class="listingtenant">
-				<% if current_user.account_balance < 100 %>
-				<span style="color: red; font-weight: bold; font-size: 22px; text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87"> YOU BROKE </span>
-				<% elsif current_user.account_balance > 5000%> 
-				<span style="color: green; font-weight: bold; font-size: 22px; text-shadow: 0 0 0.2em #23A610"> YOU BALLIN</span>
-				<%end%>
->>>>>>> a3ad4be9d0ca6527a627fbcf501ddc0789467aad
-
-			<form type="submit" method="get" action="/tenant/pay"> <button class='btn btn-primary actionbtn'>Pay Rent</button></form> <br>
-			<button type="button" class="btn btn-primary actionbtn" data-toggle="modal" data-target="#chargeCreditCard">
-				Refill Account
-			</button>
 		</div> 
+
 	</div>
 </div>
 
-<<<<<<< HEAD
 <!-- Modal file for updating info  -->
 <div class="modal fade" id="updateInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
@@ -77,36 +59,10 @@
 			</div>
 			<div class="modal-body">
 				<!-- Update info body here -->
-=======
-				<form type="submit" method="get" action="/tenant/pay"> <button class='btn btn-primary'>Pay Rent</button></form> <br>
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#chargeCreditCard">
-					Refill Account
-				</button>
-			</div> 
-		</div>
-    </div>
-	</div>
-		<!-- Modal file for updating info  -->
-		<div class="modal fade" id="updateInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="myModalLabel">New Location</h4>
-					</div>
-					<div class="modal-body">
-						<!-- Update info body here -->
-					</div>
-				</div>
->>>>>>> a3ad4be9d0ca6527a627fbcf501ddc0789467aad
 			</div>
 		</div>
 	</div>
 </div>
-</div>
-</div> 
-
-
 
 <!-- Modal file for refill accunt  -->
 <div class="modal fade" id="chargeCreditCard" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

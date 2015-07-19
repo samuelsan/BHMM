@@ -38,6 +38,7 @@ h1 {
   font-family: 'Lobster Two';
   font-size:50px;
   margin-top: 0px;
+  padding-top: 10px;
 }
 
 #tenantinfo {
@@ -177,6 +178,7 @@ h2 {
   background: -webkit-gradient(linear, left top, left bottom, from(#8A8A8A), to(#000000));
   background: -moz-linear-gradient(top,  #8A8A8A,  #000000);
 /*  font-family: Copperplate Gothic;*/
+  font-family: 'Satisfy';
 }
 
 .actionbtn:hover {

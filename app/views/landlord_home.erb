@@ -1,7 +1,6 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-offset-2 col-sm-4 col-md-3">
-
 			<h3 style="color: white; background: rgba(0,0,0, 0.8)">User information: </h3> 
 			<p>
 				<table class="table table-hover">
@@ -17,12 +16,9 @@
 			<button type="button" class="btn btn-primary btn-lg actionbtn" data-toggle="modal" data-target="#updateInfo">
 				Update info
 			</button>
+		</div>
 
-		 </div>
-
-		<div class="col-sm-1">
-			</div> 
-		<div class="col-sm-5">
+		<div class="col-sm-10 col-md-6">
 			<h3 style="color: white; background: rgba(0,0,0, 0.8)">My Locations: </h3> 
 			<table class='table table-hover'>
 				<thead> 
@@ -42,67 +38,40 @@
 					<% end %>
 				</tbody>
 			</table> 
-		</p> 
-
-		<button type="button" class="btn btn-primary actionbtn" data-toggle="modal" data-target="#updateInfo">
-			Update info
-		</button> 
-	</div>
-	
-	<div class="col-sm-10 col-md-6">
-		<h3 style="color: white; background: rgba(0,0,0, 0.8)">My Locations: </h3> 
-		<table class='table table-hover'>
-			<thead> 
-				<tr> <th>Name </th>
-					<th>Address </th>
-					<th> Rate </th> 
-				</tr> 
-			</thead> 
-			<tbody>
-				<% if @locations %>
-				<% @locations.each do |location| %>
-				<tr>	<td><%= location.nickname %></td>
-					<td><%=location.address %> </td>
-					<td>$<%=location.rate.round %> </td> 
-				</tr> 
-				<% end %>
-				<% end %>
-			</tbody>
-		</table> 
-		<button type="button" class="btn btn-primary btn-lg actionbtn" data-toggle="modal" data-target="#newLocation">
-			Add new Location
-		</button>
-	</div>
-</div>
-
-<!-- Modal file for adding new location  -->
-<div class="modal fade" id="newLocation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">New Location</h4>
-				binding.pry
-			</div>
-			<div class="modal-body">
-				<!-- New Location body here -->
-				<%= erb :'partials/new_location' %>
-			</div>
+			<button type="button" class="btn btn-primary btn-lg actionbtn" data-toggle="modal" data-target="#newLocation">
+				Add new Location
+			</button>
 		</div>
 	</div>
 </div>
-
-<!-- Modal file for updating info  -->
-<div class="modal fade" id="updateInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">New Location</h4>
-			</div>
-			<div class="modal-body">
-				<!-- Update info body here -->
-				<%= erb :'partials/update_info' %>
+	<!-- Modal file for adding new location  -->
+	<div class="modal fade" id="newLocation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">New Location</h4>
+					binding.pry
+				</div>
+				<div class="modal-body">
+					<!-- New Location body here -->
+					<%= erb :'partials/new_location' %>
+				</div>
 			</div>
 		</div>
 	</div>
+
+	<!-- Modal file for updating info  -->
+	<div class="modal fade" id="updateInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">New Location</h4>
+				</div>
+				<div class="modal-body">
+					<!-- Update info body here -->
+					<%= erb :'partials/update_info' %>
+				</div>
+			</div>
+		</div>
