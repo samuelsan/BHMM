@@ -33,11 +33,13 @@ end
 
 post '/tenant/pay/full' do
 	redirect '/lowfunds' if current_user.account_balance <= 0
-  if current_user.account_balance > Location.find(current_user.location_id).rate
+
+  @amount = current_user.pay()
+  if @amount > 0 
     redirect '/emailpayfull/true', 307 
   else
 		#should redirect to no bills to pay page here
-		redirect '/tena:'
+		redirect '/tenant'
   end
 end
 
@@ -48,6 +50,7 @@ post '/tenant/pay/part' do
     redirect '/emailpay/true', 307 
     else
     #should redirect to no bills to pay page here
+		redirect '/tenant'
   end
 end
 
