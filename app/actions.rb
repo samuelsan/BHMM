@@ -196,6 +196,32 @@ post '/emailrefill/:redirect' do
   end
 end
 
+post '/emailpayfull/:redirect' do
+  Pony.mail({
+    from:             "RentCollectorBBHMM@gmail.com",
+    to:               current_user.email,
+    subject:          current_user.name,
+    body:             erb(:fullpaymessage, layout: false),
+    via:              :smtp,
+    via_options: {
+      address:        'smtp.gmail.com',
+      port:           '587',
+      user_name:      'RentCollectorBBHMM@gmail.com',
+      enable_starttls_auto: true,
+      password:       '123BBHMM',
+      authentication: :plain,
+      domain:         "localhost.localdomain" 
+    }
+    })
+ if params[:redirect] 
+    if current_user.account_balance < Location.find(current_user.location_id).rate
+      redirect '/lowfunds'
+    else 
+      redirect '/tenant/records'
+    end
+  end
+end
+
 get '/new_month' do
 	Record.add_all
   redirect '/'

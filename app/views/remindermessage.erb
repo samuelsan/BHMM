@@ -2,7 +2,7 @@ Dear <%= current_user.name %>,
 
 This is a friendly reminder that your rent is due in <%= (Record.where(tenant_id:current_user.id).last.date_due - Date.today).to_i %> days.
 
-You currenty have <%= current_user.account_balance %> dollars.
+You currently have <%= current_user.account_balance %> dollars.
 You can fillup your account in tenant's home page.
 
 If you have any issues, please contact <%= User.find(Location.find(current_user.location_id).landlord_id).name %>, your landlord, at <%= User.find(Location.find(current_user.location_id).landlord_id).email %>
