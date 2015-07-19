@@ -83,9 +83,9 @@ end
 get '/records' do
   @record = Record.where(tenant_id:current_user.id)
   if current_user.usertype == 0
-    redirect '/landlord/records'
+    erb :landlord_records
   else current_user.usertype == 1
-    redirect '/tenant/records'
+    erb :tenant_records
   end
 end
 

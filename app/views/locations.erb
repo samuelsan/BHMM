@@ -2,26 +2,18 @@
   <span class="title"><h1>All locations</h1></span>
 </header>
 
-<div> <form type="submit" method="post" action="/email"> <button class='actionbtn'>Send Email</button></form>
-</div>
-
-<body>
+<%= erb :'partials/locationeffect' %>
+<ul class="ca-menu">
   <% @location.each do |location| %>
-  <div class = "listing fade">
-    <!-- TODO: only show available locations -->
-    <h2><%= location.address %></h2>
-    <div>$<%=location.rate.round %> <br>
-      Pets: <%= (location.allow_pets?)? "Allowed" : "Not Allowed"%> <br>
-
-      <%if current_user%>
-      <form type="submit" method="post" action="/movein/<%=location.id%>"> <button class="actionbtn">MOVE IN!</button></form><br></div>
-      <%else%>
-      <a data-toggle="modal" data-target="#NewUserModal"> <button class="actionbtn">MOVE IN TODAY!</button></a>
-      <%end%>
-
-    </div>
-
-
-    </div>
-    <% end %>
-  </body>
+  <li style="margin:10px; text-align:center">
+   <img src="images/home.png" class="ca-icon" id="heart">
+   <h2 class="ca-main"><%= location.address %></h2>
+   <h3 style="margin-top:0px">$<%=location.rate.round %> - <%= (location.allow_pets?)? "Pets allowed" : "No Pets"%></h3>
+   <%if !current_user%>
+   <a data-toggle="modal" data-target="#NewUserModal" class="ca-sub" style="text-align:center"> SIGN UP TO MOVE IN!</a>
+  <%else%>
+  <form type="submit" method="post" action="/movein/<%=location.id%>"> <button class="ca-sub">Move in!</button></form>
+   <%end%>
+ </li>
+ <% end %>
+</ul>
