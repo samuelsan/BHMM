@@ -15,12 +15,11 @@ class User < ActiveRecord::Base
     self.save
   end
 
-	def pay(amount=nil)
-
+	def pay(amount=999999999999999999)
 		landlordid = Location.find(self.location_id).landlord_id
 		landlord = User.find(landlordid)
 		location = Location.find(self.location_id)
-		records = Record.where(tenant_id:id).where(location_id:location.id)
+		records = Record.where(tenant_id:id)
 		outstanding_balance = records.sum(:amount_due) - records.sum(:amount_paid)
 		amount = location.rate if amount.nil?
 		amount = outstanding_balance if amount > outstanding_balance

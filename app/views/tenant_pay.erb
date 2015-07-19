@@ -8,7 +8,7 @@
 
 <h2>Next due date: <%= @record.last.due_date rescue "Invoice not ready" %></h2>
 
-<h2>Amount due: </h2>
+<h2>Outstanding Balance: <%= (@record.sum(:amount_due) - @record.sum(:amount_paid)) rescue "No bill to pay" %></h2>
 
 <br>
 <div class="row">
@@ -19,10 +19,6 @@
     <div class="input-group-addon">$</div>
     <input type="text" name="amount" class="form-control" id="exampleInputAmount" placeholder="Amount">
     <div class="input-group-addon">.00</div>
-  </div>
-  <button class="actionbtn">Transfer amount</button></form>
-</div> </div> 
-  <span style="font-size:30px">- OR - </span>
-  <form type="submit" method="post" action="/tenant/pay/full"> <button class='actionbtn'>Pay in full</button></form><br>
-
-email pay
+	</div>
+  <button class="btn btn-primary">Pay this amount</button></form>
+  <form type="submit" method="post" action="/tenant/pay/full"> <button class='btn btn-primary'>Pay in full</button></form><br>

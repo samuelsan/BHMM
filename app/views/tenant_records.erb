@@ -20,11 +20,11 @@
           <th>amount paid</th>
         </tr>
       </thead>
-      <tbody>
+			<tbody>
         <% @payment.each do |r|%>
         <tr>
           <td> <%=r.created_at.strftime("%F %T")%> </td>  
-          <td><%= r.location.address %> </td>      
+					<td><%= r.location.address rescue '' %> </td>      
           <td><%= r.amount %> </td>    
         </tr> 
         <% end %>
@@ -46,7 +46,7 @@
     <tbody>
 			<% if not @record.nil? %>
       <% @record.each do |r|%>
-				<%= r.owning? ? '<tr style="background-color:red;">' : '<tr>' %>
+				<%= r.owning? ? '<tr style="color:red;">' : '<tr>' %>
         <td><%= r.location.address %> </td>      
         <td><%= r.amount_due %>$ </td>    
         <td><%= r.date_due.strftime("%F") rescue ""%> </td>    

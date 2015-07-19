@@ -42,8 +42,6 @@ Location.find(params[:location_id].to_i).destroy
 redirect "/my_locations"
 end
 
-
-
 get '/generate_lease/:tenant_id' do
   @tenant = User.find(params[:tenant_id])
   @landlord = current_user
