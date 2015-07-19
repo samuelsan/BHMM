@@ -58,7 +58,7 @@
           <li><a href="/records">Records</a></li> 
           <li><a href="/my_locations">My Locations</a></li>
           <li><a href="/locations">All Locations</a></li> 
-          <li><a><form type="submit" method="post" action="/logout"><button>Logout</button></form></a></li>
+          <li><a href="/logout">Logout</a></li>
         </ul>
         <div class="col-sm-3 col-md-3 pull-right">
           <form  method="post" action="/search">
@@ -95,8 +95,7 @@
           <li><a href="/home">Home</a></li>
           <li><a href="/records">Records</a></li> 
           <li><a href="/locations">View Locations</a></li> 
-
-          <li><a><form type="submit" method="post" action="/logout"><button>Logout</button></form></a></li>
+          <li><a href="/logout">Logout</a></li>
         </ul>
         <div class="col-sm-3 col-md-3 pull-right">
           <form  method="post" action="/search">
@@ -149,8 +148,7 @@
 
           <li><a href="/my_locations">My Locations</a></li>
           <li><a href="/locations">View Locations</a></li> 
-
-          <li><a><form type="submit" method="post" action="/logout"><button>Logout</button></form></a></li>        
+          <li><a href="/logout">Logout</a></li>        
         </ul>
 
         <div class="col-sm-3 col-md-3 pull-right">
@@ -257,8 +255,20 @@
   </div>
 </div> 
 
-
-
+  <!-- Modal file for log-out NOT IN USE LOL DISREGARD THIS -->  
+  <div class="modal fade" id="LogoutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+   <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h1 class="modal-title" id="myModalLabel" align="center"><img src="/images/logo.png" height="50" width="50"> Logout </h1>
+      </div> 
+      <div class="modal-body">
+        <a href="/logout">Logout</a>
+      </div>
+    </div>
+  </div>
+</div> 
 
 </body>
 </html>

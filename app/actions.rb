@@ -49,6 +49,11 @@ post '/login' do
  end 
 end
 
+get '/logout' do
+  session.clear
+  redirect 'locations'
+end
+
 post '/logout' do
   session.clear
   redirect '/locations'
