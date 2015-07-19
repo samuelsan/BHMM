@@ -11,7 +11,7 @@
 <h3><b>Account Balance:</b></h3>	<h2 align="right">	<%=current_user.account_balance.round%></h2>
 </tr>
 <tr><h3><b>Rent Rate:</b> </h3> <h2 align="right"> <%=Location.find(current_user.location_id).rate.round%> $ Per Month</h2></tr>
-<tr><h3><b>Next due date:</b> </h3> <h2 align="right"> <%= @record.last.due_date rescue "Invoice not ready" %></h2></tr>
+<tr><h3><b>Next due date:</b> </h3> <h2 align="right"> <%= @record.last.due_date.strftime("%F") rescue "Invoice not ready" %></h2></tr>
 
 <tr><h3><b>Outstanding Balance:</b> </h3> <h2 align="right"> <%= (@record.sum(:amount_due) - @record.sum(:amount_paid)).to_s + "$" rescue "No bill to pay" %></h2> </tr> 
 </table> 
@@ -19,6 +19,7 @@
 <div class="col-md-4">
 
 
+<form method="post" action="/tenant/pay/part">
 <br>
   <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
   <div class="input-group">
@@ -27,9 +28,8 @@
     <div class="input-group-addon">.00</div>
 	</div>
 	<table><tr>
-<form method="post" action="/tenant/pay/part">
 	<button class="btn btn-primary">Pay this amount</button></form> 
-<form type="submit" method="post" action="/tenant/pay/full"> <button class='btn btn-primary'>Pay in full</button></form>
+<form method="post" action="/tenant/pay/full"> <button  type="submit" class='btn btn-primary'>Pay in full</button></form>
 </tr> </table> 
 </div> 
 </div> 

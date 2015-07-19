@@ -1,14 +1,46 @@
-<div class="row">
-	<div class="col-sm-4 col-md-3">
-		<h3 style="color: white; background: rgba(0,0,0, 0.8)">User information: </h3> 
-		<p>
-			<table class="table table-hover">
-				<tr><td>Name:</td><td> <%= current_user.name %></td></tr>
-				<tr><td>Email: </td><td><%= current_user.email %></td></tr>
-				<tr><td>Password: </td><td>************</td></tr>
-				<tr><td>Phone Number: </td><td><%= current_user.phone %></td></tr>
-				<tr><td>Account Balance: </td><td>$<%= current_user.account_balance.round %></td></tr>
-				<tr><td>Pets: </td><td><%= current_user.pets%></td></tr>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-offset-2 col-sm-4 col-md-3">
+
+			<h3 style="color: white; background: rgba(0,0,0, 0.8)">User information: </h3> 
+			<p>
+				<table class="table table-hover">
+					<tr><td>Name:</td><td> <%= current_user.name %></td></tr>
+					<tr><td>Email: </td><td><%= current_user.email %></td></tr>
+					<tr><td>Password: </td><td>************</td></tr>
+					<tr><td>Phone Number: </td><td><%= current_user.phone %></td></tr>
+					<tr><td>Account Balance: </td><td>$<%= current_user.account_balance.round %></td></tr>
+					<tr><td>Pets: </td><td><%= current_user.pets%></td></tr>
+				</table> 
+			</p> 
+			
+			<button type="button" class="btn btn-primary btn-lg actionbtn" data-toggle="modal" data-target="#updateInfo">
+				Update info
+			</button>
+
+		 </div>
+
+		<div class="col-sm-1">
+			</div> 
+		<div class="col-sm-5">
+			<h3 style="color: white; background: rgba(0,0,0, 0.8)">My Locations: </h3> 
+			<table class='table table-hover'>
+				<thead> 
+					<tr> <th>Name </th>
+						<th>Address </th>
+						<th> Rate </th> 
+					</tr> 
+				</thead> 
+				<tbody>
+					<% if @locations %>
+					<% @locations.each do |location| %>
+					<tr>	<td><%= location.nickname %></td>
+						<td><%=location.address %> </td>
+						<td>$<%=location.rate.round %> </td> 
+					</tr> 
+					<% end %>
+					<% end %>
+				</tbody>
 			</table> 
 		</p> 
 

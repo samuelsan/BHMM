@@ -42,7 +42,21 @@
 			<span style="color: green; font-weight: bold; font-size: 22px; text-shadow: 0 0 0.2em #23A610"> YOU BALLIN</span>
 			<%end%>
 
+<<<<<<< HEAD
 			<form type="submit" method="post" action="/work"> <button class='btn btn-primary actionbtn'>Werk</button></form><br>
+=======
+			<form type="submit" method="post" action="/moveout"> <button class="btn btn-danger">MOVE OUT!</button></form>
+			<% end %>
+		</div>
+		<div class='col-sm-3'>
+				<br>
+			<div class="listingtenant">
+				<% if current_user.account_balance < 100 %>
+				<span style="color: red; font-weight: bold; font-size: 22px; text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87"> YOU BROKE </span>
+				<% elsif current_user.account_balance > 5000%> 
+				<span style="color: green; font-weight: bold; font-size: 22px; text-shadow: 0 0 0.2em #23A610"> YOU BALLIN</span>
+				<%end%>
+>>>>>>> a3ad4be9d0ca6527a627fbcf501ddc0789467aad
 
 			<form type="submit" method="get" action="/tenant/pay"> <button class='btn btn-primary actionbtn'>Pay Rent</button></form> <br>
 			<button type="button" class="btn btn-primary actionbtn" data-toggle="modal" data-target="#chargeCreditCard">
@@ -52,6 +66,7 @@
 	</div>
 </div>
 
+<<<<<<< HEAD
 <!-- Modal file for updating info  -->
 <div class="modal fade" id="updateInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
@@ -62,6 +77,28 @@
 			</div>
 			<div class="modal-body">
 				<!-- Update info body here -->
+=======
+				<form type="submit" method="get" action="/tenant/pay"> <button class='btn btn-primary'>Pay Rent</button></form> <br>
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#chargeCreditCard">
+					Refill Account
+				</button>
+			</div> 
+		</div>
+    </div>
+	</div>
+		<!-- Modal file for updating info  -->
+		<div class="modal fade" id="updateInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel">New Location</h4>
+					</div>
+					<div class="modal-body">
+						<!-- Update info body here -->
+					</div>
+				</div>
+>>>>>>> a3ad4be9d0ca6527a627fbcf501ddc0789467aad
 			</div>
 		</div>
 	</div>

@@ -1,37 +1,15 @@
 <div class="row">
-<div class="col-sm-offset-1 col-sm-4">
-  <div style="color: white; background: rgba(0,0,0, 0.8); width: 600px">
-    <h2>Upcoming Due Date: <%= @record.last.date_due rescue "" %></h2>
-    <h2>Amount due: $<%= @amount_due %></h2>
-    <h2>Current Balance : $<%= current_user.account_balance%> </h2>
+<div class="col-sm-offset-2 col-sm-4">
+	<br>
+	<div style="color: white; background: rgba(0,0,0, 0.8);">
+		<table>
+			<tr><b> <h4>Upcoming Due Date:</h4></b> <h2 align="right"> <%= @record.last.date_due.strftime("%F") rescue "" %></h2></tr>
+			<tr><b> <h4>Amount due:</h4></b> <h2 align="right"> $<%= @amount_due %></h2></tr>
+			<tr> <h4><b>Current Balance :</b></h4><h2 align='right'> $<%= current_user.account_balance%> </h2> </tr>
+		</table> 
   </div>
-</div>
-<br> 
-	<div class="col-sm-offset-1 col-sm-4">
-    <h3 style="color: white; background: rgba(0,0,0, 0.8)"> Payment History </h2> 
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>date paid</th>
-          <th>address</th>
-          <th>amount paid</th>
-        </tr>
-      </thead>
-			<tbody>
-				<% unless @payment.nil? %>
-        <% @payment.each do |r|%>
-        <tr>
-          <td> <%=r.created_at.strftime("%F %T")%> </td>  
-					<td><%= r.location.nil? ? '' : r.location.address %> </td>      
-          <td><%= r.amount %> </td>    
-        </tr> 
-        <% end %>
-        <% end %>
-      </tbody> 
-    </table>
-  </div>
-
-  <div class="col-sm-5">
+</div> 
+  <div class="col-sm-6">
     <h3 style="color: white; background: rgba(0,0,0, 0.8)"> Invoice </h3> 
     <table class="table table-hover">
      <thead>
@@ -55,7 +33,40 @@
       <% end %>
     </tbody> 
   </table>
-<a href='/tenant/pay' id='pay'><button class="btn actionbtn">Pay Rent</button></a>
+</div>
+
+
+
+</div>
+<br>
+<div class="row">
+	<div class="col-sm-offset-2 col-sm-4">
+		<p> </p> <br> 
+    <h3 style="color: white; background: rgba(0,0,0, 0.8)"> Payment History </h3> 
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>date paid</th>
+          <th>address</th>
+          <th>amount paid</th>
+        </tr>
+      </thead>
+			<tbody>
+				<% unless @payment.nil? %>
+        <% @payment.each do |r|%>
+        <tr>
+          <td> <%=r.created_at.strftime("%F %T")%> </td>  
+					<td><%= r.location.nil? ? '' : r.location.address %> </td>      
+          <td><%= r.amount %> </td>    
+        </tr> 
+        <% end %>
+        <% end %>
+      </tbody> 
+    </table>
+    <a href='/tenant/pay' id='pay'><button class="btn btn-info-sm actionbtn">Pay Rent</button></a>
+  </div>
+
+
 </div>
 </div>
 
