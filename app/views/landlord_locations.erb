@@ -1,43 +1,48 @@
-<table class="table table-hover">
-  <thead><tr>
-   <th>Nickname </th> 
-   <th>Address </th> 
-   <th>Monthly Rate </th> 
-   <th>Interest Rate </th> 
-   <th>Pets </th> 
-	 <th>Capacity </th>
-	 <th> </th>  
- </tr></thead> 
- <tbody>
-   <% @location.each do |location| %>
-   <tr>
-     <td><%=location.nickname%> </td> 
-     <td><%=location.address%> </td> 
-     <td><%=location.rate%> </td> 
-     <td><%=location.interest_rate%> </td> 
-     <td><%=location.allow_pets?%> </td> 
-		 <td><%=location.no_people%> </td>
-		 <td> <form method="post" action="/my_locations/delete"><input type="hidden" name="location_id"value="<%=location.id%>"> </input><button class="btn btn-danger"> Delete</button></form> </td>  
-   </tr> 
- </tbody> 	
- <% end %>
-</table>
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newLocation">
-  Add new Location
-</button>
-
+<div class="container">
+<div class="row">
+	<div class="col-sm-offset-2 col-sm-10">
+		<table class="table table-hover">
+			<thead><tr>
+					<th>Nickname </th> 
+					<th>Address </th> 
+					<th>Monthly Rate </th> 
+					<th>Interest Rate </th> 
+					<th>Pets </th> 
+					<th>Capacity </th>
+					<th> </th>  
+			</tr></thead> 
+			<tbody>
+				<% @location.each do |location| %>
+					<tr>
+						<td><%=location.nickname%> </td> 
+						<td><%=location.address%> </td> 
+						<td><%=location.rate%> </td> 
+						<td><%=location.interest_rate%> </td> 
+						<td><%=location.allow_pets?%> </td> 
+						<td><%=location.no_people%> </td>
+						<td> <form method="post" action="/my_locations/delete"><input type="hidden" name="location_id"value="<%=location.id%>"> </input><button class="btn btn-danger"> Delete</button></form> </td>  
+					</tr> 
+				</tbody> 	
+			<% end %>
+		</table>
+		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newLocation">
+			Add new Location
+		</button>
+	</div> 
+	</div> 
+</div> 
 <!-- Modal file for adding new location  -->
 <div class="modal fade" id="newLocation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">New Location</h4>
-      </div>
-      <div class="modal-body">
-        <!-- New Location body here -->
-        <%= erb :'partials/new_location' %>
-      </div>
-    </div>
-  </div>
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">New Location</h4>
+			</div>
+			<div class="modal-body">
+				<!-- New Location body here -->
+				<%= erb :'partials/new_location' %>
+			</div>
+		</div>
+	</div>
 </div>
