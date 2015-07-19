@@ -2,6 +2,7 @@ html{
   background: url("/images/interior.jpg") no-repeat center fixed;
   background-size: 100%;
 }
+
 .title {
   margin-top:20px;
   color: black;
@@ -10,14 +11,16 @@ html{
 
 header{
   padding-top: 50px;
-  background-color: white;  
+  background-color: white;
 }
-
+body{
+    font-family: 'Montserrat';
+}
 h1 {
   background: url("/images/stripes.jpg");
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-family: Copperplate Gothic Light;
+  font-family: 'Rock Salt';
 }
 
 #tenantinfo {
