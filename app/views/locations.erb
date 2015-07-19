@@ -8,8 +8,8 @@
    <%if !current_user%>
    <a data-toggle="modal" data-target="#NewUserModal" class="ca-sub" style="text-align:center"> SIGN UP TO MOVE IN!</a>
   <%else%>
-  <form type="submit" method="post" action="/movein/<%=location.id%>"> <button class="ca-sub">Move in!</button></form>
-   <%end%>
+  <form type="submit" method="post" action="/movein/<%=location.id%>"> <button class="ca-sub actionbtn">Move in!</button></form>
+  <%end%>
  </li>
  <% end %>
 </ul>

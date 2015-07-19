@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Better Have My $$$</title>
+  <title>Better Have My $$$</title>
   <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
   <link href='http://fonts.googleapis.com/css?family=Nothing+You+Could+Do' rel='stylesheet' type='text/css'>
 
-    <link href='http://fonts.googleapis.com/css?family=Lobster+Two:700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Lobster+Two:700' rel='stylesheet' type='text/css'>
   <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
@@ -33,131 +33,131 @@
 
   <link rel="stylesheet" href="blurmenu.css">
 
-<!-- NAV BAR -->
-<!-- LANDLORD -->
-<% if current_user && current_user.usertype == 0 %>
-<div id="slide" style="left: -430px; top: 0px; width: 430px;">
-<%= erb :'partials/blurmenu0' %>
-</div>  
+  <!-- NAV BAR -->
+  <!-- LANDLORD -->
+  <% if current_user && current_user.usertype == 0 %>
+  <div id="slide" style="left: -470px; top: 0px; width: 430px;">
+    <%= erb :'partials/blurmenu0' %>
+  </div>  
 
-<nav class="navbar navbar-inverse default">
-  <div class="container-fluid">
-    <div class="navbar-header" >
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>    
-      </button>
-      <h1>Landlord</h1>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li><a href="/home">Home</a></li>
-        <li><a href="/records">Records</a></li> 
-        <li><a href="/my_locations">My Locations</a></li>
-        <li><a href="/locations">All Locations</a></li> 
-        <li><a><form type="submit" method="post" action="/logout"><button>Logout</button></form></a></li>
-      </ul>
+  <nav class="navbar navbar-inverse default">
+    <div class="container-fluid">
+      <div class="navbar-header" >
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>    
+        </button>
+        <h1>Landlord</h1>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="/home">Home</a></li>
+          <li><a href="/records">Records</a></li> 
+          <li><a href="/my_locations">My Locations</a></li>
+          <li><a href="/locations">All Locations</a></li> 
+          <li><a><form type="submit" method="post" action="/logout"><button>Logout</button></form></a></li>
+        </ul>
         <%end%>
       </ul>
-  </div>
-</nav>
-
-<!-- TENANT -->
-<% else if current_user && current_user.usertype == 1 %>
-<div id="slide" style="left: -440px; top: 0px; width: 440px;">
-<%= erb :'partials/blurmenu1' %>
-</div>  
-<nav class="navbar navbar-inverse default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>    
-      </button>
-      <h1>Tenant</h1>
     </div>
-    <div style="marging-top: 40px">
-      <ul class="nav navbar-nav">
-        <li><a href="/home">Home</a></li>
-        <li><a href="/records">Records</a></li> 
-        <li><a href="/locations">View Locations</a></li> 
+  </nav>
 
-        <li><a><form type="submit" method="post" action="/logout"><button>Logout</button></form></a></li>
-      </ul>
+  <!-- TENANT -->
+  <% else if current_user && current_user.usertype == 1 %>
+  <div id="slide" style="left: -470px; top: 0px; width: 440px;">
+    <%= erb :'partials/blurmenu1' %>
+  </div>  
+  <nav class="navbar navbar-inverse default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>    
+        </button>
+        <h1>Tenant</h1>
+      </div>
+      <div style="marging-top: 40px">
+        <ul class="nav navbar-nav">
+          <li><a href="/home">Home</a></li>
+          <li><a href="/records">Records</a></li> 
+          <li><a href="/locations">View Locations</a></li> 
+
+          <li><a><form type="submit" method="post" action="/logout"><button>Logout</button></form></a></li>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<!-- landlord/tenant -->
-<% elsif current_user && current_user.usertype == 2 %>
-<div id="slide" style="left: -440px; top: 0px; width: 440px;">
-<%= erb :'partials/blurmenu2' %>
-</div>  
-<nav class="navbar navbar-inverse default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>    
-      </button>
-      <h1>Landlord/Tenant</h1>
+  <!-- landlord/tenant -->
+  <% elsif current_user && current_user.usertype == 2 %>
+  <div id="slide" style="left: -470px; top: 0px; width: 440px;">
+    <%= erb :'partials/blurmenu2' %>
+  </div>  
+  <nav class="navbar navbar-inverse default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>    
+        </button>
+        <h1>Landlord/Tenant</h1>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="/home" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="/landlord">Landlord Home</a></li>
+              <li class="divider"></li>
+              <li><a href="/tenant">Tenant Home</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Records <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="/landlord/records">Landlord Records</a></li>
+              <li class="divider"></li>
+              <li><a href="/tenant/records">Tenant Records</a></li>
+            </ul>
+          </li>
+
+          <li><a href="/my_locations">My Locations</a></li>
+          <li><a href="/locations">View Locations</a></li> 
+
+          <li><a><form type="submit" method="post" action="/logout"><button>Logout</button></form></a></li>        
+        </ul>
+      </div>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="/home" class="dropdown-toggle" data-toggle="dropdown">Home <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="/landlord">Landlord Home</a></li>
-            <li class="divider"></li>
-            <li><a href="/tenant">Tenant Home</a></li>
-          </ul>
-        </li>
+  </nav>
 
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Records <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="/landlord/records">Landlord Records</a></li>
-            <li class="divider"></li>
-            <li><a href="/tenant/records">Tenant Records</a></li>
-          </ul>
-        </li>
+  <!-- NOT LOGGED IN -->
+  <% elsif !current_user %>
+  <nav class="navbar navbar-inverse default ">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>    
+        </button>
+        <h1>Log in to do more! </h1>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li><a href="/locations">View Locations</a></li> 
+          <li><a data-toggle="modal" data-target="#NewUserModal" ><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a data-toggle="modal" data-target="#LoginModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
 
-        <li><a href="/my_locations">My Locations</a></li>
-        <li><a href="/locations">View Locations</a></li> 
-
-        <li><a><form type="submit" method="post" action="/logout"><button>Logout</button></form></a></li>        
-      </ul>
+      </div>
     </div>
-  </div>
-</nav>
-
-<!-- NOT LOGGED IN -->
-<% elsif !current_user %>
-<nav class="navbar navbar-inverse default ">
-  <div class="container-fluid">
-    <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>    
-      </button>
-      <h1>Log in to do more! </h1>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li><a href="/locations">View Locations</a></li> 
-        <li><a data-toggle="modal" data-target="#NewUserModal" ><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a data-toggle="modal" data-target="#LoginModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
-
-    </div>
-  </div>
-</nav>
-<%end %>
-<!-- END NAV BAR -->
+  </nav>
+  <%end %>
+  <!-- END NAV BAR -->
 
 
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">  <!-- FONT CSS --> 
@@ -171,10 +171,10 @@
   <script src="/javascript/application.js"></script>
 </head>
 <body>
-   
-<div class='container'>
-  <%= yield %>
-</div> 
+
+  <div class='container'>
+    <%= yield %>
+  </div> 
 
 
 
@@ -185,24 +185,24 @@
 
 
 
-<!-- Modal file for adding new User  -->
-<div class="modal fade" id="NewUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Create User</h4>
-      </div>
-      <div class="modal-body">
-        <%= erb :'partials/new_user'%>
+  <!-- Modal file for adding new User  -->
+  <div class="modal fade" id="NewUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Create User</h4>
+        </div>
+        <div class="modal-body">
+          <%= erb :'partials/new_user'%>
+        </div>
       </div>
     </div>
-  </div>
-</div> 
+  </div> 
 
-<!-- Modal file for log-in  -->
-<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
+  <!-- Modal file for log-in  -->
+  <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
