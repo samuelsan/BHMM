@@ -33,7 +33,7 @@
 			<td><%= User.find(r.tenant_id).name%> </td>   
 			<td> <%= r.amount_due %> </td>   
  			<td> <%=r.amount_paid%> </td>   
-			<td><%= r.date_due %> </td>  
+			<td><%= r.date_due.strftime("%F") %> </td>  
 		</tr> 
 	<% end %>
 	<tr>
