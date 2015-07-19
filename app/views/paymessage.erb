@@ -1,3 +1,5 @@
+<img src="http://bhmm_lighthouse.mooo.com/images/logo.png" >
+
 Dear <%= current_user.name %>,
 
 This email is to confirm your payment of <%= Payment.where(tenant_id:current_user.id).last.amount %> dollars in rent.  
