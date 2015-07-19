@@ -6,8 +6,10 @@
 		<span class="caret"></span>
 	</button>
 	<ul class="dropdown-menu" aria-labelledby="dLabel">
+	<%unless @months.nil? %>
 	<% @months.each do |months| %>
 		<a href="/landlord/records?date=<%= months unless months.downcase == "all" %>" >	<li align="center">	<%= months %> </li> </a> 
+	<% end %>
 	<% end %>
 	</ul>
 </div>

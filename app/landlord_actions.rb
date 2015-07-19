@@ -11,7 +11,7 @@ get '/landlord/records?*' do
   unless @record.nil?
     @months = @record.all.map {|d| d.date_due.strftime('%y-%m')}.uniq
   end
-		@months.unshift("All")
+	@months.unshift("All")
 	unless params[:date].nil? or params[:date] == ""
 		puts params[:date]
 		date = params[:date].split("-")
