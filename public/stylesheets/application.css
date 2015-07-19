@@ -22,7 +22,7 @@ html{
 .title {
   margin-top:20px;
   color: black;
-  background: white;
+  font-family: 'Satisfy';
 }
 
 header{
@@ -53,6 +53,11 @@ h1 {
 
 h2 {
   margin: 0px;
+  color:#5B5B5B;
+}
+
+h3 {
+  color: #5B5B5B;
 }
 
 .fade{
