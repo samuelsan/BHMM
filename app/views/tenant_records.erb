@@ -22,7 +22,7 @@
         <% @payment.each do |r|%>
         <tr>
           <td> <%=r.created_at.strftime("%F %T")%> </td>  
-					<td><%= r.location.address rescue "" %> </td>      
+					<td><%= r.location.nil? ? '' : r.location.address %> </td>      
           <td><%= r.amount %> </td>    
         </tr> 
         <% end %>
