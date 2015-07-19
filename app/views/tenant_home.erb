@@ -52,22 +52,21 @@
 				</button>
 			</div> 
 		</div>
-	</div>
-
-	<form type="submit" method="get" action="/tenant/pay"> <button class='actionbutton'>Pay Rent</button></form>
-</div>
-</div>
-<!-- Modal file for updating info  -->
-<div class="modal fade" id="updateInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">New Location</h4>
-			</div>
-			<div class="modal-body">
-				<!-- Update info body here -->
-				<%= erb :'partials/update_info' %>
+    </div>
+  </div>
+		<!-- Modal file for updating info  -->
+		<div class="modal fade" id="updateInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel">New Location</h4>
+					</div>
+					<div class="modal-body">
+						<!-- Update info body here -->
+						<%= erb :'partials/update_info' %>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
