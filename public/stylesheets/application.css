@@ -16,6 +16,7 @@ label{
 html{
   background: url("/images/interior.jpg") no-repeat center fixed;
   background-size: 100%;
+  max-width: 100%;
 }
 
 .title {
