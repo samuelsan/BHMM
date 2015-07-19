@@ -7,9 +7,14 @@ class Record < ActiveRecord::Base
   validates :location_id, presence: true
   validates :date_due, presence: true
 
-  def self.add_all
+  def self.add_all(month=nil)
+
     today = Date.today
+		if month.nil?
     duedate = Date.new(today.year, today.month,27)
+		else
+    duedate = Date.new(today.year, month.to_i,27)
+		end
     User.where.not(location_id:nil).each do |user|
     begin
 			location = Location.find(user.location_id)
@@ -21,11 +26,12 @@ class Record < ActiveRecord::Base
 	end
 
 	def charge_interest
+		
 		#self refers to the record being created, so there is tenant_id and all the stuff
 		records = Record.where(tenant_id:self.tenant_id).where(location_id:self.location_id)
 		outstanding_balance = records.sum(:amount_due) - records.sum(:amount_paid)
-		return if outstanding_balance <= 0
-		self.amount_due += outstanding_balance * self.location.interest_rate / 100
+		return if outstanding_balance <= 0 or outstanding_balance.nil? or self.location.interest_rate.nil?
+		self.amount_due += (outstanding_balance * self.location.interest_rate / 100).to_i
 	end
 
 	def owning?
