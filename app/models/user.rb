@@ -15,8 +15,7 @@ class User < ActiveRecord::Base
     self.save
   end
 
-	def pay(amount=nil)
-
+	def pay(amount=999999999999999999)
 		landlordid = Location.find(self.location_id).landlord_id
 		landlord = User.find(landlordid)
 		location = Location.find(self.location_id)
