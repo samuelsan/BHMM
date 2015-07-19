@@ -13,11 +13,7 @@ body{
 	font-family: 'Josefin Slab', Arial, sans-serif;
 	font-size: 13px;
 }
-.container{
-	margin: 50px 0px 0px -10px;
-	
-	position:absolute;
-}
+
 a{
 	color: #fff;
 	text-decoration: none;
@@ -26,7 +22,7 @@ a{
 	clear: both;
 }
 .content{
-	position:absolute;
+	text-align:middle;
 }
 
 h1{

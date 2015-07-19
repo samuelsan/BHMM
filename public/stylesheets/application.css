@@ -24,8 +24,14 @@ html{
   left: 0;
 }
 
+.container{
+  margin-top:0px;
+}
+
 .title {
-  margin-top:20px;
+  font-size: 70px;
+  margin:0px;
+  padding:0px 0px 0px 70px;
   color: black;
   font-family: 'Satisfy';
 }
