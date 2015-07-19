@@ -1,8 +1,8 @@
 Dear <%= current_user.name %>,
 
-This email is to confirm that you have refilled your account by <%=  params[:amount] %>
+This email is to confirm that you have refilled your account.
 
-You currenty have <%= current_user.account_balance %> dollars.
+You now have <%= current_user.account_balance %> dollars in your account balance.
 
 If you have any issues, please contact <%= User.find(Location.find(current_user.location_id).landlord_id).name %>, your landlord, at <%= User.find(Location.find(current_user.location_id).landlord_id).email %>
 
