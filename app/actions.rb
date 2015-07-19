@@ -169,7 +169,7 @@ post '/emailpay/:redirect' do
     if current_user.account_balance < Location.find(current_user.location_id).rate
       redirect '/lowfunds'
     else 
-      redirect '/tenant/records'
+      redirect '/tenant'
     end
   end
 end
@@ -192,7 +192,7 @@ post '/emailrefill/:redirect' do
     }
     })
   if params[:redirect] 
-    redirect '/home'
+    redirect '/tenant'
   end
 end
 
@@ -217,7 +217,7 @@ post '/emailpayfull/:redirect' do
     if current_user.account_balance < Location.find(current_user.location_id).rate
       redirect '/lowfunds'
     else 
-      redirect '/tenant/records'
+      redirect '/tenant'
     end
   end
 end
