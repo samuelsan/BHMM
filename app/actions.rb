@@ -51,7 +51,7 @@ end
 
 get '/logout' do
   session.clear
-  redirect 'locations'
+  redirect '/locations'
 end
 
 post '/logout' do

@@ -14,9 +14,14 @@ label{
 }
 
 html{
-  background: url("/images/interior.jpg") no-repeat center fixed;
+  background: url("/images/new-york-manhattan.jpg") no-repeat center fixed;
   background-size: 100%;
   max-width: 100%;
+  height: auto;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .title {
