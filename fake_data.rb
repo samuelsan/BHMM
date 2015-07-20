@@ -2,7 +2,7 @@ require './config/environment'
 require 'faker'
 
 max_num = 20
-	User.create(name:"Don Burks",email:"don",password:"123",pets:15,usertype:0)
+	User.create(name:"Don Burks",email:"don@lighthouselabs.ca",password:"123",pets:15,usertype:0)
   User.create(name:"Tom Lei",email:"lmd0209@msn.com",password:'123',pets:0, usertype:2, location_id:1)
   User.create(name:"Steph Lam",email:"m.stephanielam@gmail.com",password:'123',pets:0, usertype:0) #dlordt
 
@@ -11,6 +11,7 @@ max_num = 20
 
 60.times do 
 address = Faker::Address.street_address + " " +  Faker::Address.secondary_address
+
 pets = rand(2) == 1 ? true : false
 cities = ['Vancouver','Calgary','Edmonton','Winnpeg','Toronto','Montreal','Halifax']
 
