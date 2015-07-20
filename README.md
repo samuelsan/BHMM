@@ -8,3 +8,7 @@ This project helps landlords with multiple locations manange bills and collect r
 
 chekout live demo at .
 http://bhmm_lighthouse.mooo.com/
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/leimd/midterm_project/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
