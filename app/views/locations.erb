@@ -8,10 +8,12 @@
          <img src="images/home.png" class="ca-icon" id="heart">
          <h2 class="ca-main"><%= location.address %></h2>
          <h3 style="margin-top:0px">$<%=location.rate.round %> - <%= (location.allow_pets?)? "Pets allowed" : "No Pets"%></h3>
-         <%if current_user == 1 || current_user == 2%>
-         <form method="post" action="/movein/<%=location.id%>"><button class="actionbtn">MOVE IN!</button></form> 
-         <%else%>
+
+         <%if !current_user%>
          <a data-toggle="modal" data-target="#NewUserModal" class="ca-sub" style="text-align:center"> SIGN UP TO MOVE IN!</a>
+         <%elsif current_user == 1%>
+         <%else%>
+         <form method="post" action="/movein/<%=location.id%>"><button class="actionbtn">MOVE IN!</button></form>
          <%end%>
        </li>
        <% end %>
