@@ -1,7 +1,7 @@
 <div class="container">
-<h1 class='title'>MY LOCATIONS</h1>
+<h1 class='title'>MY LOCATIONS</h1><br>
 <div class="row">
-	<div class="col-sm-offset-2 col-sm-10">
+	<div class="col-sm-offset-1 col-sm-9">
 		<table class="table table-hover">
 			<thead><tr>
 					<th>Nickname </th> 
@@ -21,7 +21,7 @@
 						<td><%=location.interest_rate%> </td> 
 						<td><%=location.allow_pets?%> </td> 
 						<td><%=location.no_people%> </td>
-						<td> <form method="post" action="/my_locations/delete"><input type="hidden" name="location_id"value="<%=location.id%>"> </input><button class="btn btn-danger"> Delete</button></form> </td>  
+						<td> <form method="post" action="/my_locations/delete"><input type="hidden" name="location_id"value="<%=location.id%>"> </input><button class="btn btn-danger" style="font-family:'Satisfy'"> Delete</button></form> </td>  
 					</tr> 
 				</tbody> 	
 			<% end %>

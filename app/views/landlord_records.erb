@@ -1,4 +1,4 @@
-<div class="row">
+
 <h1 class='title'>RECORDS</h1> 
 <div class="dropdown">
 	<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -6,16 +6,15 @@
 		<span class="caret"></span>
 	</button>
 	<ul class="dropdown-menu" aria-labelledby="dLabel">
-	<%unless @months.nil? %>
-	<% @months.each do |months| %>
+		<%unless @months.nil? %>
+		<% @months.each do |months| %>
 		<a href="/landlord/records?date=<%= months unless months.downcase == "all" %>" >	<li align="center">	<%= months %> </li> </a> 
-	<% end %>
-	<% end %>
+		<% end %>
+		<% end %>
 	</ul>
-</div>
-
-<h3>Revenue YTD : $<%= @annual_revenue%> </h3> 
 </div> 
+
+<h3 style="background: rgba(0,0,0,0.6); color:white">Revenue YTD : $<%= @annual_revenue%> </h3> 
 <table class="table table-hover">
 	<thead>
 		<tr>
@@ -32,41 +31,41 @@
 			<td><%= r.location.address unless r.location.nil? %> </td>   
 			<td><%= User.find(r.tenant_id).name%> </td>   
 			<td> <%= r.amount_due %> </td>   
- 			<td> <%=r.amount_paid%> </td>   
+			<td> <%=r.amount_paid%> </td>   
 			<td><%= r.date_due.strftime("%F") %> </td>  
 		</tr> 
-	<% end %>
-	<tr>
-		<td> </td>
-		<td> </td>
-		<td>Sub Total: </td>
-		<td><%= @record.sum(:amount_paid) %> </td>
- 	</tr> 
+		<% end %>
+		<tr>
+			<td> </td>
+			<td> </td>
+			<td>Sub Total: </td>
+			<td><%= @record.sum(:amount_paid) %> </td>
+		</tr> 
 	</tbody> 
 </table>
 
-<h2>Tenants info:</h2>
-<table class="table table-hover">
-	<thead>
-		<tr>
-			<th>name</th>
-			<th>address</th>
-			<th>phone</th>
-			<th>email</th>
-			<th></th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @record.select(:tenant_id,:location_id).distinct.each do |r|%>
-		<% a = User.find(r[:tenant_id]) %>
-		<tr>
-			<td><%= a.name %> </td>   
-			<td><%= Location.find(r[:location_id]).address %> </td>   
-			<td> <%= a.phone %> </td>   
-			<td><%= a.email %> </td> 
-			<td><a href="/generate_lease/<%= a.id %>"> <button class="btn btn-primary">Generate Lease </button> </a> </td> 	
-		</tr> 
-		<% end %>
-	</tbody> 
-</table>
+<h3 style="background: rgba(0,0,0,0.6); color:white">Tenants info:</h2>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>name</th>
+				<th>address</th>
+				<th>phone</th>
+				<th>email</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @record.select(:tenant_id,:location_id).distinct.each do |r|%>
+			<% a = User.find(r[:tenant_id]) %>
+			<tr>
+				<td><%= a.name %> </td>   
+				<td><%= Location.find(r[:location_id]).address %> </td>   
+				<td> <%= a.phone %> </td>   
+				<td><%= a.email %> </td> 
+				<td><a href="/generate_lease/<%= a.id %>"> <button class="btn btn-primary">Generate Lease </button> </a> </td> 	
+			</tr> 
+			<% end %>
+		</tbody> 
+	</table>
 
