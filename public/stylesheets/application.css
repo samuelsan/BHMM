@@ -13,6 +13,10 @@ label{
 	color:black;
 }
 
+.modal-content{
+  color:black;
+}
+
 html{
   background: url("/images/new-york-manhattan.jpg") no-repeat center fixed;
   background-size: cover;

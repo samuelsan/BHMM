@@ -1,4 +1,5 @@
 <div class="container">
+<h1 class='title'>HOME</h1>
 	<div class="row">
 		<div class="col-sm-offset-2 col-sm-4 col-md-3">
 			<h3 style="color: white; background: rgba(0,0,0, 0.8)">User information: </h3>
@@ -13,7 +14,7 @@
 				</table> 
 			</p> 
 
-			<button type="button" class="btn btn-primary actionbtn" data-toggle="modal" data-target="#updateInfo">
+			<button type="button" class="btn btn-primary btn-lg actionbtn" data-toggle="modal" data-target="#updateInfo">
 				Update info
 			</button>
 		</div>
@@ -21,24 +22,24 @@
 		<div class="col-sm-4">
 			<h3 style="color: white; background: rgba(0,0,0, 0.8)">Home information: </h3>
 			<% if current_user.location_id == nil %> 
-			<a href="/locations" style="font-size: 40px">Find a place!</a>
+			<div style="background:rgba(0,0,0,0.4)"><a href="/locations" style="font-size: 40px">Find a place!</a></div><br>
 			<% else %> 
-
 			<table class="table table-hover">
 				<tr><td>Address:</td><td><%= Location.find(current_user.location_id).address %></td></tr>
 				<tr><td>Rate: </td><td>$<%= Location.find(current_user.location_id).rate.round %>/month</td></tr>
 				<tr><td>Landlord: </td><td><%= User.find(Location.find(current_user.location_id).landlord_id).name %></td></tr>
 				<tr><td>Landlord Email: </td><td><%= User.find(Location.find(current_user.location_id).landlord_id).email %></td></tr>
 			</table> 
+			<form type="submit" method="post" action="/moveout"> <button class="btn btn-danger" style="font-family:'Satisfy'">MOVE OUT!</button></form><br>
 
-			<form type="submit" method="post" action="/moveout"> <button class="btn btn-danger" style="font-family:'Satisfy'">MOVE OUT!</button></form>
+			<div style="display:inline-block">
+		<form type="submit" method="get" action="/tenant/pay" > <button  class='btn btn-primary actionbtn'<%= 'disabled' if @amount_due <= 0 %>>Pay Rent</button></form></div>
+
 			<% end %>
-		</div>
-		<div class='col-sm-3'>
-			<form type="submit" method="get" action="/tenant/pay" > <button <%= 'disabled' if @amount_due <= 0 %> class='btn btn-primary actionbtn'>Pay Rent</button></form> <br>
+	
 			<button type="button" class="btn btn-primary actionbtn" data-toggle="modal" data-target="#chargeCreditCard">
 				Refill Account
-			</button>
+			</button><br>
 			<% if current_user.account_balance < 100 %>
 			<span style="color: red; font-weight: bold; font-size: 22px; text-shadow: 0 0 0.2em #F87, 0 0 0.2em #F87"> YOU BROKE </span>
 			<% elsif current_user.account_balance > 5000%> 
@@ -50,19 +51,20 @@
 </div>
 
 <!-- Modal file for updating info  -->
-<div class="modal fade" id="updateInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="myModalLabel">New Location</h4>
-			</div>
-			<div class="modal-body">
-				<!-- Update info body here -->
+	<div class="modal fade" id="updateInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">Update Info</h4>
+				</div>
+				<div class="modal-body">
+					<!-- Update info body here -->
+					<%= erb :'partials/update_info' %>
+				</div>
 			</div>
 		</div>
-	</div>
-</div>
+
 
 <!-- Modal file for refill accunt  -->
 <div class="modal fade" id="chargeCreditCard" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -79,3 +81,4 @@
 		</div>
 	</div>
 </div> 
+
