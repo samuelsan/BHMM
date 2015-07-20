@@ -5,9 +5,9 @@
 		<div class="col-sm-offset-1 col-sm-6 col-md-4">
 			<div style="color: white; background: rgba(0,0,0, 0.8);">
 				<table>
-					<tr><b> <h4>Upcoming Due Date:</h4></b> <h2 align="right"> <%= @record.last.date_due.strftime("%F") rescue "" %></h2></tr>
-					<tr><b> <h4>Amount due:</h4></b> <h2 align="right"> $<%= @amount_due %></h2></tr>
-					<tr> <h4><b>Current Balance :</b></h4><h2 align='right'> $<%= current_user.account_balance%> </h2> </tr>
+					<tr><b> <h4>Upcoming Due Date:</h4></b> <h2 align="right" style="color:white;"> <%= @record.last.date_due.strftime("%F") rescue "" %></h2></tr>
+					<tr><b> <h4>Amount due:</h4></b> <h2 align="right" style="color:white;"> $<%= @amount_due %></h2></tr>
+					<tr> <h4><b>Current Balance :</b></h4><h2 align='right' style="color:white;"> $<%= current_user.account_balance%> </h2> </tr>
 				</table> 
 			</div>
 		</div> 
