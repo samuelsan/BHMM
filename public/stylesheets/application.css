@@ -151,7 +151,9 @@ h3 {
 .nav {
   float: right;
   margin-top: 10px;
+  background-color: transparent;
   background: transparent;
+  border-color: transparent;
 }
 
 .navbutton:hover {
