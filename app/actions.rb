@@ -70,7 +70,8 @@ get '/home' do
   when 1
     redirect to('/tenant')
   when 2
-    redirect to('/home')
+    erb :'/home'
+
   end
 end
 
@@ -81,7 +82,7 @@ post '/home' do
   when 1
     redirect to('/tenant')
   when 2
-    redirect to('/home')
+    erb :'/home'
   end
 end
 
