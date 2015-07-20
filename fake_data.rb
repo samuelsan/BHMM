@@ -3,11 +3,11 @@ require 'faker'
 
 max_num = 20
 	User.create(name:"Don Burks",email:"don",password:"123",pets:15,usertype:0)
-  User.create(name:"Tom Lei",email:"lmd0209@msn.com",password:'123',pets:0, usertype:2)
-  User.create(name:"Steph Lam",email:"landlord",password:'123',pets:0, usertype:0) #dlordt
-  User.create(name:"Sam San",email:"tenant",password:'123',pets:0, usertype:1, location_id:1) # Tenant
+  User.create(name:"Tom Lei",email:"lmd0209@msn.com",password:'123',pets:0, usertype:2, location_id:1)
+  User.create(name:"Steph Lam",email:"m.stephanielam@gmail.com",password:'123',pets:0, usertype:0) #dlordt
 
-	Location.create(landlord_id:1,interest_rate:5,nickname:"Lighthouse Labs",address:"128 West Hasting",rate:4000,no_people:25,city:"Vancouver",country:"Canada")
+	Location.create(landlord_id:1,interest_rate:5,nickname:"Lighthouse Labs",address:"128 West Hasting",rate:4000,no_people:25,city:"Vancouver",country:"Canada",allow_pets?:true)
+  User.create(name:"Sam San",email:"samuelsaninbox@gmail.com",password:'123',pets:0, usertype:1, location_id:1) # Tenant
 
 60.times do 
 address = Faker::Address.street_address + " " +  Faker::Address.secondary_address
@@ -31,6 +31,7 @@ i=User.count
 (2..6).each do |a|
 	Record.add_all(a) # Generate Record for Month a
 	User.where.not(location_id:nil).each do |usr|
+		usr.account_balance += Location.find(usr.location_id).rate 
 		random = rand (0..10)
 		usr.pay if random > (a-2) # certain people don't pay
 	end
