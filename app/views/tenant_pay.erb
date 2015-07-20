@@ -4,33 +4,35 @@
 <div class="container">
  <div class="row">
    <div class="col-md-offset-1 col-md-6">
-    <div class="jumbotron" >
-     <h2> Account Info </h2> 
-     <table>
-      <tr>
-        <h3><b>Account Balance:</b></h3>	<h2 align="right">	<%=current_user.account_balance.round%></h2>
-      </tr>
-      <tr><h3><b>Rent Rate:</b> </h3> <h2 align="right"> $<%=Location.find(current_user.location_id).rate.round%> /month</h2></tr>
-      <tr><h3><b>Next due date:</b> </h3> <h2 align="right"> <%= @record.last.due_date.strftime("%F") rescue "Invoice not ready" %></h2></tr>
+    <div class="jumbotron" style="background: rgba(0,0,0,0.85)">
 
-      <tr><h3><b>Outstanding Balance:</b> </h3> <h2 align="right"> $<%= (@record.sum(:amount_due) - @record.sum(:amount_paid)).to_s rescue "No bill to pay" %></h2> </tr> 
-    </table> 
-  </div> </div> 
-  <div class="col-md-4">
+       <h2> Account Info </h2> 
+       <table>
+        <tr>
+          <h3><b>Account Balance:</b></h3>	<h2 align="right">	$<%=current_user.account_balance.round%></h2>
+        </tr>
+        <tr><h3><b>Rent Rate:</b> </h3> <h2 align="right"> $<%=Location.find(current_user.location_id).rate.round%> /month</h2></tr>
+        <tr><h3><b>Next due date:</b> </h3> <h2 align="right"> <%= @record.last.due_date.strftime("%F") rescue "Invoice not ready" %></h2></tr>
+
+        <tr><h3><b>Outstanding Balance:</b> </h3> <h2 align="right"> $<%= (@record.sum(:amount_due) - @record.sum(:amount_paid)).to_s rescue "No bill to pay" %></h2> </tr> 
+      </table> 
+  </div> 
+</div> 
+<div class="col-md-4">
 
 
-    <form method="post" action="/tenant/pay/part">
-      <br>
-      <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
-      <div class="input-group">
-        <div class="input-group-addon">$</div>
-        <input type="text" name="amount" class="form-control" id="exampleInputAmount" placeholder="Amount">
-        <div class="input-group-addon">.00</div>
-      </div>
-      <table><tr>
-       <button class="btn btn-primary actionbtn">Pay this amount</button></form> 
-       <form method="post" action="/tenant/pay/full"> <button  type="submit" class='btn btn-primary actionbtn'>Pay in full</button></form>
-     </tr> </table> 
-   </div> 
+  <form method="post" action="/tenant/pay/part">
+    <br>
+    <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+    <div class="input-group">
+      <div class="input-group-addon">$</div>
+      <input type="text" name="amount" class="form-control" id="exampleInputAmount" placeholder="Amount">
+      <div class="input-group-addon">.00</div>
+    </div>
+    <table><tr>
+     <button class="btn btn-primary actionbtn">Pay this amount</button></form> 
+     <form method="post" action="/tenant/pay/full"> <button  type="submit" class='btn btn-primary actionbtn'>Pay in full</button></form>
+   </tr> </table> 
  </div> 
+</div> 
 </div> 
