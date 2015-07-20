@@ -1,7 +1,7 @@
 class Location < ActiveRecord::Base
   has_many :users
   validates :address, uniqueness: true
-	after_destroy :check_user
+	after_update :check_user
   def charge
     # interest + rate*duration
   end

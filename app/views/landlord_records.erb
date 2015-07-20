@@ -29,7 +29,7 @@
 	<tbody>
 		<% @record.each do |r|%>
 		<tr>
-			<td><%= r.location.address %> </td>   
+			<td><%= r.location.address unless r.location.nil? %> </td>   
 			<td><%= User.find(r.tenant_id).name%> </td>   
 			<td> <%= r.amount_due %> </td>   
  			<td> <%=r.amount_paid%> </td>   

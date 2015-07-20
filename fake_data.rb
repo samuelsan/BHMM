@@ -32,6 +32,7 @@ i=User.count
 	Record.add_all(a) # Generate Record for Month a
 	User.where.not(location_id:nil).each do |usr|
 		usr.account_balance += Location.find(usr.location_id).rate 
+		usr.save
 		random = rand (0..10)
 		usr.pay if random > (a-2) # certain people don't pay
 	end
