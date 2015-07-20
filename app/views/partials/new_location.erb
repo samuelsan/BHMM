@@ -1,9 +1,9 @@
 <form action="/landlord/new_location" method="post">
 	<div class="form-group">
-		<label for="nickname">Nick Name</label>
-		<input type="text" class="form-control" id="nickname" name="nickname" placeholder='nickname' required>
+		<label for="nickname">Label</label>
+		<input type="text" class="form-control" id="nickname" name="nickname" placeholder='Lighthouse Labs' required>
 		<label for="address">Address</label>
-		<input type="text" class="form-control" id="address" name="address" placeholder='address' required>
+		<input type="text" class="form-control" id="address" name="address" placeholder='128 W Hastings St #300' required>
 
 
 		<form class="form-inline">
@@ -11,27 +11,27 @@
 				<label for="rate">Rate</label>
 				<div class="input-group">
 					<div class="input-group-addon">$</div>
-					<input type="text" class="form-control" id="rate" name="rate" placeholder="Amount" required> 
+					<input type="text" class="form-control" id="rate" name="rate" placeholder="1200" required> 
 					<div class="input-group-addon">.00</div>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="interestrate">Interest Rate</label>
 				<div class="input-group">
-					<input type="text" class="form-control" id="interestrate" name="interestrate" placeholder="Amount">
+					<input type="text" class="form-control" id="interestrate" name="interestrate" placeholder="20">
 					<div class="input-group-addon">% Per Month</div>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="nopeople">Max Number of People</label>
 				<div class="input-group">
-					<input type="text" class="form-control" id="nopeople" name="nopeople" placeholder="Number of People" required>
+					<input type="text" class="form-control" id="nopeople" name="nopeople" placeholder="40" required>
 				</div>
 			</div>
 		</form>
 
 		<label for="imgurl">Image URL</label>
-		<input type="text" class="form-control" id="imgurl" name="imgurl" placeholder='imgurl'>
+		<input type="text" class="form-control" id="imgurl" name="http://i.imgur.com/GlsEnKR.jpg" placeholder='imgurl'>
 
 		<div class="modal-footer">
 			<div class="btn-group" data-toggle="buttons">	

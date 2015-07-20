@@ -1,4 +1,3 @@
-
 <h1 class='title'>RECORDS</h1> 
 <div class="dropdown">
 	<button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -18,11 +17,11 @@
 <table class="table table-hover">
 	<thead>
 		<tr>
-			<th>address</th>
-			<th>tenant</th>
-			<th>amount due</th>
-			<th>amount paid</th>
-			<th>due date</th>			
+			<th>ADDRESS</th>
+			<th>TENANT</th>
+			<th>AMOUNT DUE</th>
+			<th>AMOUNT PAID</th>
+			<th>DUE DATE</th>			
 		</tr>
 	</thead>
 	<tbody>
@@ -48,10 +47,10 @@
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th>name</th>
-				<th>address</th>
-				<th>phone</th>
-				<th>email</th>
+				<th>NAME</th>
+				<th>ADDRESS</th>
+				<th>PHONE</th>
+				<th>EMAIL</th>
 				<th></th>
 			</tr>
 		</thead>
@@ -63,7 +62,7 @@
 				<td><%= Location.find(r[:location_id]).address %> </td>   
 				<td> <%= a.phone %> </td>   
 				<td><%= a.email %> </td> 
-				<td><a href="/generate_lease/<%= a.id %>"> <button class="btn btn-primary">Generate Lease </button> </a> </td> 	
+				<td><a href="/generate_lease/<%= a.id %>"> <button class="btn btn-primary actionbtn">Generate Lease </button> </a> </td> 	
 			</tr> 
 			<% end %>
 		</tbody> 
