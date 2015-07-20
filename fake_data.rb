@@ -2,12 +2,12 @@ require './config/environment'
 require 'faker'
 
 max_num = 20
-	User.create(name:"Don Burks",email:"don@lighthouselabs.ca",password:"123",pets:15,usertype:0)
-  User.create(name:"Tom Lei",email:"lmd0209@msn.com",password:'123',pets:0, usertype:2, location_id:1)
-  User.create(name:"Steph Lam",email:"m.stephanielam@gmail.com",password:'123',pets:0, usertype:0) #dlordt
+User.create(name:"Don Burks",email:"don@lighthouselabs.ca",password:"123",pets:15,usertype:0)
+User.create(name:"Tom Lei",email:"lmd0209@msn.com",password:'123',pets:0, usertype:2, location_id:1)
+User.create(name:"Steph Lam",email:"m.stephanielam@gmail.com",password:'123',pets:0, usertype:0) #dlordt
 
-	Location.create(landlord_id:1,interest_rate:5,nickname:"Lighthouse Labs",address:"128 West Hasting",rate:4000,no_people:25,city:"Vancouver",country:"Canada",allow_pets?:true)
-  User.create(name:"Sam San",email:"samuelsaninbox@gmail.com",password:'123',pets:0, usertype:1, location_id:1) # Tenant
+Location.create(landlord_id:1,interest_rate:5,nickname:"Lighthouse Labs",address:"128 West Hasting",rate:4000,no_people:25,city:"Vancouver",country:"Canada",allow_pets?:true)
+User.create(name:"Sam San",email:"samuelsaninbox@gmail.com",password:'123',pets:0, usertype:1, location_id:1) # Tenant
 
 60.times do 
 address = Faker::Address.street_address + " " +  Faker::Address.secondary_address
@@ -19,30 +19,30 @@ location = Location.create(landlord_id:rand(1..max_num),nickname:Faker::Lorem.wo
 end
 i=User.count
 40.times {
-  pets_num = rand(0..20)
-  rand_type = rand(0..2)
-	i += 1
-	# Generate one tenant
-  User.create(location_id:i,name:Faker::Name.name,email:Faker::Internet.email,password:'123',pets:pets_num, usertype: 1)
-	#Generate one Landlord
-  User.create(name:Faker::Name.name,email:Faker::Internet.email,password:'123',pets:pets_num, usertype: 0)
+	pets_num = rand(0..20)
+		rand_type = rand(0..2)
+		i += 1
+# Generate one tenant
+		User.create(location_id:i,name:Faker::Name.name,email:Faker::Internet.email,password:'123',pets:pets_num, usertype: 1)
+#Generate one Landlord
+		User.create(name:Faker::Name.name,email:Faker::Internet.email,password:'123',pets:pets_num, usertype: 0)
 }
 
 
 (2..6).each do |a|
-	Record.add_all(a) # Generate Record for Month a
-	User.where.not(location_id:nil).each do |usr|
-		usr.account_balance += Location.find(usr.location_id).rate 
-		usr.save
-		random = rand (0..10)
-		usr.pay if random > (a-2) # certain people don't pay
+Record.add_all(a) # Generate Record for Month a
+User.where.not(location_id:nil).each do |usr|
+usr.account_balance += Location.find(usr.location_id).rate 
+	usr.save
+random = rand (0..10)
+	usr.pay if random > (a-2) # certain people don't pay
 	end
-end
+	end
+Record.add_all
 
 
 
 
 
 
-
-puts Faker::Hacker.say_something_smart
+	puts Faker::Hacker.say_something_smart
