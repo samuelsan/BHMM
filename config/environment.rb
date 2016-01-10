@@ -8,7 +8,7 @@ require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/contrib/all' # Requires cookies, among other things
 require 'stripe'
-require 'pry'
+require 'pry' if development?
 
 require './app/search.rb'
 
@@ -34,4 +34,4 @@ require APP_ROOT.join('app', 'actions')
 
 # Setting up Stripe
 
-Stripe.api_key = settings.secret_key
+# Stripe.api_key = settings.secret_key
