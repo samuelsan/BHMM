@@ -1,7 +1,8 @@
 Better Have My Money - Rent Collector Web App
 =============
-Website: http://bhmm.herokuapp.com <br/>
-To Install:  <br/>
+BHMM (Better Have My Money) is a Rent-Collector Web Application. Landlords can post listings and Tenants can pay virtually their periodic rent. <br>
+<b>Website: </b>http://bhmm.herokuapp.com <br/>
+<b> To Install: </b>  <br/>
 1. Run Bundle Install <br/>
 2. Run shotgun -p 3000 -o 0.0.0.0 <br/>
 3. Go to http://localhost:3000 
