@@ -1,6 +1,6 @@
 Better Have My Money - Rent Collector Web App
 =============
-Website: http://bhmm.herokuapp.com <br/>
+#Website: http://bhmm.herokuapp.com <br/>
 To Install: 
 
 
