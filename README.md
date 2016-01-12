@@ -1,9 +1,9 @@
 Better Have My Money - Rent Collector Web App
 =============
-#Website: http://bhmm.herokuapp.com <br/>
+Website: http://bhmm.herokuapp.com <br/>
 To Install:  <br/>
 1. Run Bundle Install <br/>
-2. Run shotgun -p 3000 -o 0.0.0. <br/>
+2. Run shotgun -p 3000 -o 0.0.0.0 <br/>
 3. Go to http://localhost:3000 
 
 
